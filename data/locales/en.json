@@ -1,0 +1,110 @@
+{
+  "nav": {
+    "about": "About",
+    "studio": "Solution Studio",
+    "projects": "Projects",
+    "certificates": "Certifications",
+    "skills": "Skills & Tech",
+    "contact": "Contact",
+    "hireMe": "Hire Me",
+    "langSwitch": "العربية"
+  },
+  "hero": {
+    "badge": "Computer Systems Engineer | Full-Stack Developer",
+    "greeting": "Hello, I am Eng.",
+    "name": "Hadeel Emad Baroud",
+    "description": "Designing and engineering thoughtful, high-performance web systems that balance deep architectural integrity with intuitive, refined user experiences.",
+    "ctaStudio": "Solution Studio",
+    "ctaProjects": "Explore Work",
+    "ctaContact": "Get in Touch",
+    "locationBadge": "Available for Freelance & Web Engineering"
+  },
+  "studio": {
+    "badge": "Exclusive Interactive Experience",
+    "title": "Interactive Solution & Scope Studio",
+    "subtitle": "Select your app requirements and preview real-time architecture, recommended tech stack, and estimations instantly!",
+    "step1": "1. Select Platform or Project Type",
+    "types": {
+      "saas": { "name": "Full-scale SaaS Platform", "desc": "Subscriptions, multi-tenant RBAC, and analytics" },
+      "ecommerce": { "name": "Modern E-Commerce", "desc": "Product catalog, cart, checkout, and inventory" },
+      "booking": { "name": "Booking & Mentorship System", "desc": "Like Coach Space: calendar scheduling, alerts, and billing" },
+      "educational": { "name": "Educational LMS Platform", "desc": "Like EduHub: courses, quiz engine, and certificates" },
+      "custom": { "name": "Custom Enterprise Solution", "desc": "Tailor-made software designed for your exact business logic" }
+    },
+    "step2": "2. Choose Desired Modules & Capabilities",
+    "features": {
+      "auth": { "name": "Enterprise Auth & Role Control", "desc": "JWT, OAuth, and granular RBAC security" },
+      "payments": { "name": "Payment Gateways (Stripe/PayPal)", "desc": "Global checkout, recurring subscriptions, and invoices" },
+      "ai": { "name": "AI Integration (AI & LLMs)", "desc": "Smart agentic chat, automated data parsing, and workflows" },
+      "realtime": { "name": "Real-Time Sockets & Live Chat", "desc": "Instant WebSockets messaging and notifications" },
+      "dashboard": { "name": "Interactive Analytics Dashboard", "desc": "Live metrics, charts, and operational management" },
+      "i18n": { "name": "Bilingual Localization (AR / EN)", "desc": "Flawless RTL and LTR user experience" }
+    },
+    "preview": {
+      "title": "Recommended Architectural Blueprint",
+      "frontend": "Frontend Layer:",
+      "backend": "Backend & Core Systems:",
+      "database": "Data Persistence:",
+      "aiModule": "AI Integration:",
+      "timeline": "Estimated Delivery Window:",
+      "exportBtn": "Send Project Scope to Eng. Hadeel",
+      "exportSuccess": "Your project scope has been drafted! Redirecting to contact..."
+    }
+  },
+  "projects": {
+    "badge": "Proven Case Studies",
+    "title": "Engineered Systems & Applications",
+    "subtitle": "Production-grade software built with focus on speed, resilience, security, and fluid UX.",
+    "viewDetails": "View Architecture & Details",
+    "challenges": "Problem & Objective:",
+    "solution": "Solution & Architecture:",
+    "keyMetrics": "Key Highlights:"
+  },
+  "certificates": {
+    "badge": "Accredited & Verified Credentials",
+    "title": "Certifications & Professional Credentials",
+    "subtitle": "Over 320 intensive training hours in software architecture, artificial intelligence, international digital competencies, and full-stack engineering.",
+    "filterAll": "All (11)",
+    "filterAI": "Artificial Intelligence (3)",
+    "filterArchitecture": "Systems Architecture (1)",
+    "filterFoundations": "ICDL & Foundations (1)",
+    "filterWeb": "Web & Frontend (1)",
+    "filterJS": "Core JavaScript (4)",
+    "filterPython": "Python & Scripting (1)",
+    "verifyCode": "Official Verification Code:",
+    "hoursLabel": "Accredited Hours:"
+  },
+  "skills": {
+    "badge": "Technical & Architectural Arsenal",
+    "title": "Engineering Stack & Tools",
+    "subtitle": "Building robust software starts with choosing the right architectural building blocks."
+  },
+  "contact": {
+    "badge": "Let's Collaborate",
+    "title": "Have a vision you want to build into a thriving system?",
+    "subtitle": "I am currently open for freelance projects, technical consulting, and end-to-end full-stack development.",
+    "form": {
+      "nameLabel": "Your Name or Company",
+      "namePlaceholder": "e.g. Sarah Connor / Tech Innovators",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "name@example.com",
+      "projectTypeLabel": "Type of Project",
+      "messageLabel": "Project Scope or Message",
+      "messagePlaceholder": "Tell me about your product, required features, and timeline...",
+      "submitBtn": "Send Project Brief",
+      "submitting": "Transmitting...",
+      "success": "Thank you! Your message has been received. I will reply within a few hours.",
+      "error": "An unexpected error occurred. Please try again or reach out directly via email."
+    },
+    "directContact": {
+      "title": "Direct Contact Channels",
+      "phone": "Phone / WhatsApp:",
+      "email": "Professional Email:",
+      "location": "Location:"
+    }
+  },
+  "footer": {
+    "rights": "All Rights Reserved © 2026 | Eng. Hadeel Emad Ismail Baroud",
+    "tagline": "Architected and engineered with modern web and systems standards."
+  }
+}

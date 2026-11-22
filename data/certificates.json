@@ -1,0 +1,140 @@
+[
+  {
+    "id": "taqat-codemap-architecture",
+    "title": "CodeMap 2026: Software Architecture Design",
+    "titleAr": "كود ماب 2026: تصميم المعمارية البرمجية والأنظمة القابلة للتوسع",
+    "issuer": "TAQAT Academy",
+    "category": "architecture",
+    "categoryLabel": { "ar": "هندسة ومعمارية الأنظمة", "en": "Systems Architecture" },
+    "image": "/certificates/taqat-codemap-architecture.jpg",
+    "verificationType": "Verified Certificate",
+    "verificationCode": "TQ-2026-00639",
+    "hours": "144 Hours",
+    "hoursAr": "144 ساعة تدريبية",
+    "date": "2 November 2026",
+    "highlight": true,
+    "description": {
+      "ar": "برنامج مكثف في هندسة وتصميم البرمجيات المتقدمة، تنظيم الأكواد، استراتيجيات الـ Code Mapping، وبناء أنظمة برمجية عالية التحمل وقابلة للصيانة والتوسع.",
+      "en": "Intensive 144-hour program in scalable system design, clean architecture, software mapping strategies, workflow optimization, and high-performance engineering."
+    }
+  },
+  {
+    "id": "frontend-codetech",
+    "title": "FrontEnd Web Development (120 Hours)",
+    "titleAr": "تطوير واجهات الويب الاحترافية (120 ساعة)",
+    "issuer": "CODE TECH",
+    "category": "web",
+    "categoryLabel": { "ar": "تطوير الويب", "en": "Web Engineering" },
+    "image": "/certificates/frontend-codetech.jpg",
+    "verificationType": "Professional Certificate",
+    "verificationCode": null,
+    "hours": "120 Hours",
+    "hoursAr": "120 ساعة عملية",
+    "highlight": true,
+    "description": {
+      "ar": "إتقان تقنيات الويب الحديثة: HTML5، CSS3، JavaScript، Tailwind CSS، Bootstrap، وأدوات التطوير الاحترافية لبناء واجهات متجاوبة وفائقة السرعة.",
+      "en": "Comprehensive 120-hour mastery in modern frontend engineering, HTML5, CSS3, JavaScript, Tailwind CSS, Bootstrap, responsive layouts, and modern tooling."
+    }
+  },
+  {
+    "id": "icdl-learnmore",
+    "title": "ICDL (International Computer Driving Licence)",
+    "titleAr": "الرخصة الدولية لقيادة الحاسوب (ICDL) - معتمدة دولياً",
+    "issuer": "Learn More (Canadian Board & ISO 21001)",
+    "category": "foundations",
+    "categoryLabel": { "ar": "الاعتمادات والأنظمة الدولية", "en": "International Credentials" },
+    "image": "/certificates/icdl-learnmore.jpg",
+    "verificationType": "Canadian Board & ISO 21001",
+    "verificationCode": "Reg: 56009111acc | ISO: 490180543ISO21001",
+    "hours": "20 Hours",
+    "hoursAr": "20 ساعة معتمدة",
+    "date": "August 2026",
+    "highlight": true,
+    "description": {
+      "ar": "شهادة دولية معتمدة من البورد الكندي وهيئة الآيزو (ISO 21001) في الكفاءة الرقمية ونظم المعلومات المكتبية والتقنية وإدارة الحواسيب والشبكات.",
+      "en": "International certification licensed by the Canadian Board and ISO 21001 in advanced digital literacy, computing systems, and office architectures."
+    }
+  },
+  {
+    "id": "python-step",
+    "title": "Python Step by Step: Basics and Beyond",
+    "titleAr": "بايثون خطوة بخطوة: من الأساسيات إلى الاحتراف (30 ساعة)",
+    "issuer": "STEP Center for Training & Development",
+    "category": "python",
+    "categoryLabel": { "ar": "بايثون والخوارزميات", "en": "Python & Algorithms" },
+    "image": "/certificates/python-step.jpg",
+    "verificationType": "Certificate of Participation",
+    "verificationCode": null,
+    "hours": "30 Hours",
+    "hoursAr": "30 ساعة تدريبية",
+    "highlight": false,
+    "description": {
+      "ar": "برمجة وبناء الخوارزميات، هياكل البيانات، التعامل مع الملفات والـ Scripting ومعالجة البيانات باستخدام لغة بايثون.",
+      "en": "30 hours of practical and theoretical training in Python data structures, algorithms, modular scripting, and automation."
+    }
+  },
+  {
+    "id": "js-projects-2",
+    "title": "JavaScript Projects II",
+    "titleAr": "مشاريع جافاسكريبت التطبيقية المتقدمة - المستوى الثاني",
+    "issuer": "Almdrasa (المدرسة)",
+    "category": "javascript",
+    "categoryLabel": { "ar": "جافاسكريبت المتقدمة", "en": "Core JavaScript" },
+    "image": "/certificates/js-projects-2.jpg",
+    "verificationType": "Verified Certificate",
+    "verificationCode": "73612C5702-735B914094-1451E3501",
+    "highlight": false,
+    "description": {
+      "ar": "بناء تطبيقات ويب تفاعلية معقدة بالاعتماد على البرمجة غير المتزامنة (Async/Await, Promises)، والتعامل المتقدم مع الـ DOM و APIs.",
+      "en": "Developing complex client-side applications with advanced asynchronous patterns, DOM state management, external API workflows, and robust architecture."
+    }
+  },
+  {
+    "id": "js-projects-1",
+    "title": "JavaScript Projects I",
+    "titleAr": "مشاريع جافاسكريبت التطبيقية - المستوى الأول",
+    "issuer": "Almdrasa (المدرسة)",
+    "category": "javascript",
+    "categoryLabel": { "ar": "جافاسكريبت المتقدمة", "en": "Core JavaScript" },
+    "image": "/certificates/js-projects-1.jpg",
+    "verificationType": "Verified Certificate",
+    "verificationCode": "734F59367D-734F2C5695-1451E3501",
+    "highlight": false,
+    "description": {
+      "ar": "تنفيذ تطبيقات عملية حقيقية بالاعتماد على خوارزميات جافاسكريبت، التفاعل الحي مع المستخدم، وإدارة البيانات محلياً.",
+      "en": "Hands-on implementation of algorithmic workflows, dynamic interactive components, and local data persistence in pure JavaScript."
+    }
+  },
+  {
+    "id": "js-intermediate",
+    "title": "JavaScript Intermediate",
+    "titleAr": "جافاسكريبت المستوى المتوسط",
+    "issuer": "Almdrasa (المدرسة)",
+    "category": "javascript",
+    "categoryLabel": { "ar": "جافاسكريبت المتقدمة", "en": "Core JavaScript" },
+    "image": "/certificates/js-intermediate.jpg",
+    "verificationType": "Verified Certificate",
+    "verificationCode": "734F59367C-7349B0D616-1451E3501",
+    "highlight": false,
+    "description": {
+      "ar": "التعمق في الـ Closures، البرمجة كائنية التوجه (OOP in JS)، الـ Prototype Chain، وهندسة الكود النظيف.",
+      "en": "Deep dive into JS closures, object-oriented paradigms, prototypal inheritance, execution context, and modular clean code."
+    }
+  },
+  {
+    "id": "js-fundamentals",
+    "title": "JavaScript Fundamentals",
+    "titleAr": "أساسيات لغة جافاسكريبت",
+    "issuer": "Almdrasa (المدرسة)",
+    "category": "javascript",
+    "categoryLabel": { "ar": "جافاسكريبت المتقدمة", "en": "Core JavaScript" },
+    "image": "/certificates/js-fundamentals.jpg",
+    "verificationType": "Verified Certificate",
+    "verificationCode": "734F1D89EC-734973A5A0-1451E3501",
+    "highlight": false,
+    "description": {
+      "ar": "الأساس النظري والعملي الصلب لـ ECMAScript، أنواع البيانات، هياكل التحكم، والوظائف المعيارية.",
+      "en": "Rigorous foundational mastery of modern ECMAScript standards, data structures, control flow, functions, and memory semantics."
+    }
+  }
+]

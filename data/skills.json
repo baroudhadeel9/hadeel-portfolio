@@ -1,0 +1,166 @@
+[
+  {
+    "category": { "ar": "الذكاء الاصطناعي وهندسة النماذج", "en": "AI Engineering & Agentic Workflows" },
+    "skills": [
+      { 
+        "name": "AI Agents & Structured Tool Calling", 
+        "level": "Advanced", 
+        "levelAr": "متقدم",
+        "percent": 92,
+        "highlight": true,
+        "application": { "ar": "استدعاء دوال مهيكلة وربط النماذج الذكية", "en": "Structured tool calling & schema outputs" }
+      },
+      { 
+        "name": "Prompt Engineering & Tool Use", 
+        "level": "Advanced", 
+        "levelAr": "متقدم",
+        "percent": 90,
+        "highlight": true,
+        "application": { "ar": "تكامل الـ Agents والمطالبات الذكية", "en": "Structured outputs & agentic tools" }
+      },
+      { 
+        "name": "AI-Powered Code Automation", 
+        "level": "Proficient", 
+        "levelAr": "متقن",
+        "percent": 86,
+        "highlight": true,
+        "application": { "ar": "تسريع التطوير البرمجي واختبار الأكواد", "en": "Automated workflows & testing" }
+      },
+      { 
+        "name": "LLM Integration in Web Apps", 
+        "level": "Advanced", 
+        "levelAr": "متقدم",
+        "percent": 88,
+        "highlight": true,
+        "application": { "ar": "دمج النماذج التوليدية في الواجهات", "en": "Client/server LLM pipelines" }
+      }
+    ]
+  },
+  {
+    "category": { "ar": "تطوير الواجهات الحديثة (Frontend)", "en": "Modern Frontend Engineering" },
+    "skills": [
+      { 
+        "name": "React 19 & Next.js (App Router)", 
+        "level": "Expert", 
+        "levelAr": "خبير",
+        "percent": 96,
+        "highlight": true,
+        "application": { "ar": "مطبق في منصة EduHub و Coach Space", "en": "Core in EduHub & Coach Space" }
+      },
+      { 
+        "name": "Tailwind CSS & Responsive UI", 
+        "level": "Expert", 
+        "levelAr": "خبير",
+        "percent": 98,
+        "highlight": true,
+        "application": { "ar": "مطبق في كامل المشاريع وثيماتها", "en": "Fluid UI across all deployed apps" }
+      },
+      { 
+        "name": "TypeScript & Zod Validation", 
+        "level": "Advanced", 
+        "levelAr": "متقدم",
+        "percent": 92,
+        "highlight": true,
+        "application": { "ar": "تدقيق صارم للبيانات ومنع الأخطاء", "en": "End-to-end type safety & schemas" }
+      },
+      { 
+        "name": "Bilingual i18n & RTL Layouts", 
+        "level": "Expert", 
+        "levelAr": "خبير",
+        "percent": 95,
+        "highlight": true,
+        "application": { "ar": "دعم كامل للعربية (RTL) والإنجليزية (LTR)", "en": "Seamless RTL & LTR duality" }
+      },
+      { 
+        "name": "Modern JavaScript (ES6+)", 
+        "level": "Expert", 
+        "levelAr": "خبير",
+        "percent": 95,
+        "highlight": false,
+        "application": { "ar": "مطبق في تطبيق TO-Do ومشاريع المدرسة", "en": "Core ES6+ in TO-Do Task App" }
+      },
+      { 
+        "name": "State Management & Performance", 
+        "level": "Advanced", 
+        "levelAr": "متقدم",
+        "percent": 90,
+        "highlight": false,
+        "application": { "ar": "تحسين الأداء وسرعة التحميل", "en": "Lightweight client & server state" }
+      }
+    ]
+  },
+  {
+    "category": { "ar": "الباك إند وقواعد البيانات (Backend & DB)", "en": "Backend Systems & Databases" },
+    "skills": [
+      { 
+        "name": "Supabase & PostgreSQL Cloud", 
+        "level": "Advanced", 
+        "levelAr": "متقدم",
+        "percent": 91,
+        "highlight": true,
+        "application": { "ar": "مربوط سحابياً في مشروعي EduHub و Coach Space", "en": "Cloud DB in EduHub & Coach Space" }
+      },
+      { 
+        "name": "Laravel 11 REST API", 
+        "level": "Proficient", 
+        "levelAr": "متقن",
+        "percent": 87,
+        "highlight": true,
+        "application": { "ar": "خادم الباك إند لمنصة EduHub", "en": "Backend API server in EduHub" }
+      },
+      { 
+        "name": "Node.js & Express REST APIs", 
+        "level": "Advanced", 
+        "levelAr": "متقدم",
+        "percent": 89,
+        "highlight": true,
+        "application": { "ar": "بناء خدمات الويب والـ Endpoints", "en": "Scalable endpoints & microservices" }
+      },
+      { 
+        "name": "Python & Data Algorithms", 
+        "level": "Proficient", 
+        "levelAr": "متقن",
+        "percent": 85,
+        "highlight": false,
+        "application": { "ar": "معتمد بشهادة STEP (30 ساعة)", "en": "Certified via STEP 30h course" }
+      }
+    ]
+  },
+  {
+    "category": { "ar": "معمارية البرمجيات وهندسة الأنظمة", "en": "Systems Architecture & Practices" },
+    "skills": [
+      { 
+        "name": "Software Architecture Design", 
+        "level": "Expert", 
+        "levelAr": "خبير",
+        "percent": 94,
+        "highlight": true,
+        "application": { "ar": "معتمد في كود ماب 2026 (144 ساعة)", "en": "Certified CodeMap 2026 (144h)" }
+      },
+      { 
+        "name": "Clean Code & Code Mapping", 
+        "level": "Expert", 
+        "levelAr": "خبير",
+        "percent": 96,
+        "highlight": true,
+        "application": { "ar": "هيكلة كود احترافية قابلة للصيانة", "en": "High maintainability & clean code" }
+      },
+      { 
+        "name": "Git & Collaborative Workflows", 
+        "level": "Advanced", 
+        "levelAr": "متقدم",
+        "percent": 92,
+        "highlight": false,
+        "application": { "ar": "إدارة الإصدارات ومستودعات GitHub", "en": "Version control & GitHub repos" }
+      },
+      { 
+        "name": "Scalable Systems Engineering", 
+        "level": "Advanced", 
+        "levelAr": "متقدم",
+        "percent": 90,
+        "highlight": true,
+        "application": { "ar": "تخصص هندسة حاسوب - جامعة الأزهر", "en": "Al-Azhar Systems Degree rigor" }
+      }
+    ]
+  }
+]

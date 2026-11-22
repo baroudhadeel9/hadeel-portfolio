@@ -1,0 +1,112 @@
+[
+  {
+    "id": "coach-space",
+    "title": "Coach Space",
+    "titleAr": "منصة كوتش سبيس (Coach Space)",
+    "tagline": {
+      "ar": "منصة تعليمية وتدريبية ذكية متعددة الأدوار (طلاب، مدربون، إدارة) مبنية بأحدث تقنيات الويب (Next.js 15 و React 19): إدارة المسارات، نظام شراء واشتراكات، لوحات تحكم متقدمة، ودعم كامل للغتين العربية والإنجليزية",
+      "en": "A multi-role Learning Management System (LMS) engineered with Next.js 15 & React 19. It connects instructors, students, and administrators through dedicated dashboards, dynamic course delivery, bilingual RTL/LTR, and automated PDF certification."
+    },
+    "category": "Full-Stack EdTech & LMS Platform",
+    "categoryAr": "تطوير ويب متكامل (Full-Stack LMS)",
+    "featured": true,
+    "image": "/projects/coachspace-hero.jpg",
+    "liveUrl": "https://coachspace-five.vercel.app/",
+    "githubUrl": "https://github.com/baroudhadeel9",
+    "tech": ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Redux Toolkit", "Firebase Admin", "Cloudinary", "next-intl", "Zod", "jsPDF", "Framer Motion"],
+    "challenges": {
+      "ar": "يواجه المدربون والطلاب صعوبة في المنصات التقليدية بسبب بطء التصفح، وضعف دعم اللغة العربية والاتجاه من اليمين لليسار (RTL)، وتعقيد إدارة الكورسات وإصدار الشهادات. تم حل ذلك ببناء منصة موحدة فائقة الأداء تعتمد على الـ Server-Side Rendering والـ App Router، تتيح للمدرب إدارة محتواه وطلابه، وتمنح الطالب رحلة تعلم سلسة مع إصدار تلقائي لشهادات الإتمام بصيغة PDF، وتدعم الإدارة بنظام CMS مدعوم بأدوات ذكاء اصطناعي.",
+      "en": "Overcoming traditional LMS latency, poor Arabic RTL layout support, and complex course and certification workflows. Engineered a unified, high-performance App Router platform with role-based portals, automated client-side PDF certification, and an AI-assisted CMS."
+    },
+    "features": [
+      {
+        "title": { "ar": "بوابة الطالب وإصدار الشهادات التفاعلية (PDF)", "en": "Student Portal & Dynamic Certification" },
+        "desc": { "ar": "استعراض الدورات، سلة المشتريات والدفع (Cart & Checkout)، مسارات التعلم التفاعلية (My Path)، وتوليد فوري لشهادات التخرج بصيغة PDF وتأثيرات تفاعلية.", "en": "Seamless onboarding, interactive course player, learning path tracking, shopping cart/checkout, and dynamic client-side PDF certificate generation." }
+      },
+      {
+        "title": { "ar": "لوحة تحكم المدرب والتحليلات البيعية", "en": "Instructor Dashboard & Analytics" },
+        "desc": { "ar": "إدارة الدورات التدريبية، متابعة المبيعات والطلبات، ومراقبة تقدم الطلاب وإحصائيات الحضور والتقييمات لحظياً.", "en": "Course authoring, student progress analytics, real-time enrollment metrics, and order tracking." }
+      },
+      {
+        "title": { "ar": "لوحة تحكم الإدارة ونظام المحتوى بالذكاء الاصطناعي", "en": "Admin CMS & AI Copywriting" },
+        "desc": { "ar": "نظام لإدارة المحتوى، دعم كتابة المحتوى بمساعدة الذكاء الاصطناعي (AI Copywriting)، والتحكم في إعدادات الموقع وإعادة التحقق من الكاش (On-demand Revalidation).", "en": "Dynamic content management with built-in AI copywriting assistance, fine-grained access control, and on-demand cache revalidation." }
+      },
+      {
+        "title": { "ar": "تدويل وتعدد لغات كامل مع معمارية الحالة (next-intl)", "en": "Bilingual i18n & State Architecture" },
+        "desc": { "ar": "دعم كامل للغتين العربية والإنجليزية مع ضبط تلقائي للاتجاهات (RTL / LTR) باستخدام next-intl، وإدارة الحالة المركزية عبر Redux Toolkit وتحقق Zod.", "en": "Native Arabic & English localization with seamless RTL/LTR layout transitions powered by next-intl, Redux Toolkit state flow, and strict Zod validation." }
+      }
+    ]
+  },
+  {
+    "id": "eduhub-gaza",
+    "title": "EduHub Gaza",
+    "titleAr": "منصة إديوهب غزة (EduHub Gaza)",
+    "tagline": {
+      "ar": "منصة رقمية متكاملة لإدارة مساحة العمل والتدريب التقني EduHub في غزة: تنظم حجز المقاعد التفاعلي، تدقيق طلبات العضوية، لوحة الاستقبال والحضور والانصراف، وإدارة الورش التخصصية لرواد المساحة والمستقلين",
+      "en": "A modern, full-stack educational and co-working management platform built for EduHub Gaza. It streamlines real-time seat reservations, member admissions, reception check-in/out, and clinical/tech workshops for engineers and remote freelancers."
+    },
+    "category": "Full-Stack Web Application",
+    "categoryAr": "تطوير ويب متكامل (Full-Stack)",
+    "featured": true,
+    "image": "/projects/eduhub.jpg",
+    "liveUrl": "https://gazaeduhub.com",
+    "githubUrl": "https://github.com/baroudhadeel9/EduHub",
+    "tech": ["Next.js 16", "Laravel 11", "React 19", "TypeScript", "Tailwind CSS", "PostgreSQL", "Sanctum", "Brevo API", "Turbopack", "PWA"],
+    "challenges": {
+      "ar": "توفير بيئة تعليمية وعمل مجانية ومستقرة تعتمد على الطاقة الشمسية والإنترنت عالي السرعة لطلبة غزة والمستقلين في ظل الظروف الصعبة، وتنظيم الطاقة الاستيعابية المحدودة، ومنع أي تضارب بين الحجوزات مع حماية منظومة الطاقة الشمسية من الاستهلاك الزائد للكهرباء.",
+      "en": "Amid challenging infrastructure conditions in Gaza, university students and remote professionals face acute shortages of stable power and connectivity. EduHub provides a free, solar-powered workspace, but required a robust digital solution to manage limited physical capacity, prevent reservation conflicts, and streamline admissions without manual paperwork."
+    },
+    "features": [
+      {
+        "title": { "ar": "نظام حجز مقاعد تفاعلي (Pessimistic Locking)", "en": "Interactive Real-Time Booking Engine" },
+        "desc": { "ar": "حجز مقاعد متزامن وآمن بين قاعات الشباب والنساء مع قفل تشاؤمي في قاعدة البيانات (lockForUpdate) لمنع التضارب وحجز المقعد مرتين في نفس اللحظة.", "en": "Concurrency-safe seat reservation across separate youth and women halls with pessimistic database locking (lockForUpdate) to eliminate overlapping slots." }
+      },
+      {
+        "title": { "ar": "لوحة استقبال ذكية وتتبع ساعات الحضور", "en": "Smart Reception Attendance Board" },
+        "desc": { "ar": "تسجيل حضور وانصراف فوري بضغطة زر واحتساب فوري للساعات الفعلية المنجزة وخصمها من رصيد العضوية المعتمد بدقة.", "en": "High-speed reception attendance workflow (Check-in / Check-out) calculating actual attended hours and deducting member quotas accurately." }
+      },
+      {
+        "title": { "ar": "تدقيق العضويات وحماية الطاقة الشمسية", "en": "Membership Screening & Solar Protection" },
+        "desc": { "ar": "فحص آلي لبيانات الهوية والتحقق من قدرة شاحن اللابتوب (Wattage) لحماية بطاريات الطاقة الشمسية مع بث إشعارات القبول عبر Brevo API و SMS.", "en": "Automated applicant review including ID validation, charger wattage verification to safeguard solar battery health, and SMS/Email broadcasts via Brevo API." }
+      },
+      {
+        "title": { "ar": "بروكسي عكسي آمن وواجهة ثنائية اللغة", "en": "Resilient Reverse Proxy & Bilingual UI" },
+        "desc": { "ar": "بروكسي مخصص في Next.js 16 مع حماية من SSRF وحظر المسارات المشبوهة، مع تحويل انسيابي متكامل بين اللغتين العربية والإنجليزية.", "en": "Custom Next.js 16 proxy with cloud failover, blocking SSRF/path-traversal attacks, and seamless RTL/LTR transition supporting Arabic and English." }
+      }
+    ]
+  },
+  {
+    "id": "todo-app",
+    "title": "TO-Do Task Manager",
+    "titleAr": "تطبيق قائمة المهام الذكي (TO-Do App)",
+    "tagline": {
+      "ar": "تطبيق ويب تفاعلي لإدارة المهام اليومية مع إحصائيات حية، حفظ البيانات محلياً، ودعم كامل للوضع الليلي والنهاري",
+      "en": "Interactive task and productivity manager with real-time stats, persistent local storage, and dark/light themes"
+    },
+    "category": "Productivity Web App",
+    "categoryAr": "تطبيق ويب للإنتاجية",
+    "featured": true,
+    "image": "/projects/todo.png",
+    "liveUrl": "https://to-do-rho-rouge.vercel.app",
+    "githubUrl": "https://github.com/baroudhadeel9/TO-Do",
+    "tech": ["JavaScript (ES6+)", "Tailwind CSS v4", "HTML5", "CSS3", "LocalStorage API", "Responsive Design"],
+    "challenges": {
+      "ar": "بناء تطبيق مهام خفيف وسريع الاستجابة بدون أي اعتماديات ثقيلة، يضمن استمرار البيانات محلياً وتحديث الإحصائيات (الإجمالي، المكتملة، قيد التنفيذ) لحظياً مع دعم التحويل السلس بين الوضع الليلي والنهاري.",
+      "en": "Engineering a lightweight, zero-dependency task application that guarantees local data persistence, real-time productivity statistics, and seamless dark/light theme switching."
+    },
+    "features": [
+      {
+        "title": { "ar": "لوحة إحصائيات الإنتاجية الفورية", "en": "Live Productivity Counters" },
+        "desc": { "ar": "تتبع فوري ومباشر لعدد المهام الكلية، المكتملة، وتلك التي لا تزال قيد التنفيذ.", "en": "Dynamic counters showing total, completed, and pending tasks with real-time feedback." }
+      },
+      {
+        "title": { "ar": "تخزين محلي ذكي (LocalStorage)", "en": "Persistent Local Storage" },
+        "desc": { "ar": "حفظ دائم لكافة المهام وحالاتها في متصفح المستخدم دون الحاجة لتسجيل دخول.", "en": "Zero-friction local persistence ensuring tasks remain intact across reloads and sessions." }
+      },
+      {
+        "title": { "ar": "دعم الوضعين الليلي والنهاري", "en": "Dark & Light Mode Switcher" },
+        "desc": { "ar": "تجربة بصرية مريحة للعين مع تحويل لوني انسيابي بزر تبديل مخصص.", "en": "One-click theme toggle providing high contrast and eye comfort in all environments." }
+      }
+    ]
+  }
+]

@@ -1,0 +1,40 @@
+{
+  "name": {
+    "ar": "هديل عماد إسماعيل بارود",
+    "en": "Hadeel Emad Baroud"
+  },
+  "title": {
+    "ar": "مهندسة أنظمة حاسوب | مطورة ويب Full-Stack معتمدة في الذكاء الاصطناعي",
+    "en": "Computer Systems Engineer | AI-Integrated Full-Stack Web Developer"
+  },
+  "subtitle": {
+    "ar": "أدمج بين هندسة الأنظمة الصلبة وتطبيقات الويب السريعة ونماذج الذكاء الاصطناعي لبناء حلول تقنية استثنائية قابلة للتوسع.",
+    "en": "Bridging robust systems architecture, high-performance web applications, and state-of-the-art AI to build scalable digital experiences."
+  },
+  "education": {
+    "degree": {
+      "ar": "بكالوريوس هندسة أنظمة حاسوب",
+      "en": "B.Sc. in Computer Systems Engineering"
+    },
+    "university": {
+      "ar": "جامعة الأزهر - غزة",
+      "en": "Al-Azhar University - Gaza"
+    }
+  },
+  "contact": {
+    "phone": "0598642728",
+    "phoneIntl": "+970598642728",
+    "email": "baroudhadeel9@gmail.com",
+    "location": {
+      "ar": "مدينة غزة، فلسطين",
+      "en": "Gaza City, Palestine"
+    },
+    "github": "https://github.com/baroudhadeel9",
+    "linkedin": "https://www.linkedin.com/in/hadeel-baroud-0a48a1380/"
+  },
+  "stats": [
+    { "value": { "ar": "+٨", "en": "8+" }, "label": { "ar": "شهادات دولية معتمدة", "en": "Verified Certifications" } },
+    { "value": { "ar": "+٣٢٠", "en": "320+" }, "label": { "ar": "ساعة تدريب هندسي مكثفة", "en": "Intensive Engineering Hours" } },
+    { "value": { "ar": "١٠٠٪", "en": "100%" }, "label": { "ar": "إتقان معماري عالي", "en": "Architectural Quality" } }
+  ]
+}

@@ -10,12 +10,10 @@ import {
   CheckCircle, 
   AlertCircle,
   Sparkles,
-  MapPin,
-  Clock,
-  ExternalLink
+  MapPin
 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, WhatsAppIcon } from '@/components/common/SocialIcons';
-import { ContactFormSchema, ContactFormData } from '@/lib/schemas';
+import { ContactFormSchema, ContactFormData, Dictionary, ProfileData } from '@/lib/schemas';
 
 // Contact Container with subtle cursor spotlight
 const ContactSpotlightCard: React.FC<{
@@ -58,8 +56,8 @@ const ContactSpotlightCard: React.FC<{
 
 interface ContactSectionProps {
   lang: 'ar' | 'en';
-  dict: any;
-  profile: any;
+  dict: Dictionary;
+  profile: ProfileData;
 }
 
 export const ContactSection: React.FC<ContactSectionProps> = ({ 
@@ -81,7 +79,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
   const [sentVia, setSentVia] = useState<'api' | 'whatsapp' | 'email' | null>(null);
-  const [apiError, setApiError] = useState<string | null>(null);
 
   const WEB3FORMS_ACCESS_KEY = '6020b837-a36a-4a7d-8068-0a0341d6bace';
 
@@ -104,7 +101,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
   const validate = () => {
     setErrors({});
-    setApiError(null);
     const validation = ContactFormSchema.safeParse(formData);
     if (!validation.success) {
       const fieldErrors: Record<string, string> = {};
@@ -136,7 +132,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     if (!validate()) return;
 
     setIsSubmitting(true);
-    setApiError(null);
 
     try {
       const response = await fetch('https://api.web3forms.com/submit', {

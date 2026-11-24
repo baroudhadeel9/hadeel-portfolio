@@ -4,11 +4,12 @@ import React from 'react';
 import Image from 'next/image';
 import { Mail } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/common/SocialIcons';
+import { Dictionary, ProfileData } from '@/lib/schemas';
 
 interface FooterProps {
   lang: 'ar' | 'en';
-  dict: any;
-  profile: any;
+  dict: Dictionary;
+  profile: ProfileData;
 }
 
 export const Footer: React.FC<FooterProps> = ({ lang, dict, profile }) => {

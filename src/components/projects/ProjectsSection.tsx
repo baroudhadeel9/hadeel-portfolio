@@ -12,11 +12,11 @@ import {
   Lock,
   Layers
 } from 'lucide-react';
-import { ProjectItem } from '@/lib/schemas';
+import { ProjectItem, Dictionary } from '@/lib/schemas';
 
 interface ProjectsSectionProps {
   lang: 'ar' | 'en';
-  dict: any;
+  dict: Dictionary;
   projects: ProjectItem[];
 }
 

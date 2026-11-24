@@ -10,14 +10,14 @@ import {
   Grid, 
   BookMarked 
 } from 'lucide-react';
-import { CertificateItem } from '@/lib/schemas';
+import { CertificateItem, Dictionary } from '@/lib/schemas';
 import { ClosedBookCover } from './ClosedBookCover';
 import { CertificateZoomModal } from './CertificateZoomModal';
 import { DocPage, DetailsPage } from './CertificateBookPage';
 
 interface CertificatesSectionProps {
   lang: 'ar' | 'en';
-  dict: any;
+  dict: Dictionary;
   certificates: CertificateItem[];
 }
 

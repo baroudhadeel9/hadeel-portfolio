@@ -19,11 +19,12 @@ import { SkillDetail } from './types';
 import { skillDetailsMap } from './skillDetailsData';
 import { BentoSpotlightCard } from './BentoSpotlightCard';
 import { SkillInspectorModal } from './SkillInspectorModal';
+import { Dictionary, SkillsData } from '@/lib/schemas';
 
 interface SkillsSectionProps {
   lang: 'ar' | 'en';
-  dict: any;
-  skillsData: any[];
+  dict: Dictionary;
+  skillsData: SkillsData;
 }
 
 export const SkillsSection: React.FC<SkillsSectionProps> = ({ lang, dict, skillsData }) => {
@@ -98,7 +99,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ lang, dict, skills
   const allSkills: SkillDetail[] = useMemo(() => {
     const list: SkillDetail[] = [];
     skillsData.forEach((categoryGroup, catIdx) => {
-      categoryGroup.skills.forEach((skill: any) => {
+      categoryGroup.skills.forEach((skill) => {
         const spec = skillDetailsMap[skill.name] || {};
         list.push({
           id: spec.id || skill.name.toLowerCase().replace(/[^a-z0-9]/g, '-'),

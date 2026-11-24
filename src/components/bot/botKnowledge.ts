@@ -1,3 +1,5 @@
+import { ProfileData } from '@/lib/schemas';
+
 export interface BotAction {
   label: string;
   action: () => void;
@@ -48,7 +50,7 @@ export const getQuickQuestions = (isAr: boolean) => {
 export const generateAIResponse = (
   userQuery: string,
   isAr: boolean,
-  profile: any,
+  profile: ProfileData,
   closeBotAndScroll: (sectionId: string) => void
 ): BotResponseResult => {
   const q = userQuery.toLowerCase().trim();

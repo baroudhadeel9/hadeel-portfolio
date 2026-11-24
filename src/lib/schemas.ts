@@ -1,4 +1,11 @@
 import { z } from 'zod';
+import type enDict from '../../data/locales/en.json';
+import type profileData from '../../data/profile.json';
+import type skillsData from '../../data/skills.json';
+
+export type Dictionary = typeof enDict;
+export type ProfileData = typeof profileData;
+export type SkillsData = typeof skillsData;
 
 export const ContactFormSchema = z.object({
   name: z.string().min(2, { message: 'الاسم يجب أن يحتوي على حرفين على الأقل' }),

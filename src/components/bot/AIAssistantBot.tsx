@@ -7,9 +7,7 @@ import {
   X, 
   Send, 
   Sparkles, 
-  CornerDownLeft, 
-  MessageSquare,
-  HelpCircle
+  CornerDownLeft
 } from 'lucide-react';
 import { 
   getInitialBotGreeting, 
@@ -17,6 +15,7 @@ import {
   generateAIResponse, 
   BotAction 
 } from './botKnowledge';
+import { Dictionary, ProfileData } from '@/lib/schemas';
 
 interface ChatMessage {
   id: string;
@@ -28,8 +27,8 @@ interface ChatMessage {
 
 interface AIAssistantBotProps {
   lang: 'ar' | 'en';
-  dict: any;
-  profile: any;
+  dict?: Dictionary;
+  profile: ProfileData;
 }
 
 export const AIAssistantBot: React.FC<AIAssistantBotProps> = ({ lang, profile }) => {
@@ -38,6 +37,7 @@ export const AIAssistantBot: React.FC<AIAssistantBotProps> = ({ lang, profile })
   const [inputValue, setInputValue] = useState<string>('');
   const [isTyping, setIsTyping] = useState<boolean>(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messageIdCounter = useRef<number>(0);
 
   const initialBotGreeting: ChatMessage = {
     id: 'welcome',
@@ -68,8 +68,11 @@ export const AIAssistantBot: React.FC<AIAssistantBotProps> = ({ lang, profile })
   const handleSendMessage = (userText: string) => {
     if (!userText.trim()) return;
 
+    messageIdCounter.current += 1;
+    const userMessageId = `msg_user_${messageIdCounter.current}`;
+
     const userMessage: ChatMessage = {
-      id: Date.now().toString(),
+      id: userMessageId,
       sender: 'user',
       text: userText,
       timestamp: isAr ? 'الآن' : 'Just now'
@@ -80,9 +83,11 @@ export const AIAssistantBot: React.FC<AIAssistantBotProps> = ({ lang, profile })
     setIsTyping(true);
 
     setTimeout(() => {
+      messageIdCounter.current += 1;
+      const botMessageId = `msg_bot_${messageIdCounter.current}`;
       const response = generateAIResponse(userText, isAr, profile, closeBotAndScroll);
       const botMessage: ChatMessage = {
-        id: (Date.now() + 1).toString(),
+        id: botMessageId,
         sender: 'bot',
         text: response.text,
         actions: response.actions,

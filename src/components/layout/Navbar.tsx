@@ -3,11 +3,12 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Menu, X, Globe } from 'lucide-react';
+import { Dictionary } from '@/lib/schemas';
 
 interface NavbarProps {
   lang: 'ar' | 'en';
   onToggleLang: () => void;
-  dict: any;
+  dict: Dictionary;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang, dict }) => {

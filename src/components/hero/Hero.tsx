@@ -8,15 +8,15 @@ import {
   ArrowLeft,
   GraduationCap,
   Sparkles,
-  Mail,
-  CheckCircle2
+  Mail
 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, WhatsAppIcon } from '@/components/common/SocialIcons';
+import { Dictionary, ProfileData } from '@/lib/schemas';
 
 interface HeroProps {
   lang: 'ar' | 'en';
-  dict: any;
-  profile: any;
+  dict: Dictionary;
+  profile: ProfileData;
 }
 
 // Convert western digits to eastern Arabic numerals
@@ -169,7 +169,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
 
             {/* Integrated 3 Verified Metrics Cards in Text Column */}
             <div className="grid grid-cols-3 gap-2.5 sm:gap-3.5 pt-2 max-w-xl mx-auto lg:mx-0">
-              {profile.stats.slice(0, 3).map((st: any, idx: number) => {
+              {profile.stats.slice(0, 3).map((st, idx: number) => {
                 const localizedLabel = typeof st.label === 'object'
                   ? (isAr ? st.label.ar : st.label.en)
                   : st.label;

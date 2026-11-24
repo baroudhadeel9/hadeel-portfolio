@@ -12,7 +12,7 @@ import {
   ChevronRight, 
   ChevronLeft 
 } from 'lucide-react';
-import { CertificateItem } from '@/lib/schemas';
+import { CertificateItem, Dictionary } from '@/lib/schemas';
 
 interface DocPageProps {
   cert: CertificateItem;
@@ -98,7 +98,7 @@ interface DetailsPageProps {
   pageNum: number;
   totalPages: number;
   isAr: boolean;
-  dict: any;
+  dict: Dictionary;
   isInteractive?: boolean;
   isFlipping?: boolean;
   onFlipPrev: () => void;

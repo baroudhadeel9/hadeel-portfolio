@@ -24,30 +24,30 @@
   body {
     background-color: var(--bg-main);
     color: var(--text-primary);
-    font-family: var(--font-inter), var(--font-cairo), system-ui, -apple-system, sans-serif;
+    font-family: var(--font-inter), var(--font-alexandria), system-ui, -apple-system, sans-serif;
     font-weight: 400;
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-space-grotesk), var(--font-cairo), system-ui, -apple-system, sans-serif;
+    font-family: var(--font-space-grotesk), var(--font-alexandria), system-ui, -apple-system, sans-serif;
   }
 }
 
 /* Typography Hierarchy */
-/* English headings: Space Grotesk; Arabic headings: Cairo */
+/* English headings: Space Grotesk; Arabic headings: Alexandria */
 .font-cairo,
 .font-tajawal,
 .font-space,
 .font-heading {
-  font-family: var(--font-space-grotesk), var(--font-cairo), system-ui, -apple-system, sans-serif !important;
+  font-family: var(--font-space-grotesk), var(--font-alexandria), system-ui, -apple-system, sans-serif !important;
 }
 
-/* English body & descriptions: Inter; Arabic body: Cairo */
+/* English body & descriptions: Inter; Arabic body: Alexandria */
 .font-ibm,
 .font-inter,
 .font-body {
-  font-family: var(--font-inter), var(--font-cairo), system-ui, -apple-system, sans-serif !important;
+  font-family: var(--font-inter), var(--font-alexandria), system-ui, -apple-system, sans-serif !important;
 }
 
 /* Monospace details, codes, badges: JetBrains Mono */
@@ -58,9 +58,9 @@ kbd {
   font-family: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
 }
 
-/* Optimized Luxury Arabic Typography with Cairo Font */
+/* Optimized Modern Arabic Typography with Alexandria Font */
 [dir="rtl"] {
-  font-family: var(--font-cairo), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-family: var(--font-alexandria), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   letter-spacing: 0 !important;
   word-spacing: normal !important;
   text-rendering: optimizeLegibility;
@@ -80,7 +80,7 @@ kbd {
 [dir="rtl"] .font-ibm,
 [dir="rtl"] .font-inter,
 [dir="rtl"] .font-body {
-  font-family: var(--font-cairo), system-ui, -apple-system, sans-serif !important;
+  font-family: var(--font-alexandria), system-ui, -apple-system, sans-serif !important;
 }
 
 [dir="rtl"] .font-mono,

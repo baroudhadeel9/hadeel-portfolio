@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, Cairo, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Inter, Alexandria, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -16,10 +16,10 @@ const inter = Inter({
   display: "swap",
 });
 
-const cairo = Cairo({
+const alexandria = Alexandria({
   subsets: ["arabic", "latin"],
-  variable: "--font-cairo",
-  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-alexandria",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
@@ -48,7 +48,7 @@ export default function RootLayout({
     <html
       lang="en"
       dir="ltr"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${cairo.variable} ${jetbrainsMono.variable} scroll-smooth`}
+      className={`${spaceGrotesk.variable} ${inter.variable} ${alexandria.variable} ${jetbrainsMono.variable} scroll-smooth`}
     >
       <body className="bg-[#FAFAFC] text-slate-800 min-h-screen selection:bg-slate-900 selection:text-white font-sans antialiased">
         {children}

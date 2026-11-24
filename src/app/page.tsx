@@ -26,7 +26,21 @@ const AIAssistantBot = dynamic(
   { ssr: false }
 );
 
-import { CertificateItem, ProjectItem } from '@/lib/schemas';
+import {
+  CertificateSchema,
+  ProjectSchema,
+  ProfileSchema,
+  SkillsDataSchema,
+  type CertificateItem,
+  type ProjectItem,
+  type ProfileData,
+  type SkillsData,
+} from '@/lib/schemas';
+
+const parsedProjects: ProjectItem[] = ProjectSchema.array().parse(projectsData);
+const parsedCertificates: CertificateItem[] = CertificateSchema.array().parse(certificatesData);
+const parsedProfile: ProfileData = ProfileSchema.parse(profileData);
+const parsedSkills: SkillsData = SkillsDataSchema.parse(skillsData);
 
 export default function HomePage() {
   const [lang, setLang] = useState<'ar' | 'en'>('en');
@@ -51,7 +65,7 @@ export default function HomePage() {
 
   return (
     <main 
-      className="min-h-screen relative flex flex-col bg-surface text-navy selection:bg-accent selection:text-white pb-16 sm:pb-8"
+      className="min-h-screen relative flex flex-col bg-[#f8fafc] text-[#0f172a] selection:bg-slate-900 selection:text-white"
     >
       
       {/* Top Fixed Navigation */}
@@ -65,28 +79,28 @@ export default function HomePage() {
       <Hero 
         lang={lang} 
         dict={dict} 
-        profile={profileData} 
+        profile={parsedProfile} 
       />
 
       {/* Featured Projects (Coach Space & EduHub) - Clean & Elegant */}
       <ProjectsSection 
         lang={lang} 
         dict={dict} 
-        projects={projectsData as unknown as ProjectItem[]} 
+        projects={parsedProjects} 
       />
 
       {/* Verified Accreditations & 11 Certificates in Interactive Book View */}
       <CertificatesSection 
         lang={lang} 
         dict={dict} 
-        certificates={certificatesData as unknown as CertificateItem[]} 
+        certificates={parsedCertificates} 
       />
 
       {/* Skills Matrix & Engineering Tools */}
       <SkillsSection 
         lang={lang} 
         dict={dict} 
-        skillsData={skillsData} 
+        skillsData={parsedSkills} 
       />
 
       {/* Contact Section */}

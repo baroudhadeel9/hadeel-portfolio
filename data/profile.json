@@ -33,8 +33,8 @@
     "linkedin": "https://www.linkedin.com/in/hadeel-baroud-0a48a1380/"
   },
   "stats": [
-    { "value": { "ar": "+١١", "en": "11+" }, "label": { "ar": "شهادة دولية معتمدة", "en": "Verified Certifications" } },
+    { "value": { "ar": "+١١", "en": "11+" }, "label": { "ar": "شهادات دولية معتمدة", "en": "Verified Certifications" } },
     { "value": { "ar": "+٣٢٠", "en": "320+" }, "label": { "ar": "ساعة تدريب هندسي مكثفة", "en": "Intensive Engineering Hours" } },
-    { "value": { "ar": "٣", "en": "3" }, "label": { "ar": "منصات حية بالإنتاج", "en": "Live Production Platforms" } }
+    { "value": { "ar": "١٠٠٪", "en": "100%" }, "label": { "ar": "إتقان معماري عالي", "en": "Architectural Quality" } }
   ]
 }

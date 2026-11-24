@@ -2,31 +2,19 @@
 
 @layer base {
   :root {
-    --navy: #0F172A;
-    --accent: #7C3AED;
-    --accent-light: #A78BFA;
-    --accent-tint: #EDE9FE;
-    --muted: #475569;
-    --surface: #F8FAFC;
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --border-subtle: #e2e8f0;
+    --border-strong: #cbd5e1;
     
-    --bg-page: #F8FAFC;
-    --fg-page: #0F172A;
-    --card-bg: #FFFFFF;
-    --card-border: #E2E8F0;
-  }
-
-  .dark {
-    --navy: #F1F5F9;
-    --accent: #A78BFA;
-    --accent-light: #C4B5FD;
-    --accent-tint: #2E1065;
-    --muted: #94A3B8;
-    --surface: #0B1120;
-    
-    --bg-page: #0B1120;
-    --fg-page: #F1F5F9;
-    --card-bg: #0F172A;
-    --card-border: #1E293B;
+    /* Clean Apple / Stripe minimal accents */
+    --accent-primary: #0f172a;
+    --accent-indigo: #4f46e5;
+    --accent-rose: #e11d48;
+    --accent-glow: rgba(15, 23, 42, 0.05);
   }
 
   html {
@@ -34,25 +22,12 @@
   }
 
   body {
-    background-color: var(--surface);
-    color: var(--fg-page);
+    background-color: var(--bg-main);
+    color: var(--text-primary);
     font-family: var(--font-jakarta), var(--font-cairo), system-ui, -apple-system, sans-serif;
     font-weight: 400;
     overflow-x: hidden;
   }
-}
-
-@theme {
-  --color-navy: var(--navy);
-  --color-accent: var(--accent);
-  --color-accent-light: var(--accent-light);
-  --color-accent-tint: var(--accent-tint);
-  --color-muted: var(--muted);
-  --color-surface: var(--surface);
-  --color-bg-page: var(--bg-page);
-  --color-fg-page: var(--fg-page);
-  --color-card-bg: var(--card-bg);
-  --color-card-border: var(--card-border);
 }
 
 /* Font utility classes: Cairo for Arabic, Jakarta for English */

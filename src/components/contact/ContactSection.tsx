@@ -191,11 +191,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   return (
     <section 
       id="contact" 
-      className="py-20 sm:py-28 relative overflow-hidden bg-surface text-navy border-t border-slate-200/80 dark:border-slate-800 scroll-mt-24"
+      className="py-20 sm:py-28 relative overflow-hidden bg-white text-slate-900 border-t border-slate-200/80 scroll-mt-24"
     >
       {/* Soft Ambient Radial Lights (Light & Airy) */}
-      <div className="absolute top-1/4 -right-32 w-80 h-80 bg-accent/10 rounded-full blur-3xl pointer-events-none -z-0" />
-      <div className="absolute bottom-1/4 -left-32 w-80 h-80 bg-accent-tint/30 rounded-full blur-3xl pointer-events-none -z-0" />
+      <div className="absolute top-1/4 -right-32 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none -z-0" />
+      <div className="absolute bottom-1/4 -left-32 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl pointer-events-none -z-0" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -203,20 +203,20 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.5 }}
           className="text-center max-w-2xl mx-auto mb-12 sm:mb-14 space-y-3"
         >
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-accent-tint border border-accent/20 text-accent text-xs font-semibold font-ibm shadow-2xs">
-            <MessageSquare className="w-3.5 h-3.5 text-accent" />
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold font-ibm shadow-2xs">
+            <MessageSquare className="w-3.5 h-3.5 text-indigo-600" />
             <span>{dict.contact.badge}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-navy tracking-tight font-tajawal">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-tajawal">
             {dict.contact.title}
           </h2>
 
-          <p className="text-muted text-sm sm:text-base leading-relaxed font-ibm max-w-2xl mx-auto">
+          <p className="text-slate-700 text-sm sm:text-base leading-relaxed font-ibm max-w-2xl mx-auto">
             {dict.contact.subtitle}
           </p>
         </motion.div>
@@ -227,14 +227,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="lg:col-span-5 space-y-4"
           >
-            <ContactSpotlightCard className="p-6 sm:p-7 rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs space-y-5">
+            <ContactSpotlightCard className="p-6 sm:p-7 rounded-3xl border border-slate-200/90 bg-slate-50/70 shadow-xs space-y-5">
               
-              <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
-                <h3 className="text-base font-bold text-navy font-tajawal">
+              <div className="flex items-center justify-between pb-2 border-b border-slate-200/60">
+                <h3 className="text-base font-bold text-slate-900 font-tajawal">
                   {dict.contact.directContact.title}
                 </h3>
                 <span className="flex items-center gap-1.5 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200/80 font-ibm">
@@ -245,18 +245,18 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
               <div className="space-y-3 font-ibm">
                 {/* Phone (Direct Call on Mobile) & WhatsApp Direct Link */}
-                <div className="p-4 rounded-2xl bg-surface border border-slate-200/90 dark:border-slate-800 flex items-center justify-between gap-3 hover:border-accent/40 hover:shadow-xs transition-all">
+                <div className="p-4 rounded-2xl bg-white border border-slate-200/90 flex items-center justify-between gap-3 hover:border-slate-300 hover:shadow-xs transition-all">
                   <a
                     href={`tel:${profile.contact.phoneIntl || cleanPhone}`}
                     className="flex items-center gap-3.5 flex-1 min-w-0 cursor-pointer group"
                     title={isAr ? 'اضغط للاتصال الهاتفي المباشر' : 'Tap to call directly'}
                   >
-                    <div className="p-2.5 rounded-xl bg-accent-tint text-accent border border-accent/20 transition-colors">
+                    <div className="p-2.5 rounded-xl bg-slate-100 text-indigo-600 border border-slate-200 group-hover:border-indigo-200 transition-colors">
                       <Phone className="w-4 h-4" />
                     </div>
                     <div>
-                      <div className="text-xs text-muted font-medium">{dict.contact.directContact.phone}</div>
-                      <div className="text-xs font-bold text-navy font-mono mt-0.5">{profile.contact.phone}</div>
+                      <div className="text-[11px] text-slate-700 font-medium">{dict.contact.directContact.phone}</div>
+                      <div className="text-xs font-bold text-slate-900 font-mono mt-0.5">{profile.contact.phone}</div>
                     </div>
                   </a>
 
@@ -273,18 +273,18 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 </div>
 
                 {/* Email (Direct Mailto + One-Click Copy) */}
-                <div className="p-4 rounded-2xl bg-surface border border-slate-200/90 dark:border-slate-800 flex items-center justify-between gap-3 hover:border-accent/40 hover:shadow-xs transition-all">
+                <div className="p-4 rounded-2xl bg-white border border-slate-200/90 flex items-center justify-between gap-3 hover:border-slate-300 hover:shadow-xs transition-all">
                   <a
                     href={`mailto:${profile.contact.email}`}
                     className="flex items-center gap-3.5 flex-1 min-w-0 cursor-pointer group"
                     title={isAr ? 'إرسال بريد إلكتروني مباشر' : 'Send direct email'}
                   >
-                    <div className="p-2.5 rounded-xl bg-accent-tint text-accent border border-accent/20 transition-colors">
+                    <div className="p-2.5 rounded-xl bg-slate-100 text-indigo-600 border border-slate-200 group-hover:border-indigo-200 transition-colors">
                       <Mail className="w-4 h-4" />
                     </div>
                     <div className="min-w-0">
-                      <div className="text-xs text-muted font-medium">{dict.contact.directContact.email}</div>
-                      <div className="text-xs font-bold text-navy font-mono mt-0.5 truncate">{profile.contact.email}</div>
+                      <div className="text-[11px] text-slate-700 font-medium">{dict.contact.directContact.email}</div>
+                      <div className="text-xs font-bold text-slate-900 font-mono mt-0.5 truncate">{profile.contact.email}</div>
                     </div>
                   </a>
 
@@ -295,22 +295,22 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       setCopiedEmail(true);
                       setTimeout(() => setCopiedEmail(false), 2000);
                     }}
-                    className="p-2 px-2.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 border border-slate-200 dark:border-slate-700 text-navy transition-colors flex items-center gap-1.5 text-[11px] font-semibold shrink-0 cursor-pointer shadow-2xs"
+                    className="p-2 px-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-800 transition-colors flex items-center gap-1.5 text-[11px] font-semibold shrink-0 cursor-pointer shadow-2xs"
                     title="Copy Email"
                   >
-                    {copiedEmail ? <CheckCircle className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5 text-muted" />}
+                    {copiedEmail ? <CheckCircle className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5 text-slate-600" />}
                     <span>{copiedEmail ? (isAr ? 'تم النسخ' : 'Copied!') : (isAr ? 'نسخ' : 'Copy')}</span>
                   </button>
                 </div>
 
                 {/* Location / Remote Availability */}
-                <div className="p-4 rounded-2xl bg-surface/80 border border-slate-200/80 dark:border-slate-800 flex items-center gap-3.5">
-                  <div className="p-2.5 rounded-xl bg-accent-tint text-accent border border-accent/20">
+                <div className="p-4 rounded-2xl bg-white/70 border border-slate-200/80 flex items-center gap-3.5">
+                  <div className="p-2.5 rounded-xl bg-slate-100 text-slate-700 border border-slate-200">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-xs text-muted font-medium">{isAr ? 'العمل عن بُعد:' : 'Remote Collaboration:'}</div>
-                    <div className="text-xs font-bold text-navy mt-0.5">
+                    <div className="text-[11px] text-slate-700 font-medium">{isAr ? 'العمل عن بُعد:' : 'Remote Collaboration:'}</div>
+                    <div className="text-xs font-bold text-slate-900 mt-0.5">
                       {isAr ? 'متاحة للعملاء محلياً وإقليمياً ودولياً' : 'Open to regional & international engagements'}
                     </div>
                   </div>
@@ -318,23 +318,23 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               </div>
 
               {/* Social Profiles */}
-              <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center gap-2 font-tajawal">
+              <div className="pt-3 border-t border-slate-200/80 flex items-center gap-2 font-tajawal">
                 <a
                   href={profile.contact.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex-1 py-2.5 px-3 rounded-xl bg-surface hover:bg-accent-tint/30 border border-slate-200 dark:border-slate-800 hover:border-accent/30 text-xs font-semibold text-navy flex items-center justify-center gap-2 transition-all shadow-2xs"
+                  className="flex-1 py-2.5 px-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 hover:border-slate-300 text-xs font-semibold text-slate-800 flex items-center justify-center gap-2 transition-all shadow-2xs"
                 >
-                  <GithubIcon className="w-3.5 h-3.5 text-navy" />
+                  <GithubIcon className="w-3.5 h-3.5 text-slate-700" />
                   <span>GitHub</span>
                 </a>
                 <a
                   href={profile.contact.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex-1 py-2.5 px-3 rounded-xl bg-surface hover:bg-accent-tint/30 border border-slate-200 dark:border-slate-800 hover:border-accent/30 text-xs font-semibold text-navy flex items-center justify-center gap-2 transition-all shadow-2xs"
+                  className="flex-1 py-2.5 px-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 hover:border-slate-300 text-xs font-semibold text-slate-800 flex items-center justify-center gap-2 transition-all shadow-2xs"
                 >
-                  <LinkedinIcon className="w-3.5 h-3.5 text-accent" />
+                  <LinkedinIcon className="w-3.5 h-3.5 text-indigo-600" />
                   <span>LinkedIn</span>
                 </a>
               </div>
@@ -346,29 +346,29 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.15 }}
             className="lg:col-span-7"
           >
-            <ContactSpotlightCard className="p-6 sm:p-8 rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs space-y-5">
+            <ContactSpotlightCard className="p-6 sm:p-8 rounded-3xl border border-slate-200/90 bg-slate-50/70 shadow-xs space-y-5">
               
-              <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
-                <h3 className="text-base font-bold text-navy font-tajawal">
+              <div className="flex items-center justify-between pb-2 border-b border-slate-200/60">
+                <h3 className="text-base font-bold text-slate-900 font-tajawal">
                   {isAr ? 'نموذج التواصل السريع وحجز استشارة' : 'Quick Project Inquiry Form'}
                 </h3>
-                <Sparkles className="w-4 h-4 text-accent" />
+                <Sparkles className="w-4 h-4 text-indigo-600" />
               </div>
 
               {submitSuccess ? (
-                <div className="p-7 sm:p-9 rounded-2xl bg-emerald-50/90 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/50 text-center space-y-4">
-                  <div className="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto shadow-2xs">
+                <div className="p-7 sm:p-9 rounded-2xl bg-emerald-50/90 border border-emerald-200 text-center space-y-4">
+                  <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-2xs">
                     <CheckCircle className="w-7 h-7" />
                   </div>
                   <div className="space-y-1.5">
-                    <h4 className="text-base sm:text-lg font-bold text-emerald-950 dark:text-emerald-200 font-tajawal">
+                    <h4 className="text-base sm:text-lg font-bold text-emerald-950 font-tajawal">
                       {isAr ? 'تم إرسال رسالتك بنجاح!' : 'Message Sent Successfully!'}
                     </h4>
-                    <p className="text-xs sm:text-sm text-emerald-800 dark:text-emerald-300 font-ibm max-w-md mx-auto leading-relaxed">
+                    <p className="text-xs sm:text-sm text-emerald-800 font-ibm max-w-md mx-auto leading-relaxed">
                       {sentVia === 'api'
                         ? (isAr
                             ? 'تم إرسال بيانات مشروعك تلقائياً إلى البريد الإلكتروني للمهندسة هديل (baroudhadeel9@gmail.com). ستقوم بمراجعة طلبك والرد عليك في أقرب وقت.'
@@ -401,7 +401,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         setSubmitSuccess(false);
                         setFormData({ name: '', email: '', projectType: 'web-app', message: '' });
                       }}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface border border-emerald-300 dark:border-emerald-700 text-xs font-bold text-emerald-900 dark:text-emerald-200 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 transition-colors cursor-pointer shadow-2xs font-ibm"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-emerald-300 text-xs font-bold text-emerald-900 hover:bg-emerald-100 transition-colors cursor-pointer shadow-2xs font-ibm"
                     >
                       <span>{isAr ? 'إرسال استفسار آخر' : 'Send Another Inquiry'}</span>
                     </button>
@@ -412,7 +412,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   
                   {/* Name Input */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-navy">
+                    <label className="text-xs font-semibold text-slate-700">
                       {dict.contact.form.nameLabel}
                     </label>
                     <input
@@ -420,10 +420,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder={dict.contact.form.namePlaceholder}
-                      className="w-full px-4 py-3 rounded-xl bg-surface border border-slate-200/90 dark:border-slate-800 text-navy placeholder:text-muted/60 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 text-xs transition-colors shadow-2xs"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 placeholder-slate-500 focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/10 text-xs transition-colors shadow-2xs"
                     />
                     {errors.name && (
-                      <p className="text-xs text-rose-600 flex items-center gap-1 mt-1">
+                      <p className="text-[11px] text-rose-600 flex items-center gap-1 mt-1">
                         <AlertCircle className="w-3 h-3" />
                         <span>{errors.name}</span>
                       </p>
@@ -432,7 +432,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
                   {/* Email Input */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-navy">
+                    <label className="text-xs font-semibold text-slate-700">
                       {dict.contact.form.emailLabel}
                     </label>
                     <input
@@ -440,10 +440,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder={dict.contact.form.emailPlaceholder}
-                      className="w-full px-4 py-3 rounded-xl bg-surface border border-slate-200/90 dark:border-slate-800 text-navy placeholder:text-muted/60 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 text-xs transition-colors shadow-2xs"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 placeholder-slate-500 focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/10 text-xs transition-colors shadow-2xs"
                     />
                     {errors.email && (
-                      <p className="text-xs text-rose-600 flex items-center gap-1 mt-1">
+                      <p className="text-[11px] text-rose-600 flex items-center gap-1 mt-1">
                         <AlertCircle className="w-3 h-3" />
                         <span>{errors.email}</span>
                       </p>
@@ -452,13 +452,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
                   {/* Project Type Select */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-navy">
+                    <label className="text-xs font-semibold text-slate-700">
                       {isAr ? 'نوع المشروع أو نطاق العمل:' : 'Project Type:'}
                     </label>
                     <select
                       value={formData.projectType}
                       onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-surface border border-slate-200/90 dark:border-slate-800 text-navy focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 text-xs transition-colors shadow-2xs"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/10 text-xs transition-colors shadow-2xs"
                     >
                       <option value="web-app">{isAr ? 'تطبيق ويب متكامل (Next.js / Full-Stack)' : 'Full-Stack Web App (Next.js)'}</option>
                       <option value="saas">{isAr ? 'منصة سحابية أو تعليمية (LMS / SaaS)' : 'SaaS / Educational Platform'}</option>
@@ -469,7 +469,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
                   {/* Message Input */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-navy">
+                    <label className="text-xs font-semibold text-slate-700">
                       {dict.contact.form.messageLabel}
                     </label>
                     <textarea
@@ -477,10 +477,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder={dict.contact.form.messagePlaceholder}
-                      className="w-full px-4 py-3 rounded-xl bg-surface border border-slate-200/90 dark:border-slate-800 text-navy placeholder:text-muted/60 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 text-xs transition-colors shadow-2xs leading-relaxed"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 placeholder-slate-500 focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/10 text-xs transition-colors shadow-2xs leading-relaxed"
                     ></textarea>
                     {errors.message && (
-                      <p className="text-xs text-rose-600 flex items-center gap-1 mt-1">
+                      <p className="text-[11px] text-rose-600 flex items-center gap-1 mt-1">
                         <AlertCircle className="w-3 h-3" />
                         <span>{errors.message}</span>
                       </p>
@@ -492,7 +492,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-3.5 px-4 rounded-xl font-bold text-xs text-white bg-accent hover:bg-accent/90 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs disabled:opacity-50 font-tajawal active:scale-[0.98]"
+                      className="w-full py-3.5 px-4 rounded-xl font-bold text-xs text-white bg-slate-900 hover:bg-slate-800 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs disabled:opacity-50 font-tajawal active:scale-[0.98]"
                     >
                       <Send className="w-3.5 h-3.5" />
                       <span>
@@ -503,23 +503,23 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     </button>
 
                     <div className="flex items-center gap-2">
-                      <div className="flex-1 h-px bg-slate-200/80 dark:bg-slate-800" />
-                      <span className="text-[10px] text-muted font-ibm">{isAr ? 'أو' : 'or'}</span>
-                      <div className="flex-1 h-px bg-slate-200/80 dark:bg-slate-800" />
+                      <div className="flex-1 h-px bg-slate-200/80" />
+                      <span className="text-[10px] text-slate-500 font-ibm">{isAr ? 'أو' : 'or'}</span>
+                      <div className="flex-1 h-px bg-slate-200/80" />
                     </div>
 
                     <button
                       type="button"
                       onClick={handleSendViaWhatsApp}
                       disabled={isSubmitting}
-                      className="w-full py-3 px-4 rounded-xl font-bold text-xs text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 border border-emerald-200 dark:border-emerald-800 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-2xs disabled:opacity-50 font-tajawal active:scale-[0.98]"
+                      className="w-full py-3 px-4 rounded-xl font-bold text-xs text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-2xs disabled:opacity-50 font-tajawal active:scale-[0.98]"
                     >
                       <WhatsAppIcon className="w-4 h-4 text-emerald-600" />
                       <span>{isAr ? 'تواصل مباشر وفوري عبر واتساب 💬' : 'Direct Instant Chat via WhatsApp 💬'}</span>
                     </button>
                   </div>
 
-                  <p className="text-xs text-muted text-center font-ibm pt-1">
+                  <p className="text-[11px] text-slate-500 text-center font-ibm pt-1">
                     {isAr 
                       ? '🔒 تصل رسالتك مباشرة وبأمان إلى البريد الإلكتروني للمهندسة هديل'
                       : '🔒 Your message is delivered securely and directly to Eng. Hadeel’s inbox'}

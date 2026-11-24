@@ -58,13 +58,14 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
     ? certificates
     : certificates.filter(c => c.category === activeCategory);
 
+  const firstCert = certificates[0];
   const totalPages = certificates.length;
-  const currentCert = certificates[currentPageIndex] || certificates[0];
-  const targetCert = certificates[targetPageIndex] || certificates[0];
+  const currentCert = certificates[currentPageIndex] ?? firstCert;
+  const targetCert = certificates[targetPageIndex] ?? firstCert;
 
   // Trigger page flip with snappy 600ms duration
-  const triggerFlip = (direction: 'next' | 'prev', targetIndexOverride?: number) => {
-    if (isFlipping) return;
+  const triggerFlip = React.useCallback((direction: 'next' | 'prev', targetIndexOverride?: number) => {
+    if (isFlipping || totalPages === 0) return;
 
     let nextIdx: number;
     if (typeof targetIndexOverride === 'number') {
@@ -87,7 +88,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
       setIsFlipping(false);
       setFlipType(null);
     }, 600);
-  };
+  }, [isFlipping, currentPageIndex, totalPages]);
 
   // Keyboard navigation on laptop / desktop
   useEffect(() => {
@@ -102,12 +103,16 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isBookOpen, viewMode, isAr, currentPageIndex, isFlipping, totalPages]);
+  }, [isBookOpen, viewMode, isAr, triggerFlip]);
+
+  if (!firstCert || !currentCert || !targetCert || totalPages === 0) {
+    return null;
+  }
 
   return (
     <section
       id="certificates"
-      className="py-24 sm:py-32 relative overflow-hidden bg-surface text-navy scroll-mt-24"
+      className="py-24 sm:py-32 relative overflow-hidden bg-[#f8fafc] text-[#0f172a] scroll-mt-24"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
@@ -115,18 +120,18 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true, margin: "-70px" }}
           transition={{ duration: 0.6 }}
           className="text-center max-w-2xl mx-auto mb-12 space-y-3"
         >
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-accent-tint border border-accent/20 text-accent text-xs font-semibold font-ibm shadow-2xs">
-            <Award className="w-3.5 h-3.5 text-accent" />
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold font-ibm shadow-2xs">
+            <Award className="w-3.5 h-3.5 text-indigo-600" />
             <span>{dict.certificates.badge}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-navy tracking-tight font-tajawal">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-tajawal">
             {dict.certificates.title}
           </h2>
-          <p className="text-muted text-sm sm:text-base leading-relaxed font-ibm">
+          <p className="text-slate-700 text-sm sm:text-base leading-relaxed font-ibm">
             {dict.certificates.subtitle}
           </p>
 
@@ -136,8 +141,8 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
               type="button"
               onClick={() => setViewMode('book')}
               className={`px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${viewMode === 'book'
-                ? 'bg-navy text-white shadow-xs'
-                : 'bg-white dark:bg-slate-900 text-muted border border-slate-200 dark:border-slate-800 hover:text-navy'
+                ? 'bg-slate-900 text-white shadow-xs'
+                : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
                 }`}
             >
               <BookOpen className="w-3.5 h-3.5" />
@@ -147,8 +152,8 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
               type="button"
               onClick={() => setViewMode('grid')}
               className={`px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${viewMode === 'grid'
-                ? 'bg-navy text-white shadow-xs'
-                : 'bg-white dark:bg-slate-900 text-muted border border-slate-200 dark:border-slate-800 hover:text-navy'
+                ? 'bg-slate-900 text-white shadow-xs'
+                : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
                 }`}
             >
               <Grid className="w-3.5 h-3.5" />
@@ -432,8 +437,8 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                           type="button"
                           onClick={() => triggerFlip(dotIdx > currentPageIndex ? 'next' : 'prev', dotIdx)}
                           className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${dotIdx === currentPageIndex
-                            ? 'w-6 bg-accent'
-                            : 'w-2 bg-slate-400 dark:bg-slate-700 hover:bg-slate-500'
+                            ? 'w-6 bg-indigo-500'
+                            : 'w-2 bg-slate-700 hover:bg-slate-600'
                             }`}
                           aria-label={`Page ${dotIdx + 1}`}
                         />
@@ -452,7 +457,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
@@ -465,8 +470,8 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                     type="button"
                     onClick={() => setActiveCategory(tab.key)}
                     className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${isActive
-                      ? 'bg-accent text-white shadow-xs'
-                      : 'bg-white dark:bg-slate-900 text-muted border border-slate-200 dark:border-slate-800 hover:text-navy'
+                      ? 'bg-slate-900 text-white shadow-xs'
+                      : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
                       }`}
                   >
                     {tab.label}

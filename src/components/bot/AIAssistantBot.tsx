@@ -101,23 +101,23 @@ export const AIAssistantBot: React.FC<AIAssistantBotProps> = ({ lang, profile })
   return (
     <>
       {/* Floating Trigger Pill in Bottom Corner */}
-      <div className={`fixed bottom-4 sm:bottom-6 ${isAr ? 'left-4 sm:left-6' : 'right-4 sm:right-6'} z-40`}>
+      <div className={`fixed bottom-5 sm:bottom-6 ${isAr ? 'left-5 sm:left-6' : 'right-5 sm:right-6'} z-40`}>
         <motion.button
           whileHover={{ scale: 1.05, y: -2 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsOpen(!isOpen)}
-          className="relative p-2.5 sm:px-4 sm:py-3 rounded-full bg-navy text-white shadow-xl hover:shadow-2xl border border-slate-700/80 flex items-center gap-2 sm:gap-2.5 cursor-pointer font-tajawal group transition-all"
+          className="relative px-4 py-3 rounded-full bg-slate-900 text-white shadow-xl hover:shadow-2xl border border-slate-700/80 flex items-center gap-2.5 cursor-pointer font-tajawal group transition-all"
           aria-label="Toggle AI Assistant"
         >
           <div className="relative">
-            <Bot className="w-4 h-4 sm:w-5 sm:h-5 text-accent-light group-hover:rotate-12 transition-transform duration-300" />
+            <Bot className="w-5 h-5 text-indigo-400 group-hover:rotate-12 transition-transform duration-300" />
             <span className="w-2 h-2 rounded-full bg-emerald-400 absolute -top-0.5 -right-0.5 animate-ping" />
             <span className="w-2 h-2 rounded-full bg-emerald-500 absolute -top-0.5 -right-0.5" />
           </div>
           <span className="text-xs font-bold hidden sm:inline tracking-tight">
             {isAr ? 'اسأل المساعد الذكي' : 'Ask AI Agent'}
           </span>
-          <span className="text-[10px] bg-accent-tint/30 text-accent-light px-1.5 py-0.5 rounded-md font-mono hidden md:inline">
+          <span className="text-[10px] bg-indigo-500/30 text-indigo-200 px-1.5 py-0.5 rounded-md font-mono hidden md:inline">
             AI
           </span>
         </motion.button>

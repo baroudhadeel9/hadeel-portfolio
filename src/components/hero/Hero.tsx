@@ -115,7 +115,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
 
   return (
     <section
-      id="about"
+      id="hero"
       className="relative pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 overflow-hidden bg-[#f8fafc] text-[#0f172a] scroll-mt-24"
     >
       {/* Subtle Minimal Dot Grid Pattern */}

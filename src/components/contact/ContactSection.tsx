@@ -74,6 +74,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     email: '',
     projectType: 'web-app',
     message: '',
+    botField: '',
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -81,8 +82,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
   const [sentVia, setSentVia] = useState<'api' | 'whatsapp' | 'email' | null>(null);
   const [copiedEmail, setCopiedEmail] = useState<boolean>(false);
-
-  const WEB3FORMS_ACCESS_KEY = '6020b837-a36a-4a7d-8068-0a0341d6bace';
 
   const formatMessageText = () => {
     const projectLabels: Record<string, { ar: string; en: string }> = {
@@ -128,7 +127,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     }
   };
 
-  // 1. Direct Background Email Submission via Web3Forms (Reaches Hadeel's Inbox directly)
+  // 1. Direct Background Email Submission via Secure Next.js Server API
   const handleDirectSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
@@ -136,28 +135,18 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          name: formData.name,
-          email: formData.email,
-          project_type: formData.projectType,
-          message: formData.message,
-          subject: isAr 
-            ? `طلب مشروع جديد: ${formData.projectType} من ${formData.name}`
-            : `New Portfolio Inquiry: ${formData.projectType} from ${formData.name}`,
-          from_name: `${formData.name} (عبر بورتفوليو هديل بارود)`,
-        }),
+        body: JSON.stringify(formData),
       });
 
       const result = await response.json();
 
-      if (result.success) {
+      if (response.ok && result.success) {
         setSubmitSuccess(true);
         setSentVia('api');
       } else {
@@ -322,7 +311,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 <a
                   href={profile.contact.github}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="flex-1 py-2.5 px-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 hover:border-slate-300 text-xs font-semibold text-slate-800 flex items-center justify-center gap-2 transition-all shadow-2xs"
                 >
                   <GithubIcon className="w-3.5 h-3.5 text-slate-700" />
@@ -331,7 +320,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 <a
                   href={profile.contact.linkedin}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="flex-1 py-2.5 px-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 hover:border-slate-300 text-xs font-semibold text-slate-800 flex items-center justify-center gap-2 transition-all shadow-2xs"
                 >
                   <LinkedinIcon className="w-3.5 h-3.5 text-indigo-600" />
@@ -409,6 +398,19 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 </div>
               ) : (
                 <form onSubmit={handleDirectSubmit} className="space-y-4 font-ibm">
+                  {/* Invisible Honeypot Spam Protection Field for Bots */}
+                  <div className="hidden" aria-hidden="true" style={{ display: 'none' }}>
+                    <label htmlFor="botField">Do not fill this field</label>
+                    <input
+                      type="text"
+                      id="botField"
+                      name="botField"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={formData.botField || ''}
+                      onChange={(e) => setFormData({ ...formData, botField: e.target.value })}
+                    />
+                  </div>
                   
                   {/* Name Input */}
                   <div className="space-y-1.5">

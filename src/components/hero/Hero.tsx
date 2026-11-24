@@ -208,7 +208,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
                   whileTap={{ scale: 0.95 }}
                   href={`https://wa.me/${cleanPhone}`}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-xl bg-white border border-slate-200 hover:border-emerald-300 hover:bg-emerald-50 text-slate-600 hover:text-emerald-700 shadow-2xs flex items-center justify-center transition-all duration-200 cursor-pointer"
                   title="WhatsApp"
                 >
@@ -230,7 +230,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
                   whileTap={{ scale: 0.95 }}
                   href={profile.contact.linkedin}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-xl bg-white border border-slate-200 hover:border-sky-300 hover:bg-sky-50 text-slate-600 hover:text-sky-700 shadow-2xs flex items-center justify-center transition-all duration-200 cursor-pointer"
                   title="LinkedIn"
                 >
@@ -242,7 +242,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
                   whileTap={{ scale: 0.95 }}
                   href={profile.contact.github}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-xl bg-white border border-slate-200 hover:border-slate-400 hover:bg-slate-100 text-slate-600 hover:text-slate-950 shadow-2xs flex items-center justify-center transition-all duration-200 cursor-pointer"
                   title="GitHub"
                 >

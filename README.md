@@ -51,15 +51,36 @@ cd hadeel-portfolio
 # Install dependencies
 npm install
 
+# Configure environment variables
+cp .env.example .env.local
+
 # Start development server
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+### Environment & Security Architecture
+
+Create a `.env.local` file based on `.env.example`:
+
+```env
+# Server-side Web3Forms API Key (Do NOT prefix with NEXT_PUBLIC_)
+WEB3FORMS_ACCESS_KEY=your_key_here
+```
+
+#### Security Controls:
+1. **Server-Side API Key Isolation:** `WEB3FORMS_ACCESS_KEY` is strictly accessed within the Next.js API route (`src/app/api/contact/route.ts`). No client bundle ever exposes the access key.
+2. **Invisible Honeypot (`botField`):** Submissions with populated hidden fields are silently accepted with a 200 response to prevent bot adaptation while blocking spam delivery.
+3. **In-Memory Rate Limiting (Serverless Caveat):** The contact route enforces IP-based rate limiting (5 requests per 15-minute window). **Note on Serverless:** On serverless hosting platforms (such as Vercel or AWS Lambda), in-memory state is maintained per ephemeral execution container. Thus, rate limiting is best-effort. If globally strict cross-region rate limiting is required, an external distributed store like Upstash Redis can be attached.
+4. **Content Security Policy (CSP):** Delivered with security headers in `next.config.ts`. Initial rollout uses `Content-Security-Policy-Report-Only` to observe violations before enforcement.
+5. **Safe External Navigation:** All external hyperlinks specify `rel="noopener noreferrer"`.
+
 ### Production Build
 
 ```bash
+npm run type-check
+npm run lint
 npm run build
 npm run start
 ```

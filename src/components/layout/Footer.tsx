@@ -49,7 +49,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, dict, profile }) => {
             <a
               href={`https://wa.me/${cleanPhone}`}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 hover:text-emerald-600 transition-all shadow-2xs"
               title="WhatsApp"
             >
@@ -58,7 +58,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, dict, profile }) => {
             <a
               href={profile.contact.github}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 hover:text-slate-950 transition-all shadow-2xs"
               title="GitHub"
             >
@@ -67,7 +67,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, dict, profile }) => {
             <a
               href={profile.contact.linkedin}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 hover:text-slate-950 transition-all shadow-2xs"
               title="LinkedIn"
             >

@@ -10,7 +10,8 @@ import {
   CheckCircle, 
   AlertCircle,
   Sparkles,
-  MapPin
+  MapPin,
+  Copy
 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, WhatsAppIcon } from '@/components/common/SocialIcons';
 import { ContactFormSchema, ContactFormData, Dictionary, ProfileData } from '@/lib/schemas';
@@ -79,6 +80,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
   const [sentVia, setSentVia] = useState<'api' | 'whatsapp' | 'email' | null>(null);
+  const [copiedEmail, setCopiedEmail] = useState<boolean>(false);
 
   const WEB3FORMS_ACCESS_KEY = '6020b837-a36a-4a7d-8068-0a0341d6bace';
 
@@ -270,19 +272,36 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   </a>
                 </div>
 
-                {/* Email */}
-                <a
-                  href={`mailto:${profile.contact.email}`}
-                  className="p-4 rounded-2xl bg-white border border-slate-200/90 flex items-center gap-3.5 hover:border-slate-300 hover:shadow-xs transition-all group cursor-pointer"
-                >
-                  <div className="p-2.5 rounded-xl bg-slate-100 text-indigo-600 border border-slate-200 group-hover:border-indigo-200 transition-colors">
-                    <Mail className="w-4 h-4" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-[11px] text-slate-500">{dict.contact.directContact.email}</div>
-                    <div className="text-xs font-bold text-slate-900 font-mono mt-0.5 truncate">{profile.contact.email}</div>
-                  </div>
-                </a>
+                {/* Email (Direct Mailto + One-Click Copy) */}
+                <div className="p-4 rounded-2xl bg-white border border-slate-200/90 flex items-center justify-between gap-3 hover:border-slate-300 hover:shadow-xs transition-all">
+                  <a
+                    href={`mailto:${profile.contact.email}`}
+                    className="flex items-center gap-3.5 flex-1 min-w-0 cursor-pointer group"
+                    title={isAr ? 'إرسال بريد إلكتروني مباشر' : 'Send direct email'}
+                  >
+                    <div className="p-2.5 rounded-xl bg-slate-100 text-indigo-600 border border-slate-200 group-hover:border-indigo-200 transition-colors">
+                      <Mail className="w-4 h-4" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-[11px] text-slate-500">{dict.contact.directContact.email}</div>
+                      <div className="text-xs font-bold text-slate-900 font-mono mt-0.5 truncate">{profile.contact.email}</div>
+                    </div>
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      navigator.clipboard.writeText(profile.contact.email);
+                      setCopiedEmail(true);
+                      setTimeout(() => setCopiedEmail(false), 2000);
+                    }}
+                    className="p-2 px-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 transition-colors flex items-center gap-1.5 text-[11px] font-semibold shrink-0 cursor-pointer shadow-2xs"
+                    title="Copy Email"
+                  >
+                    {copiedEmail ? <CheckCircle className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5 text-slate-500" />}
+                    <span>{copiedEmail ? (isAr ? 'تم النسخ' : 'Copied!') : (isAr ? 'نسخ' : 'Copy')}</span>
+                  </button>
+                </div>
 
                 {/* Location / Remote Availability */}
                 <div className="p-4 rounded-2xl bg-white/70 border border-slate-200/80 flex items-center gap-3.5">

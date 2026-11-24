@@ -47,8 +47,8 @@ export const DocPage: React.FC<DocPageProps> = ({
         <span className="font-mono text-[11px] font-semibold tracking-wider text-zinc-400">
           {isAr ? `صفحة ${pageNum + 1} من ${totalPages}` : `PAGE ${pageNum + 1} OF ${totalPages}`}
         </span>
-        <span className="px-2.5 py-0.5 rounded-full bg-rose-50 text-rose-700 text-[11px] font-medium border border-rose-200/60 flex items-center gap-1">
-          <Sparkles className="w-2.5 h-2.5 text-rose-500" />
+        <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 text-[11px] font-medium border border-indigo-200/60 flex items-center gap-1">
+          <Sparkles className="w-2.5 h-2.5 text-indigo-500" />
           <span>{cert.issuer}</span>
         </span>
       </div>
@@ -73,7 +73,7 @@ export const DocPage: React.FC<DocPageProps> = ({
         {isInteractive && (
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/25 backdrop-blur-[1px] transition-opacity">
             <span className="px-3.5 py-1.5 rounded-full bg-white/95 text-zinc-900 text-xs font-semibold flex items-center gap-1.5 shadow-lg">
-              <Eye className="w-3.5 h-3.5 text-rose-600" />
+              <Eye className="w-3.5 h-3.5 text-indigo-600" />
               <span>{isAr ? 'تكبير الشهادة الأصلية' : 'Inspect Certificate'}</span>
             </span>
           </div>
@@ -87,7 +87,7 @@ export const DocPage: React.FC<DocPageProps> = ({
       {/* Bottom Hint */}
       <div className="pt-2 flex items-center justify-between text-[11px] text-zinc-400">
         <span>{cert.date || (isAr ? 'اعتماد موثق' : 'Verified Credential')}</span>
-        <span>{isAr ? 'انقري لتكبير الفحص' : 'Click to inspect'}</span>
+        <span>{isAr ? 'اضغط للمعاينة والتكبير' : 'Click to inspect'}</span>
       </div>
     </div>
   );
@@ -138,7 +138,7 @@ export const DetailsPage: React.FC<DetailsPageProps> = ({
       {/* Category & Title */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-rose-50 text-rose-700 border border-rose-200/50">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200/50">
             {isAr ? cert.categoryLabel.ar : cert.categoryLabel.en}
           </span>
           {cert.highlight && (
@@ -163,7 +163,7 @@ export const DetailsPage: React.FC<DetailsPageProps> = ({
       {/* Verification & Hours */}
       <div className="space-y-2.5">
         {cert.verificationCode ? (
-          <div className="p-3 rounded-xl bg-rose-50/40 border border-rose-100/80 flex items-center justify-between text-xs">
+          <div className="p-3 rounded-xl bg-indigo-50/40 border border-indigo-100/80 flex items-center justify-between text-xs">
             <div className="min-w-0 pr-2">
               <span className="text-zinc-400 block text-[10px] font-medium">{dict.certificates.verifyCode}</span>
               <span className="font-mono text-zinc-800 font-semibold truncate block mt-0.5 text-xs">{cert.verificationCode}</span>
@@ -188,7 +188,7 @@ export const DetailsPage: React.FC<DetailsPageProps> = ({
 
         {cert.hours && (
           <div className="flex items-center gap-2 text-xs text-zinc-700 px-3 py-2 rounded-xl bg-zinc-50 border border-zinc-100">
-            <Clock className="w-3.5 h-3.5 text-rose-500 shrink-0" />
+            <Clock className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
             <span className="font-medium">{isAr ? cert.hoursAr : cert.hours}</span>
           </div>
         )}
@@ -216,7 +216,7 @@ export const DetailsPage: React.FC<DetailsPageProps> = ({
           onClick={onFlipNext}
           className="px-4 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 active:scale-95 text-white text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-xs disabled:opacity-50"
         >
-          <span>{isAr ? 'قلب الصفحة (التالي)' : 'Flip Page (Next)'}</span>
+          <span>{isAr ? 'الصفحة التالية' : 'Next Page'}</span>
           <ChevronLeft className={`w-3.5 h-3.5 ${isAr ? '' : 'rotate-180'}`} />
         </button>
       </div>

@@ -1,14 +1,16 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   BookOpen, 
   Award, 
   Eye, 
   Grid, 
-  BookMarked 
+  BookMarked,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import { CertificateItem, Dictionary } from '@/lib/schemas';
 import { ClosedBookCover } from './ClosedBookCover';
@@ -29,19 +31,17 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
   const isAr = lang === 'ar';
   
   const [viewMode, setViewMode] = useState<'book' | 'grid'>('book');
-  const [isBookOpen, setIsBookOpen] = useState<boolean>(false);
+  const [isBookOpen, setIsBookOpen] = useState<boolean>(true);
   const [currentPageIndex, setCurrentPageIndex] = useState<number>(0);
   const [targetPageIndex, setTargetPageIndex] = useState<number>(0);
   const [isFlipping, setIsFlipping] = useState<boolean>(false);
   const [flipType, setFlipType] = useState<'next' | 'prev' | null>(null);
+  const [slideDirection, setSlideDirection] = useState<number>(1);
   const [modalCert, setModalCert] = useState<CertificateItem | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>('all');
-  const [showCelebration, setShowCelebration] = useState<boolean>(false);
 
   const handleOpenBook = () => {
     setIsBookOpen(true);
-    setShowCelebration(true);
-    setTimeout(() => setShowCelebration(false), 2200);
   };
 
   const filterTabs = [
@@ -62,8 +62,8 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
   const currentCert = certificates[currentPageIndex] || certificates[0];
   const targetCert = certificates[targetPageIndex] || certificates[0];
 
-  // Trigger the 180-degree physical page flip
-  const triggerFlip = (direction: 'next' | 'prev', targetIndexOverride?: number) => {
+  // Trigger page flip with snappy 600ms duration
+  const triggerFlip = useCallback((direction: 'next' | 'prev', targetIndexOverride?: number) => {
     if (isFlipping) return;
 
     let nextIdx: number;
@@ -77,6 +77,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
 
     if (nextIdx === currentPageIndex) return;
 
+    setSlideDirection(direction === 'next' ? 1 : -1);
     setTargetPageIndex(nextIdx);
     setFlipType(direction);
     setIsFlipping(true);
@@ -85,8 +86,23 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
       setCurrentPageIndex(nextIdx);
       setIsFlipping(false);
       setFlipType(null);
-    }, 850);
-  };
+    }, 600);
+  }, [isFlipping, currentPageIndex, totalPages]);
+
+  // Keyboard navigation on laptop / desktop
+  useEffect(() => {
+    if (!isBookOpen || viewMode !== 'book') return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      if (e.key === 'ArrowRight') {
+        triggerFlip(isAr ? 'prev' : 'next');
+      } else if (e.key === 'ArrowLeft') {
+        triggerFlip(isAr ? 'next' : 'prev');
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isBookOpen, viewMode, isAr, triggerFlip]);
 
   return (
     <section 
@@ -158,8 +174,11 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                 <span>{isBookOpen ? '📖' : '📕'}</span>
                 <span>
                   {isBookOpen 
-                    ? (isAr ? 'الكتاب مفتوح (انقري على "قلب الصفحة" لتنطوي الصفحة بالكامل)' : 'Book is open (Click "Flip Page" to turn 180°)') 
+                    ? (isAr ? 'تصفح شهادات الاعتماد والخبرات' : 'Explore verified certificates & credentials') 
                     : (isAr ? 'الكتاب مغلق' : 'Book is closed')}
+                </span>
+                <span className="hidden sm:inline-block text-[11px] text-slate-400 font-mono">
+                  ({currentPageIndex + 1} / {totalPages})
                 </span>
               </span>
               
@@ -197,8 +216,30 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                 <div className="relative rounded-3xl p-3 sm:p-5 bg-slate-900 border border-slate-800 shadow-[0_20px_50px_rgba(0,0,0,0.12)] book-depth-edge">
                   
                   {/* Bookmark Ribbon */}
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-9 bg-indigo-600 rounded-b-md shadow-sm z-40 flex items-center justify-center">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-9 bg-indigo-600 rounded-b-md shadow-sm z-40 flex items-center justify-center pointer-events-none">
                     <span className="w-1 h-3.5 bg-white/50 rounded-full" />
+                  </div>
+
+                  {/* Desktop Prev / Next Floating Navigation Arrows */}
+                  <div className="hidden lg:flex items-center justify-between absolute -inset-x-6 top-1/2 -translate-y-1/2 pointer-events-none z-30">
+                    <button
+                      type="button"
+                      disabled={isFlipping}
+                      onClick={() => triggerFlip(isAr ? 'next' : 'prev')}
+                      className="pointer-events-auto p-3 rounded-full bg-white text-slate-800 hover:text-indigo-600 shadow-xl border border-slate-200/90 hover:scale-105 active:scale-95 transition-all disabled:opacity-40 cursor-pointer"
+                      title={isAr ? 'التالي' : 'Previous'}
+                    >
+                      <ChevronRight className={`w-5 h-5 ${isAr ? '' : 'rotate-180'}`} />
+                    </button>
+                    <button
+                      type="button"
+                      disabled={isFlipping}
+                      onClick={() => triggerFlip(isAr ? 'prev' : 'next')}
+                      className="pointer-events-auto p-3 rounded-full bg-white text-slate-800 hover:text-indigo-600 shadow-xl border border-slate-200/90 hover:scale-105 active:scale-95 transition-all disabled:opacity-40 cursor-pointer"
+                      title={isAr ? 'السابق' : 'Next'}
+                    >
+                      <ChevronLeft className={`w-5 h-5 ${isAr ? '' : 'rotate-180'}`} />
+                    </button>
                   </div>
 
                   {/* Desktop 2-Page Spread */}
@@ -332,13 +373,74 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                     </div>
                   </div>
 
-                  {/* Mobile View */}
+                  {/* Mobile View: High-Performance Directional Framer Slide */}
                   <div className="block md:hidden">
-                    <div className={`space-y-4 rounded-2xl bg-white p-4 border border-[#E2DDD3] ${isFlipping ? 'animate-fold-mobile' : ''}`}>
-                      <DocPage cert={currentCert} pageNum={currentPageIndex} totalPages={totalPages} isAr={isAr} isInteractive={true} onInspect={(c) => setModalCert(c)} />
-                      <div className="border-t border-zinc-100 pt-2">
-                        <DetailsPage cert={currentCert} pageNum={currentPageIndex} totalPages={totalPages} isAr={isAr} dict={dict} isInteractive={true} onFlipPrev={() => triggerFlip('prev')} onFlipNext={() => triggerFlip('next')} />
-                      </div>
+                    <AnimatePresence mode="wait" custom={slideDirection}>
+                      <motion.div
+                        key={currentPageIndex}
+                        custom={slideDirection}
+                        variants={{
+                          enter: (direction: number) => ({
+                            x: direction > 0 ? (isAr ? -40 : 40) : (isAr ? 40 : -40),
+                            opacity: 0,
+                            scale: 0.98,
+                          }),
+                          center: {
+                            x: 0,
+                            opacity: 1,
+                            scale: 1,
+                            transition: { duration: 0.32, ease: [0.16, 1, 0.3, 1] },
+                          },
+                          exit: (direction: number) => ({
+                            x: direction > 0 ? (isAr ? 40 : -40) : (isAr ? -40 : 40),
+                            opacity: 0,
+                            scale: 0.98,
+                            transition: { duration: 0.22, ease: [0.16, 1, 0.3, 1] },
+                          }),
+                        }}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        className="space-y-4 rounded-2xl bg-white p-4 border border-[#E2DDD3] shadow-sm"
+                      >
+                        <DocPage 
+                          cert={currentCert} 
+                          pageNum={currentPageIndex} 
+                          totalPages={totalPages} 
+                          isAr={isAr} 
+                          isInteractive={true} 
+                          onInspect={(c) => setModalCert(c)} 
+                        />
+                        <div className="border-t border-zinc-100 pt-2">
+                          <DetailsPage 
+                            cert={currentCert} 
+                            pageNum={currentPageIndex} 
+                            totalPages={totalPages} 
+                            isAr={isAr} 
+                            dict={dict} 
+                            isInteractive={true} 
+                            onFlipPrev={() => triggerFlip('prev')} 
+                            onFlipNext={() => triggerFlip('next')} 
+                          />
+                        </div>
+                      </motion.div>
+                    </AnimatePresence>
+
+                    {/* Touch Pagination Dots */}
+                    <div className="flex items-center justify-center gap-1.5 pt-4">
+                      {certificates.map((_, dotIdx) => (
+                        <button
+                          key={dotIdx}
+                          type="button"
+                          onClick={() => triggerFlip(dotIdx > currentPageIndex ? 'next' : 'prev', dotIdx)}
+                          className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                            dotIdx === currentPageIndex 
+                              ? 'w-6 bg-indigo-500' 
+                              : 'w-2 bg-slate-700 hover:bg-slate-600'
+                          }`}
+                          aria-label={`Page ${dotIdx + 1}`}
+                        />
+                      ))}
                     </div>
                   </div>
 
@@ -443,36 +545,6 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
         />
 
       </div>
-
-      {/* Celebration Starburst Particle Explosion */}
-      {showCelebration && (
-        <div className="pointer-events-none fixed inset-0 z-50 flex items-center justify-center overflow-hidden">
-          {Array.from({ length: 45 }).map((_, i) => {
-            const angle = (i / 45) * 360;
-            const distance = 90 + ((i * 17) % 240);
-            const x = Math.cos((angle * Math.PI) / 180) * distance;
-            const y = Math.sin((angle * Math.PI) / 180) * distance;
-            const colors = ['#6366f1', '#a855f7', '#ec4899', '#eab308', '#10b981', '#3b82f6'];
-            const color = colors[i % colors.length];
-            const size = 6 + (i % 8);
-
-            return (
-              <span
-                key={i}
-                className="absolute rounded-full animate-ping"
-                style={{
-                  width: `${size}px`,
-                  height: `${size}px`,
-                  backgroundColor: color,
-                  transform: `translate(${x}px, ${y}px)`,
-                  transition: 'all 1.4s cubic-bezier(0.1, 0.9, 0.2, 1)',
-                  boxShadow: `0 0 12px ${color}`
-                }}
-              />
-            );
-          })}
-        </div>
-      )}
     </section>
   );
 };

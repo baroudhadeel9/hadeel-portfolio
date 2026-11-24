@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Mail } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from '@/components/common/SocialIcons';
+import { GithubIcon, LinkedinIcon, WhatsAppIcon } from '@/components/common/SocialIcons';
 import { Dictionary, ProfileData } from '@/lib/schemas';
 
 interface FooterProps {
@@ -14,6 +14,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ lang, dict, profile }) => {
   const isAr = lang === 'ar';
+  const cleanPhone = (profile.contact.phoneIntl || '970598642728').replace(/[^0-9]/g, '');
 
   return (
     <footer 
@@ -45,6 +46,15 @@ export const Footer: React.FC<FooterProps> = ({ lang, dict, profile }) => {
 
           {/* Social Icons */}
           <div className="flex items-center gap-2">
+            <a
+              href={`https://wa.me/${cleanPhone}`}
+              target="_blank"
+              rel="noreferrer"
+              className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 hover:text-emerald-600 transition-all shadow-2xs"
+              title="WhatsApp"
+            >
+              <WhatsAppIcon className="w-4 h-4" />
+            </a>
             <a
               href={profile.contact.github}
               target="_blank"

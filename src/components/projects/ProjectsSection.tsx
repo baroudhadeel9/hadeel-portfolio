@@ -209,17 +209,17 @@ const InteractiveProjectCard: React.FC<{
           )}
         </div>
 
-        {/* Single Primary Action: Visit Live Website */}
+        {/* Single Primary Action: Visit Live Platform */}
         {proj.liveUrl && (
           <div className="pt-1 font-tajawal">
             <a
               href={proj.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3 px-4 rounded-xl text-xs sm:text-sm font-bold text-white bg-slate-900 hover:bg-slate-800 shadow-2xs hover:shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer text-center group/btn"
+              className="w-full py-3 px-4 rounded-xl text-xs sm:text-sm font-bold text-white bg-slate-900 hover:bg-slate-800 shadow-2xs hover:shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer text-center group/btn active:scale-[0.99]"
             >
               <ExternalLink className="w-4 h-4 shrink-0 transition-transform group-hover/btn:scale-110" />
-              <span>{isAr ? 'زيارة الموقع الحي مباشرة ↗' : 'Visit Live Website ↗'}</span>
+              <span>{isAr ? 'زيارة المنصة الحية مباشرة' : 'Visit Live Platform'}</span>
             </a>
           </div>
         )}

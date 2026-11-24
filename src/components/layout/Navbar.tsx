@@ -78,7 +78,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang, dict }) => {
     <header className="fixed top-0 inset-x-0 z-50 w-full transition-all duration-200">
       {/* Scroll Progress Bar at very top */}
       <div 
-        className="h-[3px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition-all duration-150 origin-left"
+        className="h-[2.5px] bg-indigo-600 shadow-[0_0_8px_rgba(79,70,229,0.4)] transition-all duration-150 origin-left"
         style={{ width: `${scrollProgress}%` }}
       />
 
@@ -135,7 +135,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang, dict }) => {
             })}
           </div>
 
-          {/* Actions: Language Switcher Button */}
+          {/* Actions: Language Switcher Button + Desktop Contact CTA */}
           <div className="hidden sm:flex items-center gap-3">
             <button
               onClick={onToggleLang}
@@ -145,6 +145,14 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang, dict }) => {
               <Globe className="w-3.5 h-3.5 text-slate-600" />
               <span>{dict.nav.langSwitch}</span>
             </button>
+
+            <a
+              href="#contact"
+              onClick={(e) => handleNavClick(e, 'contact')}
+              className="px-4 py-1.5 rounded-full text-xs font-bold text-white bg-slate-900 hover:bg-slate-800 transition-all duration-200 shadow-2xs hover:shadow-xs flex items-center gap-1.5 cursor-pointer font-tajawal active:scale-95"
+            >
+              <span>{dict.nav.contact}</span>
+            </a>
           </div>
 
           {/* Mobile Hamburger Button */}

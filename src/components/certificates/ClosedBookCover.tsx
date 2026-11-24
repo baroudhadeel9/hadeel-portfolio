@@ -56,7 +56,7 @@ export const ClosedBookCover: React.FC<ClosedBookCoverProps> = ({
           </p>
         </div>
 
-        {/* Bottom Action Button: افتحي الكتاب */}
+        {/* Bottom Action Button: تصفح ألبوم الشهادات */}
         <div className="w-full pt-4 z-10">
           <button
             type="button"
@@ -64,9 +64,9 @@ export const ClosedBookCover: React.FC<ClosedBookCoverProps> = ({
               e.stopPropagation();
               onOpenBook();
             }}
-            className="w-full py-3.5 sm:py-4 px-6 rounded-2xl bg-white hover:bg-slate-100 text-slate-900 font-bold text-sm sm:text-base font-tajawal shadow-md active:scale-[0.98] transition-all duration-200 cursor-pointer"
+            className="w-full py-3.5 sm:py-4 px-6 rounded-2xl bg-white hover:bg-slate-100 text-slate-900 font-bold text-sm sm:text-base font-tajawal shadow-md active:scale-[0.98] transition-all duration-200 cursor-pointer flex items-center justify-center gap-2"
           >
-            {isAr ? 'افتحي الكتاب' : 'Open Album'}
+            <span>{isAr ? 'تصفح ألبوم الشهادات المعتمدة' : 'Explore Verified Album'}</span>
           </button>
         </div>
       </div>

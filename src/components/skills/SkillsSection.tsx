@@ -271,29 +271,39 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ lang, dict, skills
                         key={skill.id}
                         type="button"
                         onClick={() => setInspectingSkill(skill)}
-                        className="w-full py-2.5 px-2 -mx-2 rounded-xl hover:bg-slate-50 text-start flex items-center justify-between gap-3 group transition-all cursor-pointer"
+                        className="w-full py-2.5 px-2 -mx-2 rounded-xl hover:bg-slate-50 text-start flex flex-col gap-1.5 group transition-all cursor-pointer"
                       >
-                        <div className="min-w-0 flex-1">
-                          <div className="flex items-center gap-2">
-                            <span className="text-xs sm:text-[13px] font-bold text-slate-900 group-hover:text-indigo-600 transition-colors truncate">
-                              {skill.name}
-                            </span>
-                            <span className="text-[10px] font-semibold text-slate-500 bg-slate-100 px-1.5 py-0.2 rounded-md shrink-0">
-                              {isAr ? skill.levelAr : skill.level}
-                            </span>
+                        <div className="w-full flex items-center justify-between gap-3">
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center gap-2">
+                              <span className="text-xs sm:text-[13px] font-bold text-slate-900 group-hover:text-indigo-600 transition-colors truncate">
+                                {skill.name}
+                              </span>
+                              <span className="text-[10px] font-semibold text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded-md shrink-0">
+                                {isAr ? skill.levelAr : skill.level}
+                              </span>
+                            </div>
+                            <div className="text-[11px] text-slate-500 truncate mt-0.5 flex items-center gap-1.5">
+                              <Sparkles className="w-3 h-3 text-indigo-500 shrink-0" />
+                              <span className="truncate">{isAr ? skill.application.ar : skill.application.en}</span>
+                            </div>
                           </div>
-                          <div className="text-[11px] text-slate-500 truncate mt-0.5 flex items-center gap-1.5">
-                            <Sparkles className="w-3 h-3 text-indigo-500 shrink-0" />
-                            <span className="truncate">{isAr ? skill.application.ar : skill.application.en}</span>
+
+                          {/* Right Indicator: Percent + Inspector Icon */}
+                          <div className="flex items-center gap-2 shrink-0">
+                            <span className="text-xs font-mono font-bold text-slate-700">{skill.percent}%</span>
+                            <div className="w-6 h-6 rounded-lg bg-slate-100 group-hover:bg-indigo-600 group-hover:text-white text-slate-400 flex items-center justify-center transition-all">
+                              <Code2 className="w-3.5 h-3.5" />
+                            </div>
                           </div>
                         </div>
 
-                        {/* Right Indicator: Percent + Inspector Icon */}
-                        <div className="flex items-center gap-2 shrink-0">
-                          <span className="text-xs font-mono font-bold text-slate-700">{skill.percent}%</span>
-                          <div className="w-6 h-6 rounded-lg bg-slate-100 group-hover:bg-indigo-600 group-hover:text-white text-slate-400 flex items-center justify-center transition-all">
-                            <Code2 className="w-3.5 h-3.5" />
-                          </div>
+                        {/* Subtle Micro-Progress Meter */}
+                        <div className="w-full bg-slate-100 h-1 rounded-full overflow-hidden">
+                          <div 
+                            className="bg-indigo-500/80 group-hover:bg-indigo-600 h-full rounded-full transition-all duration-300"
+                            style={{ width: `${skill.percent}%` }}
+                          />
                         </div>
                       </button>
                     ))}
@@ -301,7 +311,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ lang, dict, skills
 
                   {/* Domain Card Footer Note */}
                   <div className="pt-3 mt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 font-ibm">
-                    <span>{isAr ? 'انقري على أي مهارة لعرض الكود والربط الحي' : 'Click any skill to inspect code & proof'}</span>
+                    <span>{isAr ? 'اضغط على أي مهارة لمعاينة الكود والتوثيق' : 'Click any skill to inspect code & proof'}</span>
                     <span className="text-indigo-600 font-semibold group-hover:underline flex items-center gap-1">
                       <span>{isAr ? 'فحص كامل' : 'Inspect'}</span>
                       <ChevronRight className={`w-3 h-3 ${isAr ? 'rotate-180' : ''}`} />

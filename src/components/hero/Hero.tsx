@@ -130,9 +130,9 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
 
           {/* Main Text Column: Clean, Spacious, and Minimal */}
           <motion.div
-            initial={{ opacity: 0, x: isAr ? 60 : -60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7 space-y-5 text-center lg:text-start"
           >
             {/* Single Elegant Academic & Engineering Eyebrow Pill */}
@@ -147,14 +147,14 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
             </h1>
 
             {/* Specialization / Subtitle */}
-            <p className="text-base sm:text-lg lg:text-xl font-bold text-slate-700 leading-snug font-tajawal max-w-xl">
+            <p className="text-base sm:text-lg lg:text-xl font-bold text-slate-800 leading-snug font-tajawal max-w-xl">
               {isAr
                 ? 'مهندسة أنظمة حاسوب ومطورة ويب Full-Stack معتمدة في الذكاء الاصطناعي'
                 : 'Computer Systems Engineer & AI-Integrated Full-Stack Developer'}
             </p>
 
-            {/* Concise Bio */}
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl font-ibm">
+            {/* Concise Bio with High Contrast */}
+            <p className="text-slate-700 text-sm sm:text-base leading-relaxed max-w-xl font-ibm">
               {dict.hero.description}
             </p>
 
@@ -170,7 +170,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
                     <div className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight font-sans">
                       <AnimatedStatNumber index={idx} isAr={isAr} />
                     </div>
-                    <div className="text-[11px] text-slate-500 mt-1 font-medium leading-tight font-ibm">
+                    <div className="text-[11px] text-slate-700 mt-1 font-semibold leading-tight font-ibm">
                       {localizedLabel}
                     </div>
                   </div>
@@ -256,9 +256,9 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
 
           {/* Visual Showcase Column: Clean, Elegant Portrait */}
           <motion.div
-            initial={{ opacity: 0, x: isAr ? -60 : 60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 flex flex-col items-center justify-center relative"
           >
             <div className="relative flex items-center justify-center w-full max-w-sm">

@@ -201,11 +201,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
         
         {/* Section Header */}
         <motion.div 
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-70px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-14 space-y-3"
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-2xl mx-auto mb-12 sm:mb-14 space-y-3"
         >
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold font-ibm shadow-2xs">
             <MessageSquare className="w-3.5 h-3.5 text-indigo-600" />
@@ -216,7 +216,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             {dict.contact.title}
           </h2>
 
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-ibm max-w-2xl mx-auto">
+          <p className="text-slate-700 text-sm sm:text-base leading-relaxed font-ibm max-w-2xl mx-auto">
             {dict.contact.subtitle}
           </p>
         </motion.div>
@@ -225,10 +225,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           
           {/* Direct Channels Column */}
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.65, delay: 0.1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="lg:col-span-5 space-y-4"
           >
             <ContactSpotlightCard className="p-6 sm:p-7 rounded-3xl border border-slate-200/90 bg-slate-50/70 shadow-xs space-y-5">
@@ -249,13 +249,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   <a
                     href={`tel:${profile.contact.phoneIntl || cleanPhone}`}
                     className="flex items-center gap-3.5 flex-1 min-w-0 cursor-pointer group"
-                    title={isAr ? 'اضغطي للاتصال الهاتفي المباشر' : 'Tap to call directly'}
+                    title={isAr ? 'اضغط للاتصال الهاتفي المباشر' : 'Tap to call directly'}
                   >
                     <div className="p-2.5 rounded-xl bg-slate-100 text-indigo-600 border border-slate-200 group-hover:border-indigo-200 transition-colors">
                       <Phone className="w-4 h-4" />
                     </div>
                     <div>
-                      <div className="text-[11px] text-slate-500">{dict.contact.directContact.phone}</div>
+                      <div className="text-[11px] text-slate-700 font-medium">{dict.contact.directContact.phone}</div>
                       <div className="text-xs font-bold text-slate-900 font-mono mt-0.5">{profile.contact.phone}</div>
                     </div>
                   </a>
@@ -283,7 +283,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       <Mail className="w-4 h-4" />
                     </div>
                     <div className="min-w-0">
-                      <div className="text-[11px] text-slate-500">{dict.contact.directContact.email}</div>
+                      <div className="text-[11px] text-slate-700 font-medium">{dict.contact.directContact.email}</div>
                       <div className="text-xs font-bold text-slate-900 font-mono mt-0.5 truncate">{profile.contact.email}</div>
                     </div>
                   </a>
@@ -295,22 +295,22 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       setCopiedEmail(true);
                       setTimeout(() => setCopiedEmail(false), 2000);
                     }}
-                    className="p-2 px-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 transition-colors flex items-center gap-1.5 text-[11px] font-semibold shrink-0 cursor-pointer shadow-2xs"
+                    className="p-2 px-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-800 transition-colors flex items-center gap-1.5 text-[11px] font-semibold shrink-0 cursor-pointer shadow-2xs"
                     title="Copy Email"
                   >
-                    {copiedEmail ? <CheckCircle className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5 text-slate-500" />}
+                    {copiedEmail ? <CheckCircle className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5 text-slate-600" />}
                     <span>{copiedEmail ? (isAr ? 'تم النسخ' : 'Copied!') : (isAr ? 'نسخ' : 'Copy')}</span>
                   </button>
                 </div>
 
                 {/* Location / Remote Availability */}
                 <div className="p-4 rounded-2xl bg-white/70 border border-slate-200/80 flex items-center gap-3.5">
-                  <div className="p-2.5 rounded-xl bg-slate-100 text-slate-600 border border-slate-200">
+                  <div className="p-2.5 rounded-xl bg-slate-100 text-slate-700 border border-slate-200">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-[11px] text-slate-500">{isAr ? 'العمل عن بُعد:' : 'Remote Collaboration:'}</div>
-                    <div className="text-xs font-bold text-slate-800 mt-0.5">
+                    <div className="text-[11px] text-slate-700 font-medium">{isAr ? 'العمل عن بُعد:' : 'Remote Collaboration:'}</div>
+                    <div className="text-xs font-bold text-slate-900 mt-0.5">
                       {isAr ? 'متاحة للعملاء محلياً وإقليمياً ودولياً' : 'Open to regional & international engagements'}
                     </div>
                   </div>
@@ -344,10 +344,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
           {/* Clean Light Contact Form Column */}
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.65, delay: 0.2 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
             className="lg:col-span-7"
           >
             <ContactSpotlightCard className="p-6 sm:p-8 rounded-3xl border border-slate-200/90 bg-slate-50/70 shadow-xs space-y-5">
@@ -420,7 +420,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder={dict.contact.form.namePlaceholder}
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/10 text-xs transition-colors shadow-2xs"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 placeholder-slate-500 focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/10 text-xs transition-colors shadow-2xs"
                     />
                     {errors.name && (
                       <p className="text-[11px] text-rose-600 flex items-center gap-1 mt-1">
@@ -440,7 +440,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder={dict.contact.form.emailPlaceholder}
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/10 text-xs transition-colors shadow-2xs"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 placeholder-slate-500 focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/10 text-xs transition-colors shadow-2xs"
                     />
                     {errors.email && (
                       <p className="text-[11px] text-rose-600 flex items-center gap-1 mt-1">
@@ -477,7 +477,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder={dict.contact.form.messagePlaceholder}
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/10 text-xs transition-colors shadow-2xs leading-relaxed"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 placeholder-slate-500 focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/10 text-xs transition-colors shadow-2xs leading-relaxed"
                     ></textarea>
                     {errors.message && (
                       <p className="text-[11px] text-rose-600 flex items-center gap-1 mt-1">

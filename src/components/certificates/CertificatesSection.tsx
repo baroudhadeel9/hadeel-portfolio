@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  BookOpen, 
-  Award, 
-  Eye, 
-  Grid, 
+import {
+  BookOpen,
+  Award,
+  Eye,
+  Grid,
   BookMarked,
   ChevronLeft,
   ChevronRight
@@ -23,13 +23,13 @@ interface CertificatesSectionProps {
   certificates: CertificateItem[];
 }
 
-export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ 
-  lang, 
-  dict, 
-  certificates 
+export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
+  lang,
+  dict,
+  certificates
 }) => {
   const isAr = lang === 'ar';
-  
+
   const [viewMode, setViewMode] = useState<'book' | 'grid'>('book');
   const [isBookOpen, setIsBookOpen] = useState<boolean>(true);
   const [currentPageIndex, setCurrentPageIndex] = useState<number>(0);
@@ -54,8 +54,8 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
     { key: 'python', label: dict.certificates.filterPython },
   ];
 
-  const filteredCerts = activeCategory === 'all' 
-    ? certificates 
+  const filteredCerts = activeCategory === 'all'
+    ? certificates
     : certificates.filter(c => c.category === activeCategory);
 
   const totalPages = certificates.length;
@@ -63,15 +63,15 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
   const targetCert = certificates[targetPageIndex] || certificates[0];
 
   // Trigger page flip with snappy 600ms duration
-  const triggerFlip = useCallback((direction: 'next' | 'prev', targetIndexOverride?: number) => {
+  const triggerFlip = (direction: 'next' | 'prev', targetIndexOverride?: number) => {
     if (isFlipping) return;
 
     let nextIdx: number;
     if (typeof targetIndexOverride === 'number') {
       nextIdx = targetIndexOverride;
     } else {
-      nextIdx = direction === 'next' 
-        ? (currentPageIndex + 1) % totalPages 
+      nextIdx = direction === 'next'
+        ? (currentPageIndex + 1) % totalPages
         : (currentPageIndex - 1 + totalPages) % totalPages;
     }
 
@@ -87,7 +87,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
       setIsFlipping(false);
       setFlipType(null);
     }, 600);
-  }, [isFlipping, currentPageIndex, totalPages]);
+  };
 
   // Keyboard navigation on laptop / desktop
   useEffect(() => {
@@ -102,17 +102,17 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isBookOpen, viewMode, isAr, triggerFlip]);
+  }, [isBookOpen, viewMode, isAr, currentPageIndex, isFlipping, totalPages]);
 
   return (
-    <section 
-      id="certificates" 
+    <section
+      id="certificates"
       className="py-24 sm:py-32 relative overflow-hidden bg-[#f8fafc] text-[#0f172a] scroll-mt-24"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Section Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-70px" }}
@@ -126,7 +126,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-tajawal">
             {dict.certificates.title}
           </h2>
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-ibm">
+          <p className="text-slate-700 text-sm sm:text-base leading-relaxed font-ibm">
             {dict.certificates.subtitle}
           </p>
 
@@ -135,11 +135,10 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
             <button
               type="button"
               onClick={() => setViewMode('book')}
-              className={`px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
-                viewMode === 'book'
-                  ? 'bg-slate-900 text-white shadow-xs'
-                  : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
-              }`}
+              className={`px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${viewMode === 'book'
+                ? 'bg-slate-900 text-white shadow-xs'
+                : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
+                }`}
             >
               <BookOpen className="w-3.5 h-3.5" />
               <span>{isAr ? 'عرض الكتاب التفاعلي' : 'Interactive Book'}</span>
@@ -147,11 +146,10 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
             <button
               type="button"
               onClick={() => setViewMode('grid')}
-              className={`px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
-                viewMode === 'grid'
-                  ? 'bg-slate-900 text-white shadow-xs'
-                  : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
-              }`}
+              className={`px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${viewMode === 'grid'
+                ? 'bg-slate-900 text-white shadow-xs'
+                : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
+                }`}
             >
               <Grid className="w-3.5 h-3.5" />
               <span>{isAr ? 'عرض القائمة' : 'Grid View'}</span>
@@ -161,7 +159,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
 
         {/* VIEW 1: INTERACTIVE OPEN / CLOSE BOOK */}
         {viewMode === 'book' && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -173,15 +171,15 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
               <span className="text-slate-600 font-medium flex items-center gap-2">
                 <span>{isBookOpen ? '📖' : '📕'}</span>
                 <span>
-                  {isBookOpen 
-                    ? (isAr ? 'تصفح شهادات الاعتماد والخبرات' : 'Explore verified certificates & credentials') 
+                  {isBookOpen
+                    ? (isAr ? 'تصفح شهادات الاعتماد والخبرات' : 'Explore verified certificates & credentials')
                     : (isAr ? 'الكتاب مغلق' : 'Book is closed')}
                 </span>
                 <span className="hidden sm:inline-block text-[11px] text-slate-400 font-mono">
                   ({currentPageIndex + 1} / {totalPages})
                 </span>
               </span>
-              
+
               <button
                 type="button"
                 onClick={() => { if (!isBookOpen) handleOpenBook(); else setIsBookOpen(false); }}
@@ -203,7 +201,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
 
             {/* Closed Book View */}
             {!isBookOpen && (
-              <ClosedBookCover 
+              <ClosedBookCover
                 isAr={isAr}
                 certificatesCount={certificates.length}
                 onOpenBook={handleOpenBook}
@@ -214,7 +212,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
             {isBookOpen && (
               <div className="transition-all duration-500">
                 <div className="relative rounded-3xl p-3 sm:p-5 bg-slate-900 border border-slate-800 shadow-[0_20px_50px_rgba(0,0,0,0.12)] book-depth-edge">
-                  
+
                   {/* Bookmark Ribbon */}
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-9 bg-indigo-600 rounded-b-md shadow-sm z-40 flex items-center justify-center pointer-events-none">
                     <span className="w-1 h-3.5 bg-white/50 rounded-full" />
@@ -246,11 +244,11 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                   <div className="hidden md:block">
                     <div className="book-stage relative rounded-2xl overflow-visible min-h-[510px] shadow-sm">
                       <div className="grid grid-cols-2 rounded-2xl overflow-hidden bg-white border border-[#E2DDD3] min-h-[510px]">
-                        
+
                         {/* Base Left Page */}
                         <div className="relative h-full border-e border-[#EAE5DC]">
                           {isAr ? (
-                            <DetailsPage 
+                            <DetailsPage
                               cert={isFlipping && flipType === 'next' ? targetCert : currentCert}
                               pageNum={isFlipping && flipType === 'next' ? targetPageIndex : currentPageIndex}
                               totalPages={totalPages}
@@ -262,7 +260,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                               onFlipNext={() => triggerFlip('next')}
                             />
                           ) : (
-                            <DocPage 
+                            <DocPage
                               cert={isFlipping && flipType === 'prev' ? targetCert : currentCert}
                               pageNum={isFlipping && flipType === 'prev' ? targetPageIndex : currentPageIndex}
                               totalPages={totalPages}
@@ -276,7 +274,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                         {/* Base Right Page */}
                         <div className="relative h-full">
                           {isAr ? (
-                            <DocPage 
+                            <DocPage
                               cert={isFlipping && flipType === 'prev' ? targetCert : currentCert}
                               pageNum={isFlipping && flipType === 'prev' ? targetPageIndex : currentPageIndex}
                               totalPages={totalPages}
@@ -285,7 +283,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                               onInspect={(c) => setModalCert(c)}
                             />
                           ) : (
-                            <DetailsPage 
+                            <DetailsPage
                               cert={isFlipping && flipType === 'next' ? targetCert : currentCert}
                               pageNum={isFlipping && flipType === 'next' ? targetPageIndex : currentPageIndex}
                               totalPages={totalPages}
@@ -307,12 +305,12 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
 
                       {/* Flipping Leaf Animation */}
                       {isFlipping && isAr && flipType === 'next' && (
-                        <div 
+                        <div
                           className="leaf-fold-l-to-r absolute top-0 left-0 w-1/2 h-full z-30 pointer-events-none rounded-l-2xl overflow-hidden"
                           style={{ transformOrigin: 'right center' }}
                         >
                           <div className="leaf-face-front rounded-l-2xl overflow-hidden bg-white shadow-md border-s border-zinc-200">
-                            <DetailsPage cert={currentCert} pageNum={currentPageIndex} totalPages={totalPages} isAr={isAr} dict={dict} isInteractive={false} onFlipPrev={() => {}} onFlipNext={() => {}} />
+                            <DetailsPage cert={currentCert} pageNum={currentPageIndex} totalPages={totalPages} isAr={isAr} dict={dict} isInteractive={false} onFlipPrev={() => { }} onFlipNext={() => { }} />
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-black/25" />
                           </div>
                           <div className="leaf-face-back rounded-r-2xl overflow-hidden bg-white shadow-md border-e border-zinc-200">
@@ -323,7 +321,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                       )}
 
                       {isFlipping && isAr && flipType === 'prev' && (
-                        <div 
+                        <div
                           className="leaf-fold-r-to-l absolute top-0 left-1/2 w-1/2 h-full z-30 pointer-events-none rounded-r-2xl overflow-hidden"
                           style={{ transformOrigin: 'left center' }}
                         >
@@ -332,19 +330,19 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                             <div className="absolute inset-0 bg-gradient-to-l from-transparent via-black/10 to-black/25" />
                           </div>
                           <div className="leaf-face-back rounded-l-2xl overflow-hidden bg-white shadow-md border-s border-zinc-200">
-                            <DetailsPage cert={targetCert} pageNum={targetPageIndex} totalPages={totalPages} isAr={isAr} dict={dict} isInteractive={false} onFlipPrev={() => {}} onFlipNext={() => {}} />
+                            <DetailsPage cert={targetCert} pageNum={targetPageIndex} totalPages={totalPages} isAr={isAr} dict={dict} isInteractive={false} onFlipPrev={() => { }} onFlipNext={() => { }} />
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-black/25" />
                           </div>
                         </div>
                       )}
 
                       {isFlipping && !isAr && flipType === 'next' && (
-                        <div 
+                        <div
                           className="leaf-fold-r-to-l absolute top-0 left-1/2 w-1/2 h-full z-30 pointer-events-none rounded-r-2xl overflow-hidden"
                           style={{ transformOrigin: 'left center' }}
                         >
                           <div className="leaf-face-front rounded-r-2xl overflow-hidden bg-white shadow-md border-e border-zinc-200">
-                            <DetailsPage cert={currentCert} pageNum={currentPageIndex} totalPages={totalPages} isAr={isAr} dict={dict} isInteractive={false} onFlipPrev={() => {}} onFlipNext={() => {}} />
+                            <DetailsPage cert={currentCert} pageNum={currentPageIndex} totalPages={totalPages} isAr={isAr} dict={dict} isInteractive={false} onFlipPrev={() => { }} onFlipNext={() => { }} />
                             <div className="absolute inset-0 bg-gradient-to-l from-transparent via-black/10 to-black/25" />
                           </div>
                           <div className="leaf-face-back rounded-l-2xl overflow-hidden bg-white shadow-md border-s border-zinc-200">
@@ -355,7 +353,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                       )}
 
                       {isFlipping && !isAr && flipType === 'prev' && (
-                        <div 
+                        <div
                           className="leaf-fold-l-to-r absolute top-0 left-0 w-1/2 h-full z-30 pointer-events-none rounded-l-2xl overflow-hidden"
                           style={{ transformOrigin: 'right center' }}
                         >
@@ -364,7 +362,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-black/25" />
                           </div>
                           <div className="leaf-face-back rounded-r-2xl overflow-hidden bg-white shadow-md border-e border-zinc-200">
-                            <DetailsPage cert={targetCert} pageNum={targetPageIndex} totalPages={totalPages} isAr={isAr} dict={dict} isInteractive={false} onFlipPrev={() => {}} onFlipNext={() => {}} />
+                            <DetailsPage cert={targetCert} pageNum={targetPageIndex} totalPages={totalPages} isAr={isAr} dict={dict} isInteractive={false} onFlipPrev={() => { }} onFlipNext={() => { }} />
                             <div className="absolute inset-0 bg-gradient-to-l from-transparent via-black/10 to-black/25" />
                           </div>
                         </div>
@@ -403,24 +401,24 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                         exit="exit"
                         className="space-y-4 rounded-2xl bg-white p-4 border border-[#E2DDD3] shadow-sm"
                       >
-                        <DocPage 
-                          cert={currentCert} 
-                          pageNum={currentPageIndex} 
-                          totalPages={totalPages} 
-                          isAr={isAr} 
-                          isInteractive={true} 
-                          onInspect={(c) => setModalCert(c)} 
+                        <DocPage
+                          cert={currentCert}
+                          pageNum={currentPageIndex}
+                          totalPages={totalPages}
+                          isAr={isAr}
+                          isInteractive={true}
+                          onInspect={(c) => setModalCert(c)}
                         />
                         <div className="border-t border-zinc-100 pt-2">
-                          <DetailsPage 
-                            cert={currentCert} 
-                            pageNum={currentPageIndex} 
-                            totalPages={totalPages} 
-                            isAr={isAr} 
-                            dict={dict} 
-                            isInteractive={true} 
-                            onFlipPrev={() => triggerFlip('prev')} 
-                            onFlipNext={() => triggerFlip('next')} 
+                          <DetailsPage
+                            cert={currentCert}
+                            pageNum={currentPageIndex}
+                            totalPages={totalPages}
+                            isAr={isAr}
+                            dict={dict}
+                            isInteractive={true}
+                            onFlipPrev={() => triggerFlip('prev')}
+                            onFlipNext={() => triggerFlip('next')}
                           />
                         </div>
                       </motion.div>
@@ -433,11 +431,10 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                           key={dotIdx}
                           type="button"
                           onClick={() => triggerFlip(dotIdx > currentPageIndex ? 'next' : 'prev', dotIdx)}
-                          className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                            dotIdx === currentPageIndex 
-                              ? 'w-6 bg-indigo-500' 
-                              : 'w-2 bg-slate-700 hover:bg-slate-600'
-                          }`}
+                          className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${dotIdx === currentPageIndex
+                            ? 'w-6 bg-indigo-500'
+                            : 'w-2 bg-slate-700 hover:bg-slate-600'
+                            }`}
                           aria-label={`Page ${dotIdx + 1}`}
                         />
                       ))}
@@ -452,7 +449,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
 
         {/* VIEW 2: CLASSIC GRID */}
         {viewMode === 'grid' && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -467,11 +464,10 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                     key={tab.key}
                     type="button"
                     onClick={() => setActiveCategory(tab.key)}
-                    className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
-                      isActive
-                        ? 'bg-slate-900 text-white shadow-xs'
-                        : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
-                    }`}
+                    className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${isActive
+                      ? 'bg-slate-900 text-white shadow-xs'
+                      : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
+                      }`}
                   >
                     {tab.label}
                   </button>
@@ -489,7 +485,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                   transition={{ duration: 0.5, delay: (cIdx % 6) * 0.08 }}
                   className="rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-slate-300 hover:shadow-md transition-all flex flex-col justify-between overflow-hidden group"
                 >
-                  <div 
+                  <div
                     onClick={() => setModalCert(cert)}
                     className="relative aspect-[16/11] bg-slate-100 border-b border-slate-200 cursor-pointer overflow-hidden"
                   >
@@ -518,12 +514,12 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                       </h3>
                     </div>
 
-                    <p className="text-xs text-slate-600 line-clamp-2 font-ibm">
+                    <p className="text-xs text-slate-700 line-clamp-2 font-ibm">
                       {isAr ? cert.description.ar : cert.description.en}
                     </p>
 
-                    <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-                      <span className="text-[11px] font-medium font-ibm">{cert.issuer}</span>
+                    <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-600">
+                      <span className="text-[11px] font-semibold font-ibm">{cert.issuer}</span>
                       {cert.hours && (
                         <span className="text-[11px] font-bold text-slate-900 font-ibm">
                           {isAr ? cert.hoursAr : cert.hours}
@@ -538,7 +534,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
         )}
 
         {/* Certificate Zoom Inspection Modal */}
-        <CertificateZoomModal 
+        <CertificateZoomModal
           cert={modalCert}
           isAr={isAr}
           onClose={() => setModalCert(null)}

@@ -38,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, dict, profile }) => {
               <div className="text-sm sm:text-base font-bold text-slate-900 font-tajawal">
                 {isAr ? 'المهندسة هديل عماد بارود' : 'Eng. Hadeel Emad Baroud'}
               </div>
-              <div className="text-xs text-slate-500 font-ibm">
+              <div className="text-xs text-slate-700 font-medium font-ibm">
                 {isAr ? 'هندسة حاسوب ونظم — جامعة الأزهر' : 'Computer Systems Engineering — Al-Azhar University'}
               </div>
             </div>
@@ -85,7 +85,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, dict, profile }) => {
         </div>
 
         {/* Bottom Line */}
-        <div className="mt-8 pt-6 border-t border-slate-100 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-2 font-ibm">
+        <div className="mt-8 pt-6 border-t border-slate-100 text-center text-xs text-slate-700 font-medium flex flex-col sm:flex-row items-center justify-between gap-2 font-ibm">
           <span>{dict.footer.rights}</span>
           <span>{dict.footer.tagline}</span>
         </div>

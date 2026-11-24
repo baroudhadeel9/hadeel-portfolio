@@ -2,15 +2,15 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { 
-  Sparkles, 
-  ShieldCheck, 
-  Eye, 
-  Copy, 
-  Check, 
-  Clock, 
-  ChevronRight, 
-  ChevronLeft 
+import {
+  Sparkles,
+  ShieldCheck,
+  Eye,
+  Copy,
+  Check,
+  Clock,
+  ChevronRight,
+  ChevronLeft
 } from 'lucide-react';
 import { CertificateItem, Dictionary } from '@/lib/schemas';
 
@@ -34,31 +34,29 @@ export const DocPage: React.FC<DocPageProps> = ({
   return (
     <div className="h-full flex flex-col justify-between p-5 sm:p-7 bg-white relative overflow-hidden select-none">
       {/* Gutter curve shadow towards spine */}
-      <div 
-        className={`hidden md:block absolute top-0 bottom-0 ${
-          isAr 
-            ? 'left-0 bg-gradient-to-r from-black/8 to-transparent' 
+      <div
+        className={`hidden md:block absolute top-0 bottom-0 ${isAr
+            ? 'left-0 bg-gradient-to-r from-black/8 to-transparent'
             : 'right-0 bg-gradient-to-l from-black/8 to-transparent'
-        } w-8 pointer-events-none z-10`} 
+          } w-8 pointer-events-none z-10`}
       />
 
       {/* Header Info */}
-      <div className="flex items-center justify-between text-xs text-zinc-500 pb-3 border-b border-zinc-100">
-        <span className="font-mono text-[11px] font-semibold tracking-wider text-zinc-400">
+      <div className="flex items-center justify-between text-xs text-zinc-700 pb-3 border-b border-zinc-100">
+        <span className="font-mono text-[11px] font-semibold tracking-wider text-zinc-600">
           {isAr ? `صفحة ${pageNum + 1} من ${totalPages}` : `PAGE ${pageNum + 1} OF ${totalPages}`}
         </span>
-        <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 text-[11px] font-medium border border-indigo-200/60 flex items-center gap-1">
-          <Sparkles className="w-2.5 h-2.5 text-indigo-500" />
+        <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-800 text-[11px] font-semibold border border-indigo-200/60 flex items-center gap-1">
+          <Sparkles className="w-2.5 h-2.5 text-indigo-600" />
           <span>{cert.issuer}</span>
         </span>
       </div>
 
       {/* Certificate Framed Canvas */}
-      <div 
+      <div
         onClick={() => isInteractive && onInspect?.(cert)}
-        className={`my-auto relative aspect-[16/11] rounded-xl overflow-hidden border border-zinc-200/80 bg-zinc-50 shadow-sm group ${
-          isInteractive ? 'cursor-pointer' : 'pointer-events-none'
-        }`}
+        className={`my-auto relative aspect-[16/11] rounded-xl overflow-hidden border border-zinc-200/80 bg-zinc-50 shadow-sm group ${isInteractive ? 'cursor-pointer' : 'pointer-events-none'
+          }`}
       >
         <Image
           src={cert.image}
@@ -85,7 +83,7 @@ export const DocPage: React.FC<DocPageProps> = ({
       </div>
 
       {/* Bottom Hint */}
-      <div className="pt-2 flex items-center justify-between text-[11px] text-zinc-400">
+      <div className="pt-2 flex items-center justify-between text-[11px] text-zinc-600 font-medium">
         <span>{cert.date || (isAr ? 'اعتماد موثق' : 'Verified Credential')}</span>
         <span>{isAr ? 'اضغط للمعاينة والتكبير' : 'Click to inspect'}</span>
       </div>
@@ -127,12 +125,11 @@ export const DetailsPage: React.FC<DetailsPageProps> = ({
   return (
     <div className="h-full flex flex-col justify-between p-5 sm:p-7 bg-white relative overflow-hidden select-none">
       {/* Gutter curve shadow towards spine */}
-      <div 
-        className={`hidden md:block absolute top-0 bottom-0 ${
-          isAr 
-            ? 'right-0 bg-gradient-to-l from-black/8 to-transparent' 
+      <div
+        className={`hidden md:block absolute top-0 bottom-0 ${isAr
+            ? 'right-0 bg-gradient-to-l from-black/8 to-transparent'
             : 'left-0 bg-gradient-to-r from-black/8 to-transparent'
-        } w-8 pointer-events-none z-10`} 
+          } w-8 pointer-events-none z-10`}
       />
 
       {/* Category & Title */}
@@ -155,7 +152,7 @@ export const DetailsPage: React.FC<DetailsPageProps> = ({
 
       {/* Syllabus / Description */}
       <div className="my-auto py-3">
-        <div className="p-3.5 rounded-xl bg-zinc-50 border border-zinc-100 text-xs text-zinc-600 leading-relaxed">
+        <div className="p-3.5 rounded-xl bg-zinc-50 border border-zinc-100 text-xs text-zinc-800 leading-relaxed">
           {isAr ? cert.description.ar : cert.description.en}
         </div>
       </div>
@@ -165,8 +162,8 @@ export const DetailsPage: React.FC<DetailsPageProps> = ({
         {cert.verificationCode ? (
           <div className="p-3 rounded-xl bg-indigo-50/40 border border-indigo-100/80 flex items-center justify-between text-xs">
             <div className="min-w-0 pr-2">
-              <span className="text-zinc-400 block text-[10px] font-medium">{dict.certificates.verifyCode}</span>
-              <span className="font-mono text-zinc-800 font-semibold truncate block mt-0.5 text-xs">{cert.verificationCode}</span>
+              <span className="text-zinc-600 block text-[10px] font-semibold">{dict.certificates.verifyCode}</span>
+              <span className="font-mono text-zinc-900 font-bold truncate block mt-0.5 text-xs">{cert.verificationCode}</span>
             </div>
             {isInteractive && (
               <button
@@ -175,21 +172,21 @@ export const DetailsPage: React.FC<DetailsPageProps> = ({
                 className="p-1.5 rounded-lg bg-white hover:bg-zinc-100 border border-zinc-200 text-zinc-700 transition-colors cursor-pointer shadow-2xs shrink-0"
                 title="Copy Code"
               >
-                {copiedCode ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5 text-zinc-600" />}
+                {copiedCode ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5 text-zinc-700" />}
               </button>
             )}
           </div>
         ) : (
-          <div className="p-2.5 rounded-xl bg-zinc-50 border border-zinc-100 text-xs text-zinc-600 flex items-center gap-2">
+          <div className="p-2.5 rounded-xl bg-zinc-50 border border-zinc-100 text-xs text-zinc-800 flex items-center gap-2 font-medium">
             <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
             <span className="truncate">{cert.verificationType}</span>
           </div>
         )}
 
         {cert.hours && (
-          <div className="flex items-center gap-2 text-xs text-zinc-700 px-3 py-2 rounded-xl bg-zinc-50 border border-zinc-100">
-            <Clock className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
-            <span className="font-medium">{isAr ? cert.hoursAr : cert.hours}</span>
+          <div className="flex items-center gap-2 text-xs text-zinc-800 font-medium px-3 py-2 rounded-xl bg-zinc-50 border border-zinc-100">
+            <Clock className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+            <span>{isAr ? cert.hoursAr : cert.hours}</span>
           </div>
         )}
       </div>
@@ -206,7 +203,7 @@ export const DetailsPage: React.FC<DetailsPageProps> = ({
           <span>{isAr ? 'الصفحة السابقة' : 'Prev Page'}</span>
         </button>
 
-        <span className="text-xs font-mono font-bold text-zinc-600 px-2">
+        <span className="text-xs font-mono font-bold text-zinc-800 px-2">
           {pageNum + 1} / {totalPages}
         </span>
 

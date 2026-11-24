@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { Menu, X, Globe } from 'lucide-react';
 import { Dictionary } from '@/lib/schemas';
+import { useScrollSpy } from '@/hooks/useScrollSpy';
 
 interface NavbarProps {
   lang: 'ar' | 'en';
@@ -13,41 +14,15 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang, dict }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [activeSection, setActiveSection] = useState('about');
+  const { activeSection, setActiveSection, scrollProgress } = useScrollSpy([
+    'about',
+    'projects',
+    'certificates',
+    'skills',
+    'contact',
+  ]);
+  const scrolled = scrollProgress > 0.5;
   const isAr = lang === 'ar';
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalHeight > 0) {
-        setScrollProgress((window.scrollY / totalHeight) * 100);
-      }
-
-      // Dynamic Section Spy (Track active section automatically as user scrolls)
-      const sections = ['about', 'projects', 'certificates', 'skills', 'contact'];
-      const scrollPosition = window.scrollY + 180;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const sectionId = sections[i];
-        if (!sectionId) continue;
-        const el = document.getElementById(sectionId);
-        if (el) {
-          const top = el.offsetTop;
-          if (scrollPosition >= top) {
-            setActiveSection(sectionId);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navLinks = [
     { id: 'about', href: '#about', label: dict.nav.about },

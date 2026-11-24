@@ -3,18 +3,15 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Mail, 
-  Phone, 
   Send, 
   MessageSquare, 
   CheckCircle, 
   AlertCircle,
-  Sparkles,
-  MapPin,
-  Copy
+  Sparkles
 } from 'lucide-react';
-import { GithubIcon, LinkedinIcon, WhatsAppIcon } from '@/components/common/SocialIcons';
+import { WhatsAppIcon } from '@/components/common/SocialIcons';
 import { ContactFormSchema, ContactFormData, Dictionary, ProfileData } from '@/lib/schemas';
+import { ContactInfoCard } from './ContactInfoCard';
 
 // Contact Container with subtle cursor spotlight
 const ContactSpotlightCard: React.FC<{
@@ -81,7 +78,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
   const [sentVia, setSentVia] = useState<'api' | 'whatsapp' | 'email' | null>(null);
-  const [copiedEmail, setCopiedEmail] = useState<boolean>(false);
 
   const formatMessageText = () => {
     const projectLabels: Record<string, { ar: string; en: string }> = {
@@ -220,115 +216,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             transition={{ duration: 0.5, delay: 0.1 }}
             className="lg:col-span-5 space-y-4"
           >
-            <ContactSpotlightCard className="p-6 sm:p-7 rounded-3xl border border-slate-200/90 bg-slate-50/70 shadow-xs space-y-5">
-              
-              <div className="flex items-center justify-between pb-2 border-b border-slate-200/60">
-                <h3 className="text-base font-bold text-slate-900 font-tajawal">
-                  {dict.contact.directContact.title}
-                </h3>
-                <span className="flex items-center gap-1.5 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200/80 font-ibm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>{isAr ? 'متاحة للعمل' : 'Available'}</span>
-                </span>
-              </div>
-
-              <div className="space-y-3 font-ibm">
-                {/* Phone (Direct Call on Mobile) & WhatsApp Direct Link */}
-                <div className="p-4 rounded-2xl bg-white border border-slate-200/90 flex items-center justify-between gap-3 hover:border-slate-300 hover:shadow-xs transition-all">
-                  <a
-                    href={`tel:${profile.contact.phoneIntl || cleanPhone}`}
-                    className="flex items-center gap-3.5 flex-1 min-w-0 cursor-pointer group"
-                    title={isAr ? 'اضغط للاتصال الهاتفي المباشر' : 'Tap to call directly'}
-                  >
-                    <div className="p-2.5 rounded-xl bg-slate-100 text-indigo-600 border border-slate-200 group-hover:border-indigo-200 transition-colors">
-                      <Phone className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-[11px] text-slate-700 font-medium">{dict.contact.directContact.phone}</div>
-                      <div className="text-xs font-bold text-slate-900 font-mono mt-0.5">{profile.contact.phone}</div>
-                    </div>
-                  </a>
-
-                  <a
-                    href={`https://wa.me/${cleanPhone}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-2 px-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-700 transition-colors flex items-center gap-1.5 text-[11px] font-bold shrink-0 cursor-pointer shadow-2xs"
-                    title="WhatsApp Chat"
-                  >
-                    <WhatsAppIcon className="w-3.5 h-3.5" />
-                    <span>WhatsApp</span>
-                  </a>
-                </div>
-
-                {/* Email (Direct Mailto + One-Click Copy) */}
-                <div className="p-4 rounded-2xl bg-white border border-slate-200/90 flex items-center justify-between gap-3 hover:border-slate-300 hover:shadow-xs transition-all">
-                  <a
-                    href={`mailto:${profile.contact.email}`}
-                    className="flex items-center gap-3.5 flex-1 min-w-0 cursor-pointer group"
-                    title={isAr ? 'إرسال بريد إلكتروني مباشر' : 'Send direct email'}
-                  >
-                    <div className="p-2.5 rounded-xl bg-slate-100 text-indigo-600 border border-slate-200 group-hover:border-indigo-200 transition-colors">
-                      <Mail className="w-4 h-4" />
-                    </div>
-                    <div className="min-w-0">
-                      <div className="text-[11px] text-slate-700 font-medium">{dict.contact.directContact.email}</div>
-                      <div className="text-xs font-bold text-slate-900 font-mono mt-0.5 truncate">{profile.contact.email}</div>
-                    </div>
-                  </a>
-
-                  <button
-                    type="button"
-                    onClick={() => {
-                      navigator.clipboard.writeText(profile.contact.email);
-                      setCopiedEmail(true);
-                      setTimeout(() => setCopiedEmail(false), 2000);
-                    }}
-                    className="p-2 px-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-800 transition-colors flex items-center gap-1.5 text-[11px] font-semibold shrink-0 cursor-pointer shadow-2xs"
-                    title="Copy Email"
-                  >
-                    {copiedEmail ? <CheckCircle className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5 text-slate-600" />}
-                    <span>{copiedEmail ? (isAr ? 'تم النسخ' : 'Copied!') : (isAr ? 'نسخ' : 'Copy')}</span>
-                  </button>
-                </div>
-
-                {/* Location / Remote Availability */}
-                <div className="p-4 rounded-2xl bg-white/70 border border-slate-200/80 flex items-center gap-3.5">
-                  <div className="p-2.5 rounded-xl bg-slate-100 text-slate-700 border border-slate-200">
-                    <MapPin className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-[11px] text-slate-700 font-medium">{isAr ? 'العمل عن بُعد:' : 'Remote Collaboration:'}</div>
-                    <div className="text-xs font-bold text-slate-900 mt-0.5">
-                      {isAr ? 'متاحة للعملاء محلياً وإقليمياً ودولياً' : 'Open to regional & international engagements'}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Social Profiles */}
-              <div className="pt-3 border-t border-slate-200/80 flex items-center gap-2 font-tajawal">
-                <a
-                  href={profile.contact.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 py-2.5 px-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 hover:border-slate-300 text-xs font-semibold text-slate-800 flex items-center justify-center gap-2 transition-all shadow-2xs"
-                >
-                  <GithubIcon className="w-3.5 h-3.5 text-slate-700" />
-                  <span>GitHub</span>
-                </a>
-                <a
-                  href={profile.contact.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 py-2.5 px-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 hover:border-slate-300 text-xs font-semibold text-slate-800 flex items-center justify-center gap-2 transition-all shadow-2xs"
-                >
-                  <LinkedinIcon className="w-3.5 h-3.5 text-indigo-600" />
-                  <span>LinkedIn</span>
-                </a>
-              </div>
-
-            </ContactSpotlightCard>
+            <ContactInfoCard profile={profile} dict={dict} isAr={isAr} />
           </motion.div>
 
           {/* Clean Light Contact Form Column */}
@@ -377,7 +265,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     <a
                       href={`https://wa.me/${cleanPhone}`}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-all shadow-xs font-tajawal"
                     >
                       <WhatsAppIcon className="w-4 h-4" />

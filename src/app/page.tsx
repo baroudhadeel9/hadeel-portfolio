@@ -15,7 +15,6 @@ import enDict from '../../data/locales/en.json';
 // Components
 import { Navbar } from '@/components/layout/Navbar';
 import { Hero } from '@/components/hero/Hero';
-import { AboutPhilosophySection } from '@/components/about/AboutPhilosophySection';
 import { ProjectsSection } from '@/components/projects/ProjectsSection';
 import { CertificatesSection } from '@/components/certificates/CertificatesSection';
 import { SkillsSection } from '@/components/skills/SkillsSection';
@@ -64,13 +63,6 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <Hero 
-        lang={lang} 
-        dict={dict} 
-        profile={profileData} 
-      />
-
-      {/* Engineering Philosophy & About Section */}
-      <AboutPhilosophySection 
         lang={lang} 
         dict={dict} 
         profile={profileData} 

@@ -93,11 +93,8 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang, dict }) => {
 
           {/* Brand: Orbital hb. Logo + Name */}
           <a 
-            href="#" 
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
+            href="#about" 
+            onClick={(e) => handleNavClick(e, 'about')}
             className="flex items-center gap-2.5 group cursor-pointer"
           >
             <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl overflow-hidden border border-slate-800 bg-slate-950 shadow-xs shrink-0 p-0.5 transition-transform duration-200 group-hover:scale-105">

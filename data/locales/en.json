@@ -79,35 +79,6 @@
     "title": "Engineering Stack & Tools",
     "subtitle": "Building robust software starts with choosing the right architectural building blocks."
   },
-  "philosophy": {
-    "badge": "Al-Azhar University Graduate · Computer Systems Engineering",
-    "title": "Engineering Philosophy & Systems Vision",
-    "subtitle": "I don't just write functional code; I architect resilient, scalable systems that merge the rigorous foundations of distributed computer systems with modern web speed and intelligent AI workflows.",
-    "quote": "“Exceptional software isn't just what works in ideal scenarios; it is what stays resilient, performant, and secure under peak real-world load.”",
-    "pillars": {
-      "architecture": {
-        "title": "System Architecture & Concurrency",
-        "desc": "Designing fault-tolerant backends that tackle race conditions and high concurrency using pessimistic locking, intelligent cache revalidation, and distributed patterns."
-      },
-      "ai": {
-        "title": "AI Integration & Workflow Automation",
-        "desc": "Embedding LLMs and autonomous agents into business logic to automate complex flows, synthesize data, and build context-aware digital products."
-      },
-      "quality": {
-        "title": "End-to-End Security & Strict Type Safety",
-        "desc": "Uncompromising adherence to Clean Architecture, robust reverse proxies, and full-stack type safety with TypeScript & Zod to guarantee zero runtime failures."
-      }
-    },
-    "story": {
-      "title": "Engineering Background",
-      "p1": "My journey began with a deep fascination for how computational systems operate from low-level architecture to distributed cloud networks, earning my B.Sc. in Computer Systems Engineering from Al-Azhar University in Gaza.",
-      "p2": "Backed by 320+ hours of rigorous engineering certifications and 8+ verified credentials, I build production-grade web systems that solve real challenges, including EduHub Gaza and Coach Space LMS.",
-      "degree": "B.Sc. in Computer Systems Engineering",
-      "university": "Al-Azhar University - Gaza",
-      "location": "Gaza City, Palestine 🇵🇸",
-      "status": "Available for Freelance & Technical Contracts"
-    }
-  },
   "contact": {
     "badge": "Let's Collaborate",
     "title": "Have a vision you want to build into a thriving system?",

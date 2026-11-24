@@ -174,18 +174,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     }
   };
 
-  // 2. Direct WhatsApp Dispatch (Instant notification to Hadeel's phone)
+  // 2. Direct WhatsApp Dispatch (Instant notification to Hadeel's phone - synchronous for mobile compatibility)
   const handleSendViaWhatsApp = () => {
     if (!validate()) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setSentVia('whatsapp');
-      const text = encodeURIComponent(formatMessageText());
-      window.open(`https://wa.me/${cleanPhone}?text=${text}`, '_blank');
-    }, 300);
+    setSubmitSuccess(true);
+    setSentVia('whatsapp');
+    const text = encodeURIComponent(formatMessageText());
+    window.location.href = `https://wa.me/${cleanPhone}?text=${text}`;
+    setIsSubmitting(false);
   };
 
   return (
@@ -244,21 +242,33 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               </div>
 
               <div className="space-y-3 font-ibm">
-                {/* Phone & WhatsApp */}
-                <a
-                  href={`https://wa.me/${cleanPhone}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="p-4 rounded-2xl bg-white border border-slate-200/90 flex items-center gap-3.5 hover:border-slate-300 hover:shadow-xs transition-all group cursor-pointer"
-                >
-                  <div className="p-2.5 rounded-xl bg-slate-100 text-indigo-600 border border-slate-200 group-hover:border-indigo-200 transition-colors">
-                    <Phone className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-[11px] text-slate-500">{dict.contact.directContact.phone}</div>
-                    <div className="text-xs font-bold text-slate-900 font-mono mt-0.5">{profile.contact.phone}</div>
-                  </div>
-                </a>
+                {/* Phone (Direct Call on Mobile) & WhatsApp Direct Link */}
+                <div className="p-4 rounded-2xl bg-white border border-slate-200/90 flex items-center justify-between gap-3 hover:border-slate-300 hover:shadow-xs transition-all">
+                  <a
+                    href={`tel:${profile.contact.phoneIntl || cleanPhone}`}
+                    className="flex items-center gap-3.5 flex-1 min-w-0 cursor-pointer group"
+                    title={isAr ? 'اضغطي للاتصال الهاتفي المباشر' : 'Tap to call directly'}
+                  >
+                    <div className="p-2.5 rounded-xl bg-slate-100 text-indigo-600 border border-slate-200 group-hover:border-indigo-200 transition-colors">
+                      <Phone className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-[11px] text-slate-500">{dict.contact.directContact.phone}</div>
+                      <div className="text-xs font-bold text-slate-900 font-mono mt-0.5">{profile.contact.phone}</div>
+                    </div>
+                  </a>
+
+                  <a
+                    href={`https://wa.me/${cleanPhone}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="p-2 px-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-700 transition-colors flex items-center gap-1.5 text-[11px] font-bold shrink-0 cursor-pointer shadow-2xs"
+                    title="WhatsApp Chat"
+                  >
+                    <WhatsAppIcon className="w-3.5 h-3.5" />
+                    <span>WhatsApp</span>
+                  </a>
+                </div>
 
                 {/* Email */}
                 <a

@@ -39,14 +39,14 @@ const statConfigs: Record<number, StatConfig> = {
   2: { target: 100, prefixAr: '', suffixAr: '٪', prefixEn: '', suffixEn: '%' }
 };
 
-// Animated Counting Number Component
+// Animated Counting Number Component - Mobile-Optimized & Robust
 const AnimatedStatNumber: React.FC<{ index: number; isAr: boolean }> = ({ index, isAr }) => {
   const config = statConfigs[index] || { target: 10 };
-  const [val, setVal] = useState<number>(0);
+  const [val, setVal] = useState<number>(config.target);
 
   useEffect(() => {
     let start: number | null = null;
-    const duration = 1400;
+    const duration = 1200;
     let animId: number;
 
     const animate = (time: number) => {
@@ -62,30 +62,30 @@ const AnimatedStatNumber: React.FC<{ index: number; isAr: boolean }> = ({ index,
 
     const timer = setTimeout(() => {
       animId = requestAnimationFrame(animate);
-    }, 150 + index * 100);
+    }, 150);
 
     return () => {
       clearTimeout(timer);
       cancelAnimationFrame(animId);
     };
-  }, [config.target, index]);
+  }, [config.target]);
 
   if (isAr) {
     const arabicNumber = toArabicDigits(val);
     return (
-      <span>
-        {config.prefixAr}
-        {arabicNumber}
-        {config.suffixAr}
+      <span dir="ltr" className="inline-flex items-center tabular-nums">
+        {config.prefixAr && <span>{config.prefixAr}</span>}
+        <span>{arabicNumber}</span>
+        {config.suffixAr && <span>{config.suffixAr}</span>}
       </span>
     );
   }
 
   return (
-    <span>
-      {config.prefixEn}
-      {val}
-      {config.suffixEn}
+    <span dir="ltr" className="inline-flex items-center tabular-nums">
+      {config.prefixEn && <span>{config.prefixEn}</span>}
+      <span>{val}</span>
+      {config.suffixEn && <span>{config.suffixEn}</span>}
     </span>
   );
 };

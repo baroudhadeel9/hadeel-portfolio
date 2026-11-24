@@ -19,38 +19,6 @@
     "ctaContact": "Get in Touch",
     "locationBadge": "Available for Freelance & Web Engineering"
   },
-  "studio": {
-    "badge": "Exclusive Interactive Experience",
-    "title": "Interactive Solution & Scope Studio",
-    "subtitle": "Select your app requirements and preview real-time architecture, recommended tech stack, and estimations instantly!",
-    "step1": "1. Select Platform or Project Type",
-    "types": {
-      "saas": { "name": "Full-scale SaaS Platform", "desc": "Subscriptions, multi-tenant RBAC, and analytics" },
-      "ecommerce": { "name": "Modern E-Commerce", "desc": "Product catalog, cart, checkout, and inventory" },
-      "booking": { "name": "Booking & Mentorship System", "desc": "Like Coach Space: calendar scheduling, alerts, and billing" },
-      "educational": { "name": "Educational LMS Platform", "desc": "Like EduHub: courses, quiz engine, and certificates" },
-      "custom": { "name": "Custom Enterprise Solution", "desc": "Tailor-made software designed for your exact business logic" }
-    },
-    "step2": "2. Choose Desired Modules & Capabilities",
-    "features": {
-      "auth": { "name": "Enterprise Auth & Role Control", "desc": "JWT, OAuth, and granular RBAC security" },
-      "payments": { "name": "Payment Gateways (Stripe/PayPal)", "desc": "Global checkout, recurring subscriptions, and invoices" },
-      "ai": { "name": "AI Integration (AI & LLMs)", "desc": "Smart agentic chat, automated data parsing, and workflows" },
-      "realtime": { "name": "Real-Time Sockets & Live Chat", "desc": "Instant WebSockets messaging and notifications" },
-      "dashboard": { "name": "Interactive Analytics Dashboard", "desc": "Live metrics, charts, and operational management" },
-      "i18n": { "name": "Bilingual Localization (AR / EN)", "desc": "Flawless RTL and LTR user experience" }
-    },
-    "preview": {
-      "title": "Recommended Architectural Blueprint",
-      "frontend": "Frontend Layer:",
-      "backend": "Backend & Core Systems:",
-      "database": "Data Persistence:",
-      "aiModule": "AI Integration:",
-      "timeline": "Estimated Delivery Window:",
-      "exportBtn": "Send Project Scope to Eng. Hadeel",
-      "exportSuccess": "Your project scope has been drafted! Redirecting to contact..."
-    }
-  },
   "projects": {
     "badge": "Proven Case Studies",
     "title": "Engineered Systems & Applications",

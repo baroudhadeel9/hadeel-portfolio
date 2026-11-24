@@ -58,40 +58,40 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ lang, dict, skills
       nameEn: 'AI & Agentic Engineering',
       missionAr: 'استدعاء دوال مهيكلة (Tool Calling) والربط مع النماذج التوليدية',
       missionEn: 'Structured agentic tool use & client/server LLM pipelines',
-      icon: <Bot className="w-5 h-5 text-indigo-600" />,
-      badgeBg: 'bg-indigo-50 text-indigo-700 border-indigo-200/80',
-      border: 'border-indigo-100 hover:border-indigo-300',
-      accent: 'from-indigo-600 to-violet-600'
+      icon: <Bot className="w-5 h-5 text-accent" />,
+      badgeBg: 'bg-accent-tint text-accent border-accent/30',
+      border: 'border-accent/20 hover:border-accent/40',
+      accent: 'from-navy to-accent'
     },
     1: {
       nameAr: 'تطوير الواجهات وتجربة المستخدم',
       nameEn: 'Modern Frontend & UX',
       missionAr: 'تصيير فوري خفيف (180ms TTFB) مع دعم أصيل لـ RTL والـ Dark/Light',
       missionEn: 'React Server Components, Partial Pre-rendering & dynamic i18n',
-      icon: <Layout className="w-5 h-5 text-sky-600" />,
-      badgeBg: 'bg-sky-50 text-sky-700 border-sky-200/80',
-      border: 'border-sky-100 hover:border-sky-300',
-      accent: 'from-sky-600 to-blue-600'
+      icon: <Layout className="w-5 h-5 text-accent" />,
+      badgeBg: 'bg-accent-tint text-accent border-accent/30',
+      border: 'border-accent/20 hover:border-accent/40',
+      accent: 'from-navy to-accent'
     },
     2: {
       nameAr: 'الباك إند وقواعد البيانات السحابية',
       nameEn: 'Backend & Cloud Databases',
       missionAr: 'قفل تشاؤمي لمنع تضارب الحجوزات مع حماية الصفوف RLS (أيرلندا)',
       missionEn: 'Concurrency-safe pessimistic locking & Row Level Security',
-      icon: <Server className="w-5 h-5 text-emerald-600" />,
-      badgeBg: 'bg-emerald-50 text-emerald-700 border-emerald-200/80',
-      border: 'border-emerald-100 hover:border-emerald-300',
-      accent: 'from-emerald-600 to-teal-600'
+      icon: <Server className="w-5 h-5 text-accent" />,
+      badgeBg: 'bg-accent-tint text-accent border-accent/30',
+      border: 'border-accent/20 hover:border-accent/40',
+      accent: 'from-navy to-accent'
     },
     3: {
       nameAr: 'معمارية النظم وهندسة البرمجيات',
       nameEn: 'Systems & Clean Architecture',
       missionAr: 'فصل صارم بين الطبقات ومبادئ SOLID ومعمارية قابلة للتوسع',
       missionEn: 'High cohesion, loose coupling, and audited CodeMap engineering',
-      icon: <Cpu className="w-5 h-5 text-amber-600" />,
-      badgeBg: 'bg-amber-50 text-amber-800 border-amber-200/80',
-      border: 'border-amber-100 hover:border-amber-300',
-      accent: 'from-amber-600 to-orange-600'
+      icon: <Cpu className="w-5 h-5 text-accent" />,
+      badgeBg: 'bg-accent-tint text-accent border-accent/30',
+      border: 'border-accent/20 hover:border-accent/40',
+      accent: 'from-navy to-accent'
     }
   };
 
@@ -155,7 +155,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ lang, dict, skills
   return (
     <section 
       id="skills" 
-      className="py-12 sm:py-14 relative overflow-hidden bg-[#f8fafc] text-slate-900 selection:bg-indigo-600 selection:text-white scroll-mt-24"
+      className="py-10 sm:py-12 relative overflow-hidden bg-surface text-navy scroll-mt-24"
     >
       {/* Subtle Dot Grid Background */}
       <div 
@@ -167,26 +167,26 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ lang, dict, skills
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6 sm:space-y-7">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-5 sm:space-y-6">
         
         {/* Compact Section Header with Scroll Reveal */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto space-y-2.5"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-slate-200/90 text-indigo-700 text-xs font-semibold shadow-2xs font-ibm">
-            <Workflow className="w-3.5 h-3.5 text-indigo-600" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accent-tint border border-accent/20 text-accent text-xs font-semibold shadow-2xs font-ibm">
+            <Workflow className="w-3.5 h-3.5 text-accent" />
             <span>{dict.skills.badge}</span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight font-tajawal">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-navy tracking-tight font-tajawal">
             {dict.skills.title}
           </h2>
 
-          <p className="text-slate-700 text-xs sm:text-sm leading-relaxed font-ibm max-w-xl mx-auto">
+          <p className="text-muted text-xs sm:text-sm leading-relaxed font-ibm max-w-xl mx-auto">
             {isAr
               ? 'معمارية متكاملة تربط واجهات الـ Next.js بالذكاء الاصطناعي وخوادم Laravel وقواعد بيانات Supabase في بيئة إنتاجية حقيقية.'
               : 'End-to-end full-stack architecture linking Next.js clients, AI agents, Laravel APIs, and Supabase cloud DB.'}
@@ -194,34 +194,34 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ lang, dict, skills
 
           {/* Compact 1-line Credibility Pills */}
           <div className="pt-1.5 flex flex-wrap items-center justify-center gap-2 font-ibm text-xs">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-800 shadow-2xs">
-              <Zap className="w-3 h-3 text-indigo-600" />
-              <strong className="text-slate-900">18+</strong>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-muted shadow-2xs">
+              <Zap className="w-3 h-3 text-accent" />
+              <strong className="text-navy">18+</strong>
               <span>{isAr ? 'تقنية معتمدة' : 'Verified Tools'}</span>
             </span>
 
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-800 shadow-2xs">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-muted shadow-2xs">
               <ShieldCheck className="w-3 h-3 text-emerald-600" />
-              <strong className="text-slate-900">100%</strong>
+              <strong className="text-navy">100%</strong>
               <span>{isAr ? 'مشاريع حية: EduHub & Coach Space' : 'Live: EduHub & Coach Space'}</span>
             </span>
 
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-800 shadow-2xs">
-              <Award className="w-3 h-3 text-amber-600" />
-              <strong className="text-slate-900">320+</strong>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-muted shadow-2xs">
+              <Award className="w-3 h-3 text-accent" />
+              <strong className="text-navy">320+</strong>
               <span>{isAr ? 'ساعة تدريب هندسي موثق' : 'Accredited Hours'}</span>
             </span>
 
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-800 shadow-2xs">
-              <Cpu className="w-3 h-3 text-sky-600" />
-              <strong className="text-slate-900">{isAr ? 'هندسة حاسوب' : 'Computer Eng.'}</strong>
-              <span className="text-slate-600">{isAr ? 'جامعة الأزهر' : 'Al-Azhar'}</span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-muted shadow-2xs">
+              <Cpu className="w-3 h-3 text-accent" />
+              <strong className="text-navy">{isAr ? 'هندسة حاسوب' : 'Computer Eng.'}</strong>
+              <span className="text-muted">{isAr ? 'جامعة الأزهر' : 'Al-Azhar'}</span>
             </span>
           </div>
         </motion.div>
 
-        {/* 4-Domain Bento Matrix (2x2 Grid) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 items-stretch">
+        {/* 4-Domain Bento Matrix (2x2 Grid) with tightened row gap */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3.5 sm:gap-4 items-stretch">
           {Object.entries(categoryMeta).map(([idxStr, meta]) => {
             const idx = parseInt(idxStr, 10);
             const domainSkills = skillsByCategory[idx] || [];
@@ -231,33 +231,33 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ lang, dict, skills
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className="h-full"
               >
-                <BentoSpotlightCard className="h-full rounded-2xl sm:rounded-3xl border border-slate-200/90 bg-white p-4 sm:p-5 shadow-xs hover:shadow-md hover:border-slate-300 transition-all flex flex-col justify-between">
+                <BentoSpotlightCard className="h-full rounded-2xl sm:rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 sm:p-5 shadow-xs hover:shadow-md hover:border-accent/40 transition-all flex flex-col justify-between">
                   {/* Domain Header with Architectural Mission Tag */}
-                  <div className="space-y-2.5 pb-3 border-b border-slate-100">
+                  <div className="space-y-2.5 pb-3 border-b border-slate-100 dark:border-slate-800">
                     <div className="flex items-center justify-between gap-2">
                       <div className="flex items-center gap-2.5">
                         <div className={`p-2 rounded-xl ${meta.badgeBg}`}>
                           {meta.icon}
                         </div>
                         <div>
-                          <h3 className="text-base sm:text-lg font-bold text-slate-900 font-tajawal">
+                          <h3 className="text-base sm:text-lg font-bold text-navy font-tajawal">
                             {isAr ? meta.nameAr : meta.nameEn}
                           </h3>
                         </div>
                       </div>
 
-                      <span className="text-xs font-mono font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200/80">
+                      <span className="text-xs font-mono font-bold text-accent bg-accent-tint px-2.5 py-0.5 rounded-full border border-accent/20">
                         {domainSkills.length} {isAr ? 'مهارات' : 'Skills'}
                       </span>
                     </div>
 
                     {/* Architecture Mission Statement */}
-                    <div className="flex items-center gap-2 text-xs text-indigo-800 bg-indigo-50/70 px-3 py-1.5 rounded-xl border border-indigo-100 font-ibm">
-                      <Workflow className="w-3.5 h-3.5 shrink-0 text-indigo-600" />
+                    <div className="flex items-center gap-2 text-xs text-accent bg-accent-tint/60 px-3 py-1.5 rounded-xl border border-accent/20 font-ibm">
+                      <Workflow className="w-3.5 h-3.5 shrink-0 text-accent" />
                       <span className="truncate font-medium">
                         {isAr ? meta.missionAr : meta.missionEn}
                       </span>
@@ -265,43 +265,43 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ lang, dict, skills
                   </div>
 
                   {/* Compact Skills List Inside Domain Card */}
-                  <div className="divide-y divide-slate-100 mt-1.5 font-ibm flex-1">
+                  <div className="divide-y divide-slate-100 dark:divide-slate-800 mt-1.5 font-ibm flex-1">
                     {domainSkills.map((skill) => (
                       <button
                         key={skill.id}
                         type="button"
                         onClick={() => setInspectingSkill(skill)}
-                        className="w-full py-2 px-2 -mx-2 rounded-xl hover:bg-slate-50 text-start flex flex-col gap-1 group transition-all cursor-pointer"
+                        className="w-full py-2 px-2 -mx-2 rounded-xl hover:bg-accent-tint/30 text-start flex flex-col gap-1 group transition-all cursor-pointer"
                       >
                         <div className="w-full flex items-center justify-between gap-3">
                           <div className="min-w-0 flex-1">
                             <div className="flex items-center gap-2">
-                              <span className="text-xs sm:text-[13px] font-bold text-slate-900 group-hover:text-indigo-600 transition-colors truncate">
+                              <span className="text-sm sm:text-base font-bold text-navy group-hover:text-accent transition-colors truncate">
                                 {skill.name}
                               </span>
-                              <span className="text-[10px] font-semibold text-slate-700 bg-slate-100 px-1.5 py-0.5 rounded-md shrink-0">
+                              <span className="text-xs font-semibold text-accent bg-accent-tint px-2 py-0.5 rounded-md shrink-0 border border-accent/20">
                                 {isAr ? skill.levelAr : skill.level}
                               </span>
                             </div>
-                            <div className="text-[11px] text-slate-700 font-medium truncate mt-0.5 flex items-center gap-1.5">
-                              <Sparkles className="w-3 h-3 text-indigo-500 shrink-0" />
+                            <div className="text-sm sm:text-[13px] text-muted font-medium truncate mt-0.5 flex items-center gap-1.5">
+                              <Sparkles className="w-3 h-3 text-accent shrink-0" />
                               <span className="truncate">{isAr ? skill.application.ar : skill.application.en}</span>
                             </div>
                           </div>
 
                           {/* Right Indicator: Percent + Inspector Icon */}
                           <div className="flex items-center gap-2 shrink-0">
-                            <span className="text-xs font-mono font-bold text-slate-800">{skill.percent}%</span>
-                            <div className="w-6 h-6 rounded-lg bg-slate-100 group-hover:bg-indigo-600 group-hover:text-white text-slate-600 flex items-center justify-center transition-all">
+                            <span className="text-xs font-mono font-bold text-navy">{skill.percent}%</span>
+                            <div className="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 group-hover:bg-accent group-hover:text-white text-muted flex items-center justify-center transition-all">
                               <Code2 className="w-3.5 h-3.5" />
                             </div>
                           </div>
                         </div>
 
                         {/* Subtle Micro-Progress Meter */}
-                        <div className="w-full bg-slate-100 h-1 rounded-full overflow-hidden">
+                        <div className="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
                           <div 
-                            className="bg-indigo-500/80 group-hover:bg-indigo-600 h-full rounded-full transition-all duration-300"
+                            className="bg-gradient-to-r from-navy to-accent group-hover:from-accent group-hover:to-accent-light h-full rounded-full transition-all duration-300"
                             style={{ width: `${skill.percent}%` }}
                           />
                         </div>
@@ -310,9 +310,9 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ lang, dict, skills
                   </div>
 
                   {/* Domain Card Footer Note */}
-                  <div className="pt-2.5 mt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-700 font-ibm">
+                  <div className="pt-2.5 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-muted font-ibm">
                     <span>{isAr ? 'اضغط على أي مهارة لمعاينة الكود والتوثيق' : 'Click any skill to inspect code & proof'}</span>
-                    <span className="text-indigo-600 font-semibold group-hover:underline flex items-center gap-1">
+                    <span className="text-accent font-semibold group-hover:underline flex items-center gap-1">
                       <span>{isAr ? 'فحص كامل' : 'Inspect'}</span>
                       <ChevronRight className={`w-3 h-3 ${isAr ? 'rotate-180' : ''}`} />
                     </span>

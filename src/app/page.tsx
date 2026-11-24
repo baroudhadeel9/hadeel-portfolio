@@ -51,7 +51,7 @@ export default function HomePage() {
 
   return (
     <main 
-      className="min-h-screen relative flex flex-col bg-[#f8fafc] text-[#0f172a] selection:bg-slate-900 selection:text-white"
+      className="min-h-screen relative flex flex-col bg-surface text-navy selection:bg-accent selection:text-white pb-16 sm:pb-8"
     >
       
       {/* Top Fixed Navigation */}

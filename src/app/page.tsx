@@ -57,7 +57,7 @@ export default function HomePage() {
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     if (lang === 'ar') {
-      document.body.style.fontFamily = 'var(--font-ibm-arabic), -apple-system, BlinkMacSystemFont, system-ui, sans-serif';
+      document.body.style.fontFamily = 'var(--font-cairo), -apple-system, BlinkMacSystemFont, system-ui, sans-serif';
     } else {
       document.body.style.fontFamily = 'var(--font-inter), -apple-system, BlinkMacSystemFont, system-ui, sans-serif';
     }

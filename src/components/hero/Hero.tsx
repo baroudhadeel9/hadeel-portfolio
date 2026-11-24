@@ -128,77 +128,64 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
 
-          {/* Main Text Column: Enters smoothly from its side (Right in RTL / Left in LTR) */}
+          {/* Main Text Column: Clean, Spacious, and Minimal */}
           <motion.div
             initial={{ opacity: 0, x: isAr ? 60 : -60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 space-y-4 text-center lg:text-start"
+            className="lg:col-span-7 space-y-5 text-center lg:text-start"
           >
-
-            {/* Availability Status Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-xs font-semibold text-emerald-800 shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>{isAr ? 'متاحة للتعاقد والمشاريع الهندسية' : 'Available for Contracts & Engineering Projects'}</span>
+            {/* Single Elegant Academic & Engineering Eyebrow Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-800 shadow-2xs font-ibm">
+              <GraduationCap className="w-3.5 h-3.5 text-indigo-600" />
+              <span>{isAr ? 'هندسة أنظمة حاسوب · جامعة الأزهر' : 'Computer Systems Engineering · Al-Azhar University'}</span>
             </div>
 
             {/* Name Heading */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.6rem] font-black text-slate-900 tracking-tight leading-[1.12]">
+            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-black text-slate-900 tracking-tight leading-[1.12] font-tajawal">
               {dict.hero.name}
             </h1>
 
             {/* Specialization / Subtitle */}
-            <div className="text-base sm:text-lg lg:text-xl font-bold text-slate-700 leading-snug">
+            <p className="text-base sm:text-lg lg:text-xl font-bold text-slate-700 leading-snug font-tajawal max-w-xl">
               {isAr
                 ? 'مهندسة أنظمة حاسوب ومطورة ويب Full-Stack معتمدة في الذكاء الاصطناعي'
                 : 'Computer Systems Engineer & AI-Integrated Full-Stack Developer'}
-            </div>
-
-            {/* Clean Static Academic Badge */}
-            <div className="pt-0.5 flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
-              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-800 shadow-2xs">
-                <GraduationCap className="w-3.5 h-3.5 text-indigo-600" />
-                <span>{isAr ? 'هندسة أنظمة حاسوب — جامعة الأزهر' : 'Computer Systems Engineering — Al-Azhar University'}</span>
-              </div>
-            </div>
+            </p>
 
             {/* Concise Bio */}
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0 pt-1">
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl font-ibm">
               {dict.hero.description}
             </p>
 
-            {/* Integrated 3 Verified Metrics Cards in Text Column */}
-            <div className="grid grid-cols-3 gap-2.5 sm:gap-3.5 pt-2 max-w-xl mx-auto lg:mx-0">
+            {/* Clean Unified Horizontal Stats Bar (Stripe/Linear Style) */}
+            <div className="py-3 px-4 rounded-2xl bg-white border border-slate-200/90 shadow-2xs max-w-xl grid grid-cols-3 divide-x divide-slate-100 rtl:divide-x-reverse text-center">
               {profile.stats.slice(0, 3).map((st, idx: number) => {
                 const localizedLabel = typeof st.label === 'object'
                   ? (isAr ? st.label.ar : st.label.en)
                   : st.label;
 
                 return (
-                  <motion.div
-                    key={idx}
-                    whileHover={{ y: -3, scale: 1.02 }}
-                    className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200/90 shadow-2xs text-center flex flex-col justify-center items-center"
-                  >
+                  <div key={idx} className="px-2 py-0.5 flex flex-col justify-center items-center">
                     <div className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight font-sans">
                       <AnimatedStatNumber index={idx} isAr={isAr} />
                     </div>
-                    <div className="text-[11px] text-slate-500 mt-1 font-medium leading-tight">
+                    <div className="text-[11px] text-slate-500 mt-1 font-medium leading-tight font-ibm">
                       {localizedLabel}
                     </div>
-                  </motion.div>
+                  </div>
                 );
               })}
             </div>
 
             {/* CTA Buttons & Social Icons Row */}
-            <div className="pt-3 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+            <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3">
               {/* Primary Dark Pill Button */}
               <motion.a
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 href="#projects"
-                className="px-6 py-3 rounded-xl font-bold text-sm text-white bg-slate-900 hover:bg-slate-800 shadow-xs hover:shadow-md transition-all duration-200 flex items-center gap-2 cursor-pointer group"
+                className="px-6 py-3 rounded-xl font-bold text-sm text-white bg-slate-900 hover:bg-slate-800 shadow-xs hover:shadow-md transition-all duration-200 flex items-center gap-2 cursor-pointer group font-tajawal"
               >
                 <span>{dict.hero.ctaProjects}</span>
                 <Arrow className="w-4 h-4 transition-transform group-hover:-translate-x-1 rtl:group-hover:-translate-x-1 ltr:group-hover:translate-x-1" />
@@ -209,7 +196,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 href="#contact"
-                className="px-6 py-3 rounded-xl font-semibold text-sm text-slate-800 bg-white hover:bg-slate-50 border border-slate-200 shadow-2xs hover:shadow-xs transition-all duration-200 flex items-center gap-2 cursor-pointer"
+                className="px-6 py-3 rounded-xl font-semibold text-sm text-slate-800 bg-white hover:bg-slate-50 border border-slate-200 shadow-2xs hover:shadow-xs transition-all duration-200 flex items-center gap-2 cursor-pointer font-tajawal"
               >
                 <span>{dict.hero.ctaContact}</span>
               </motion.a>
@@ -267,30 +254,16 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
 
           </motion.div>
 
-          {/* Visual Showcase Column: Enters smoothly from opposite side (Left in RTL / Right in LTR) */}
+          {/* Visual Showcase Column: Clean, Elegant Portrait */}
           <motion.div
             initial={{ opacity: 0, x: isAr ? -60 : 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 flex flex-col items-center justify-center relative"
           >
-
-            {/* Relative Image Stage with Studio Halo */}
             <div className="relative flex items-center justify-center w-full max-w-sm">
-
               {/* Soft Ambient Studio Halo */}
               <div className="absolute -inset-4 sm:-inset-6 bg-gradient-to-tr from-indigo-200/50 via-purple-100/30 to-sky-100/40 rounded-[3rem] blur-2xl pointer-events-none -z-0" />
-
-              {/* Floating Top Badge: Full-Stack Systems Engineer */}
-              <motion.div
-                whileHover={{ scale: 1.08 }}
-                className="absolute -top-3.5 end-2 z-20 cursor-pointer shadow-lg"
-              >
-                <div className="px-3.5 py-1.5 rounded-full bg-slate-900/95 backdrop-blur-md border border-slate-700 text-xs font-semibold text-white flex items-center gap-1.5 shadow-md">
-                  <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-                  <span>Full-Stack Systems Engineer</span>
-                </div>
-              </motion.div>
 
               {/* Portrait Frame in Modern Rounded Squircle Frame */}
               <div className="relative w-64 h-72 sm:w-72 sm:h-80 lg:w-80 lg:h-92 rounded-[2.5rem] p-2 bg-white shadow-xl border border-slate-200/90 z-10 overflow-hidden">
@@ -306,19 +279,17 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
                 </div>
               </div>
 
-              {/* Floating Bottom Badge: Modern Tech Stack */}
+              {/* Floating Bottom Badge: Clean Single Badge */}
               <motion.div
-                whileHover={{ scale: 1.08 }}
-                className="absolute -bottom-3.5 start-2 z-20 cursor-pointer shadow-lg"
+                whileHover={{ scale: 1.05 }}
+                className="absolute -bottom-3.5 z-20 cursor-pointer shadow-lg"
               >
-                <div className="px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-xs font-bold text-slate-800 flex items-center gap-2 shadow-md">
+                <div className="px-4 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-xs font-bold text-slate-800 flex items-center gap-2 shadow-md font-ibm">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                   <span>Next.js 16 • React 19 • Laravel 11</span>
                 </div>
               </motion.div>
-
             </div>
-
           </motion.div>
 
         </div>

@@ -34,7 +34,7 @@ interface StatConfig {
 }
 
 const statConfigs: Record<number, StatConfig> = {
-  0: { target: 8, prefixAr: '+', suffixAr: '', prefixEn: '', suffixEn: '+' },
+  0: { target: 11, prefixAr: '+', suffixAr: '', prefixEn: '', suffixEn: '+' },
   1: { target: 320, prefixAr: '+', suffixAr: '', prefixEn: '', suffixEn: '+' },
   2: { target: 100, prefixAr: '', suffixAr: '٪', prefixEn: '', suffixEn: '%' }
 };
@@ -110,7 +110,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
     'Zod Validation',
     'Brevo Notifications',
     'Al-Azhar University',
-    '8 Verified Certifications'
+    '11 Verified Certifications'
   ];
 
   return (

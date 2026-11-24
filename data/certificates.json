@@ -19,6 +19,54 @@
     }
   },
   {
+    "id": "claude-anthropic-api",
+    "title": "Claude with the Anthropic API",
+    "titleAr": "بناء وتكامل الأنظمة مع واجهة Anthropic API",
+    "issuer": "Anthropic",
+    "category": "ai",
+    "categoryLabel": { "ar": "الذكاء الاصطناعي", "en": "Artificial Intelligence" },
+    "image": "/certificates/claude-anthropic-api.jpg",
+    "verificationType": "Verified Certificate of Completion",
+    "verificationCode": null,
+    "highlight": true,
+    "description": {
+      "ar": "شهادة إتمام معتمدة من Anthropic في بناء تطبيقات متقدمة متصلة بنماذج Claude عبر الـ API، تشمل استدعاء الأدوات (Tool Use) وهندسة السياق وهيكلة المخرجات.",
+      "en": "Official Certificate of Completion from Anthropic covering API architecture, tool use, prompt engineering, and production integration with Claude models."
+    }
+  },
+  {
+    "id": "claude-code-101",
+    "title": "Claude Code 101",
+    "titleAr": "Claude Code 101: تطوير البرمجيات بمساعدة الذكاء الاصطناعي",
+    "issuer": "Anthropic",
+    "category": "ai",
+    "categoryLabel": { "ar": "الذكاء الاصطناعي", "en": "Artificial Intelligence" },
+    "image": "/certificates/claude-code-101.jpg",
+    "verificationType": "Verified Certificate of Completion",
+    "verificationCode": null,
+    "highlight": true,
+    "description": {
+      "ar": "شهادة إتمام معتمدة من Anthropic في استخدام أداة Claude Code للبرمجة المتقدمة بمساعدة وكلاء الذكاء الاصطناعي عبر سطر الأوامر وأتمتة هندسة البرمجيات.",
+      "en": "Official Certificate of Completion from Anthropic in agentic software engineering and terminal coding workflows with Claude Code."
+    }
+  },
+  {
+    "id": "ai-fluency-framework",
+    "title": "AI Fluency: Framework & Foundations",
+    "titleAr": "الطلاقة في الذكاء الاصطناعي: الأطر والأسس المنهجية",
+    "issuer": "Anthropic & University Consortium (UCC, HEA)",
+    "category": "ai",
+    "categoryLabel": { "ar": "الذكاء الاصطناعي", "en": "Artificial Intelligence" },
+    "image": "/certificates/ai-fluency-framework.jpg",
+    "verificationType": "Verified Certificate of Completion",
+    "verificationCode": null,
+    "highlight": true,
+    "description": {
+      "ar": "برنامج أكاديمي معتمد برعاية Anthropic وائتلاف الجامعات الدولية وهيئة التعليم العالي (HEA)، يغطي أسس نماذج الذكاء الاصطناعي التوليدي ومبادئ حوكمتها.",
+      "en": "Accredited program sponsored by Anthropic and university consortium (UCC, HEA) covering foundational generative AI frameworks and ethical deployment."
+    }
+  },
+  {
     "id": "frontend-codetech",
     "title": "FrontEnd Web Development (120 Hours)",
     "titleAr": "تطوير واجهات الويب الاحترافية (120 ساعة)",

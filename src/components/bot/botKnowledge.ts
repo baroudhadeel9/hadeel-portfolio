@@ -165,20 +165,22 @@ export const generateAIResponse = (
 
 • **الدرجة الجامعية:** **هندسة أنظمة الحاسوب — جامعة الأزهر بغزة**.
 • **شهادات واعتمادات مهنية موثقة (+320 ساعة تدريبية):**
-  1. زمالة **كود ماب 2026 (CodeMap)** في معمارية البرمجيات وهندسة النظم (144 ساعة).
-  2. برنامج **تطوير الواجهات الاحترافي CODE TECH** (120 ساعة عملية).
-  3. برنامج **STEP المتخصص في بايثون وهياكل البيانات** (30 ساعة).
-  4. 4 شهادات تخصصية متقدمة في جافاسكريبت الحديثة (ES6+).
-  5. شهادة الرخصة الدولية لقيادة الحاسوب (**ICDL**) معتمدة من البورد الكندي و ISO 21001.`
+  1. 3 شهادات دولية معتمدة في الذكاء الاصطناعي من **Anthropic** (Claude Code 101, Claude API, AI Fluency).
+  2. زمالة **كود ماب 2026 (CodeMap)** في معمارية البرمجيات وهندسة النظم (144 ساعة).
+  3. برنامج **تطوير الواجهات الاحترافي CODE TECH** (120 ساعة عملية).
+  4. برنامج **STEP المتخصص في بايثون وهياكل البيانات** (30 ساعة).
+  5. 4 شهادات تخصصية متقدمة في جافاسكريبت الحديثة (ES6+).
+  6. شهادة الرخصة الدولية لقيادة الحاسوب (**ICDL**) معتمدة من البورد الكندي و ISO 21001.`
         : `**Academic & Professional Credentials:**
 
 • **Degree:** Computer Systems Engineering at **Al-Azhar University, Gaza**.
 • **Verified Accreditations (+320 training hours):**
-  1. **CodeMap 2026 Software Architecture** Fellowship (144 accredited hours).
-  2. **CODE TECH Professional Frontend** Program (120 hands-on hours).
-  3. **STEP Intensive Python & Data Algorithms** (30 hours).
-  4. 4 Advanced Core JavaScript certifications.
-  5. International **ICDL** certification licensed by Canadian Board & ISO 21001.`,
+  1. 3 official AI Certifications from **Anthropic** (Claude Code 101, Claude API, AI Fluency).
+  2. **CodeMap 2026 Software Architecture** Fellowship (144 accredited hours).
+  3. **CODE TECH Professional Frontend** Program (120 hands-on hours).
+  4. **STEP Intensive Python & Data Algorithms** (30 hours).
+  5. 4 Advanced Core JavaScript certifications.
+  6. International **ICDL** certification licensed by Canadian Board & ISO 21001.`,
       actions: [
         { label: isAr ? 'تصفح كتاب الشهادات التفاعلي ↗' : 'Open 3D Certificates Book ↗', action: () => closeBotAndScroll('certificates') }
       ]

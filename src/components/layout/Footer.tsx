@@ -31,6 +31,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, dict, profile }) => {
                 src="/logo-icon.png"
                 alt="Eng. Hadeel Baroud"
                 fill
+                sizes="44px"
                 className="object-contain"
               />
             </div>

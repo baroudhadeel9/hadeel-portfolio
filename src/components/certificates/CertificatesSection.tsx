@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   BookOpen,
@@ -12,9 +13,13 @@ import {
 } from 'lucide-react';
 import { CertificateItem, Dictionary } from '@/lib/schemas';
 import { ClosedBookCover } from './ClosedBookCover';
-import { CertificateZoomModal } from './CertificateZoomModal';
 import { DocPage, DetailsPage } from './CertificateBookPage';
 import { CertificatesGridView } from './CertificatesGridView';
+
+const CertificateZoomModal = dynamic(
+  () => import('./CertificateZoomModal').then((mod) => mod.CertificateZoomModal),
+  { ssr: false }
+);
 
 interface CertificatesSectionProps {
   lang: 'ar' | 'en';

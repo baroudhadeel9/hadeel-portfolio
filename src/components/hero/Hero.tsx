@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import {
   ArrowRight,
   ArrowLeft,
@@ -43,6 +43,9 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
     'Al-Azhar University',
     '11 Verified Certifications'
   ];
+
+  const marqueeContainerRef = useRef<HTMLDivElement>(null);
+  const isMarqueeInView = useInView(marqueeContainerRef, { margin: '150px' });
 
   return (
     <section
@@ -187,7 +190,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
                     alt="Eng. Hadeel Baroud"
                     fill
                     priority
-                    sizes="(max-width: 768px) 100vw, 360px"
+                    sizes="(max-width: 640px) 256px, (max-width: 1024px) 288px, 320px"
                     className="object-cover object-[center_12%]"
                   />
                 </div>
@@ -210,7 +213,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
       </div>
 
       {/* Centered Kinetic Tech Marquee Ribbon at bottom of Hero */}
-      <div className="mt-14 sm:mt-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      <div ref={marqueeContainerRef} className="mt-14 sm:mt-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -221,7 +224,10 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
           <div className="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
           <div className="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
-          <div className={isAr ? 'animate-marquee-rtl flex gap-6 items-center' : 'animate-marquee-ltr flex gap-6 items-center'}>
+          <div
+            className={isAr ? 'animate-marquee-rtl flex gap-6 items-center' : 'animate-marquee-ltr flex gap-6 items-center'}
+            style={{ animationPlayState: isMarqueeInView ? 'running' : 'paused' }}
+          >
             {[...marqueeSkills, ...marqueeSkills].map((item, idx) => (
               <div
                 key={idx}

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { 
   Cpu, 
@@ -18,8 +19,12 @@ import {
 import { SkillDetail } from './types';
 import { skillDetailsMap } from './skillDetailsData';
 import { BentoSpotlightCard } from './BentoSpotlightCard';
-import { SkillInspectorModal } from './SkillInspectorModal';
 import { Dictionary, SkillsData } from '@/lib/schemas';
+
+const SkillInspectorModal = dynamic(
+  () => import('./SkillInspectorModal').then((mod) => mod.SkillInspectorModal),
+  { ssr: false }
+);
 
 interface SkillsSectionProps {
   lang: 'ar' | 'en';

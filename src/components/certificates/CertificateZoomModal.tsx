@@ -48,7 +48,6 @@ export const CertificateZoomModal: React.FC<CertificateZoomModalProps> = ({
             src={cert.image}
             alt={cert.title}
             fill
-            priority
             sizes="(max-width: 1200px) 100vw, 1000px"
             className="object-contain"
           />

@@ -62,7 +62,6 @@ export const DocPage: React.FC<DocPageProps> = ({
           src={cert.image}
           alt={cert.title}
           fill
-          priority
           sizes="(max-width: 768px) 100vw, 450px"
           className="object-cover group-hover:scale-102 transition-transform duration-300"
         />

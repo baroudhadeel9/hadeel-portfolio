@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { MotionConfig } from 'framer-motion';
 import type { Locale, Dictionary } from '@/types';
 import arDict from '../../../data/locales/ar.json';
 import enDict from '../../../data/locales/en.json';
@@ -81,7 +82,9 @@ export const LocaleProvider: React.FC<LocaleProviderProps> = ({
         setLanguage,
       }}
     >
-      {children}
+      <MotionConfig reducedMotion="user">
+        {children}
+      </MotionConfig>
     </LocaleContext.Provider>
   );
 };

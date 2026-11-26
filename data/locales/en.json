@@ -1,7 +1,6 @@
 {
   "nav": {
     "about": "About",
-    "studio": "Solution Studio",
     "projects": "Projects",
     "certificates": "Certifications",
     "skills": "Skills & Tech",
@@ -13,11 +12,16 @@
     "badge": "Computer Systems Engineer | Full-Stack Developer",
     "greeting": "Hello, I am Eng.",
     "name": "Hadeel Emad Baroud",
+    "subspecialty": "Computer Systems Engineer & AI-Integrated Full-Stack Developer",
+    "universityBadge": "Computer Systems Engineering · Al-Azhar University",
     "description": "Designing and engineering thoughtful, high-performance web systems that balance deep architectural integrity with intuitive, refined user experiences.",
-    "ctaStudio": "Solution Studio",
     "ctaProjects": "Explore Work",
     "ctaContact": "Get in Touch",
-    "locationBadge": "Available for Freelance & Web Engineering"
+    "locationBadge": "Available for Freelance & Web Engineering",
+    "chatWhatsApp": "Chat on WhatsApp",
+    "sendEmail": "Send an email",
+    "viewLinkedIn": "LinkedIn Profile",
+    "viewGitHub": "GitHub Repositories"
   },
   "projects": {
     "badge": "Proven Case Studies",
@@ -26,7 +30,11 @@
     "viewDetails": "View Architecture & Details",
     "challenges": "Problem & Objective:",
     "solution": "Solution & Architecture:",
-    "keyMetrics": "Key Highlights:"
+    "keyMetrics": "Key Highlights:",
+    "empty": "No projects available currently.",
+    "visitLive": "Visit Live Website",
+    "visitPlatform": "Visit Live Platform",
+    "archHighlights": "Core Architectural Highlights:"
   },
   "certificates": {
     "badge": "Accredited & Verified Credentials",
@@ -40,17 +48,50 @@
     "filterJS": "Core JavaScript (4)",
     "filterPython": "Python & Scripting (1)",
     "verifyCode": "Official Verification Code:",
-    "hoursLabel": "Accredited Hours:"
+    "hoursLabel": "Accredited Hours:",
+    "empty": "No certificates available currently.",
+    "interactiveBook": "Interactive Book",
+    "gridView": "Grid View",
+    "bookOpenTitle": "Explore verified certificates & credentials",
+    "bookClosedTitle": "Book is closed",
+    "closeBook": "Close Book",
+    "openBook": "Open Book",
+    "zoom": "Zoom",
+    "inspectOfficial": "Inspect Certificate",
+    "clickToInspect": "Click to inspect",
+    "verifiedCredential": "Verified Credential",
+    "exploreAlbum": "Explore Verified Album",
+    "openAlbum": "Open verified certificates album",
+    "nextPage": "Next page",
+    "prevPage": "Previous page"
   },
   "skills": {
     "badge": "Technical & Architectural Arsenal",
     "title": "Engineering Stack & Tools",
-    "subtitle": "Building robust software starts with choosing the right architectural building blocks."
+    "subtitle": "Building robust software starts with choosing the right architectural building blocks.",
+    "skillsCount": "Skills"
   },
   "contact": {
     "badge": "Let's Collaborate",
     "title": "Have a vision you want to build into a thriving system?",
     "subtitle": "I am currently open for freelance projects, technical consulting, and end-to-end full-stack development.",
+    "quickFormTitle": "Quick Project Inquiry Form",
+    "available": "Available",
+    "remoteWork": "Remote Collaboration:",
+    "remoteEngagement": "Open to regional & international engagements",
+    "sendToEmail": "Send Message to Email ✉️",
+    "delivering": "Delivering Message...",
+    "or": "or",
+    "directWhatsApp": "Direct Instant Chat via WhatsApp 💬",
+    "secureNote": "🔒 Your message is delivered securely and directly to Eng. Hadeel’s inbox",
+    "rateLimitError": "Rate limit exceeded. Please wait 15 minutes before trying again.",
+    "timeoutError": "Request timed out. Please check your network or reach out via WhatsApp.",
+    "genericError": "Submission failed. You can use WhatsApp or Email.",
+    "copyEmail": "Copy email address",
+    "copied": "Copied!",
+    "copy": "Copy",
+    "sendAnother": "Send Another Inquiry",
+    "fastTrackWhatsApp": "Fast-track on WhatsApp",
     "form": {
       "nameLabel": "Your Name or Company",
       "namePlaceholder": "e.g. Sarah Connor / Tech Innovators",

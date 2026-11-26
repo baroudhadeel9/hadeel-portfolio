@@ -263,7 +263,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               
               <div className="flex items-center justify-between pb-2 border-b border-slate-200/60">
                 <h3 className="text-base font-bold text-slate-900 font-tajawal">
-                  {isAr ? 'نموذج التواصل السريع وحجز استشارة' : 'Quick Project Inquiry Form'}
+                  {dict.contact.quickFormTitle}
                 </h3>
                 <Sparkles className="w-4 h-4 text-indigo-600" />
               </div>
@@ -444,14 +444,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       <Send className="w-3.5 h-3.5" />
                       <span>
                         {isSubmitting 
-                          ? (isAr ? 'جاري إرسال الرسالة إلى بريد هديل...' : 'Delivering Message...') 
-                          : (isAr ? 'إرسال الرسالة إلى بريد هديل مباشرة ✉️' : 'Send Message to Email ✉️')}
+                          ? dict.contact.delivering 
+                          : dict.contact.sendToEmail}
                       </span>
                     </button>
 
                     <div className="flex items-center gap-2">
                       <div className="flex-1 h-px bg-slate-200/80" />
-                      <span className="text-[10px] text-slate-500 font-ibm">{isAr ? 'أو' : 'or'}</span>
+                      <span className="text-[10px] text-slate-500 font-ibm">{dict.contact.or}</span>
                       <div className="flex-1 h-px bg-slate-200/80" />
                     </div>
 
@@ -462,14 +462,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       className="w-full py-3 px-4 rounded-xl font-bold text-xs text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-2xs disabled:opacity-50 font-tajawal active:scale-[0.98]"
                     >
                       <WhatsAppIcon className="w-4 h-4 text-emerald-600" />
-                      <span>{isAr ? 'تواصل مباشر وفوري عبر واتساب 💬' : 'Direct Instant Chat via WhatsApp 💬'}</span>
+                      <span>{dict.contact.directWhatsApp}</span>
                     </button>
                   </div>
 
                   <p className="text-[11px] text-slate-500 text-center font-ibm pt-1">
-                    {isAr 
-                      ? '🔒 تصل رسالتك مباشرة وبأمان إلى البريد الإلكتروني للمهندسة هديل'
-                      : '🔒 Your message is delivered securely and directly to Eng. Hadeel’s inbox'}
+                    {dict.contact.secureNote}
                   </p>
 
                 </form>

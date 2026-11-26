@@ -151,7 +151,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                 }`}
             >
               <BookOpen className="w-3.5 h-3.5" aria-hidden="true" />
-              <span>{isAr ? 'عرض الكتاب التفاعلي' : 'Interactive Book'}</span>
+              <span>{dict.certificates.interactiveBook}</span>
             </button>
             <button
               type="button"
@@ -163,14 +163,14 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                 }`}
             >
               <Grid className="w-3.5 h-3.5" aria-hidden="true" />
-              <span>{isAr ? 'عرض القائمة' : 'Grid View'}</span>
+              <span>{dict.certificates.gridView}</span>
             </button>
           </div>
         </motion.div>
 
         {certificates.length === 0 ? (
           <div className="text-center py-12 p-8 rounded-2xl border border-slate-200 bg-white text-slate-600 text-sm font-ibm max-w-md mx-auto shadow-2xs">
-            {isAr ? 'لا توجد شهادات معروضة حالياً.' : 'No certificates available currently.'}
+            {dict.certificates.empty}
           </div>
         ) : (
           <>
@@ -189,8 +189,8 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                 <span>{isBookOpen ? '📖' : '📕'}</span>
                 <span>
                   {isBookOpen
-                    ? (isAr ? 'تصفح شهادات الاعتماد والخبرات' : 'Explore verified certificates & credentials')
-                    : (isAr ? 'الكتاب مغلق' : 'Book is closed')}
+                    ? dict.certificates.bookOpenTitle
+                    : dict.certificates.bookClosedTitle}
                 </span>
                 <span className="hidden sm:inline-block text-[11px] text-slate-400 font-mono">
                   ({currentPageIndex + 1} / {totalPages})
@@ -205,12 +205,12 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                 {isBookOpen ? (
                   <>
                     <BookMarked className="w-3.5 h-3.5 text-indigo-600" />
-                    <span>{isAr ? 'إغلاق الكتاب' : 'Close Book'}</span>
+                    <span>{dict.certificates.closeBook}</span>
                   </>
                 ) : (
                   <>
                     <BookOpen className="w-3.5 h-3.5 text-indigo-600" />
-                    <span>{isAr ? 'فتح الكتاب' : 'Open Book'}</span>
+                    <span>{dict.certificates.openBook}</span>
                   </>
                 )}
               </button>
@@ -242,8 +242,8 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                       disabled={isFlipping}
                       onClick={() => triggerFlip(isAr ? 'next' : 'prev')}
                       className="pointer-events-auto p-3 rounded-full bg-white text-slate-800 hover:text-indigo-600 shadow-xl border border-slate-200/90 hover:scale-105 active:scale-95 transition-all disabled:opacity-40 cursor-pointer"
-                      title={isAr ? 'التالي' : 'Previous'}
-                      aria-label={isAr ? 'الصفحة التالية' : 'Next page'}
+                      title={dict.certificates.nextPage}
+                      aria-label={dict.certificates.nextPage}
                     >
                       <ChevronRight className={`w-5 h-5 ${isAr ? '' : 'rotate-180'}`} aria-hidden="true" />
                     </button>
@@ -252,8 +252,8 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                       disabled={isFlipping}
                       onClick={() => triggerFlip(isAr ? 'prev' : 'next')}
                       className="pointer-events-auto p-3 rounded-full bg-white text-slate-800 hover:text-indigo-600 shadow-xl border border-slate-200/90 hover:scale-105 active:scale-95 transition-all disabled:opacity-40 cursor-pointer"
-                      title={isAr ? 'السابق' : 'Next'}
-                      aria-label={isAr ? 'الصفحة السابقة' : 'Previous page'}
+                      title={dict.certificates.prevPage}
+                      aria-label={dict.certificates.prevPage}
                     >
                       <ChevronLeft className={`w-5 h-5 ${isAr ? '' : 'rotate-180'}`} aria-hidden="true" />
                     </button>

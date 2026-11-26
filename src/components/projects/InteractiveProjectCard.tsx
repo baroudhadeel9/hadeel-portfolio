@@ -10,18 +10,20 @@ import {
   Layers,
   CheckCircle2,
 } from 'lucide-react';
-import type { ProjectItem } from '@/types';
+import type { ProjectItem, Dictionary } from '@/types';
 
 interface InteractiveProjectCardProps {
   proj: ProjectItem;
   isAr: boolean;
   domain: string;
+  dict: Dictionary;
 }
 
 export const InteractiveProjectCard: React.FC<InteractiveProjectCardProps> = ({
   proj,
   isAr,
   domain,
+  dict,
 }) => {
   const [tilt, setTilt] = useState({ x: 0, y: 0, glowX: 50, glowY: 50, active: false });
 
@@ -142,7 +144,7 @@ export const InteractiveProjectCard: React.FC<InteractiveProjectCardProps> = ({
               <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover/window:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
                 <span className="px-4 py-2 rounded-xl bg-white text-slate-900 text-xs font-bold shadow-lg flex items-center gap-2 transform translate-y-2 group-hover/window:translate-y-0 transition-transform duration-300 font-tajawal">
                   <ExternalLink className="w-3.5 h-3.5 text-indigo-600" />
-                  <span>{isAr ? 'زيارة الموقع الحي مباشرة' : 'Visit Live Website'}</span>
+                  <span>{dict.projects.visitLive}</span>
                 </span>
               </div>
             </a>
@@ -171,7 +173,7 @@ export const InteractiveProjectCard: React.FC<InteractiveProjectCardProps> = ({
         <div className="pt-3 space-y-2 border-t border-slate-100 flex-1 flex flex-col justify-start">
           <div className="flex items-center gap-1.5 text-[11px] font-bold text-slate-900 font-ibm mb-1">
             <Layers className="w-3 h-3 text-indigo-600" />
-            <span>{isAr ? 'أبرز مميزات المعمارية والوظائف:' : 'Core Architectural Highlights:'}</span>
+            <span>{dict.projects.archHighlights}</span>
           </div>
           {proj.features.slice(0, 3).map((feat, fIdx) => (
             <div key={fIdx} className="flex items-start gap-2 text-xs text-slate-800">
@@ -216,7 +218,7 @@ export const InteractiveProjectCard: React.FC<InteractiveProjectCardProps> = ({
               className="w-full py-3 px-4 rounded-xl text-xs sm:text-sm font-bold text-white bg-slate-900 hover:bg-slate-800 shadow-2xs hover:shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer text-center group/btn active:scale-[0.99]"
             >
               <ExternalLink className="w-4 h-4 shrink-0 transition-transform group-hover/btn:scale-110" />
-              <span>{isAr ? 'زيارة المنصة الحية مباشرة' : 'Visit Live Platform'}</span>
+              <span>{dict.projects.visitPlatform}</span>
             </a>
           </div>
         )}

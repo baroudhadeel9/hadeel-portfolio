@@ -72,7 +72,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
             {/* Single Elegant Academic & Engineering Eyebrow Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-800 shadow-2xs font-ibm">
               <GraduationCap className="w-3.5 h-3.5 text-indigo-600" />
-              <span>{isAr ? 'هندسة أنظمة حاسوب · جامعة الأزهر' : 'Computer Systems Engineering · Al-Azhar University'}</span>
+              <span>{dict.hero.universityBadge}</span>
             </div>
 
             {/* Name Heading */}
@@ -82,9 +82,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
 
             {/* Specialization / Subtitle */}
             <p className="text-base sm:text-lg lg:text-xl font-bold text-slate-800 leading-snug font-tajawal max-w-xl">
-              {isAr
-                ? 'مهندسة أنظمة حاسوب ومطورة ويب Full-Stack معتمدة في الذكاء الاصطناعي'
-                : 'Computer Systems Engineer & AI-Integrated Full-Stack Developer'}
+              {dict.hero.subspecialty}
             </p>
 
             {/* Concise Bio with High Contrast */}
@@ -128,7 +126,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-xl bg-white border border-slate-200 hover:border-emerald-300 hover:bg-emerald-50 text-slate-600 hover:text-emerald-700 shadow-2xs flex items-center justify-center transition-all duration-200 cursor-pointer"
                   title="WhatsApp"
-                  aria-label={isAr ? 'تواصل عبر واتساب' : 'Chat on WhatsApp'}
+                  aria-label={dict.hero.chatWhatsApp}
                 >
                   <WhatsAppIcon className="w-4 h-4" />
                 </motion.a>
@@ -139,7 +137,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
                   href={`mailto:${profile.contact.email}`}
                   className="w-10 h-10 rounded-xl bg-white border border-slate-200 hover:border-indigo-300 hover:bg-indigo-50 text-slate-600 hover:text-indigo-700 shadow-2xs flex items-center justify-center transition-all duration-200 cursor-pointer"
                   title="Email"
-                  aria-label={isAr ? 'إرسال بريد إلكتروني' : 'Send an email'}
+                  aria-label={dict.hero.sendEmail}
                 >
                   <Mail className="w-4 h-4" />
                 </motion.a>
@@ -152,7 +150,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-xl bg-white border border-slate-200 hover:border-sky-300 hover:bg-sky-50 text-slate-600 hover:text-sky-700 shadow-2xs flex items-center justify-center transition-all duration-200 cursor-pointer"
                   title="LinkedIn"
-                  aria-label={isAr ? 'الملف الشخصي على لينكد إن' : 'LinkedIn Profile'}
+                  aria-label={dict.hero.viewLinkedIn}
                 >
                   <LinkedinIcon className="w-4 h-4" />
                 </motion.a>
@@ -165,7 +163,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-xl bg-white border border-slate-200 hover:border-slate-400 hover:bg-slate-100 text-slate-600 hover:text-slate-950 shadow-2xs flex items-center justify-center transition-all duration-200 cursor-pointer"
                   title="GitHub"
-                  aria-label={isAr ? 'المستودعات البرمجية على جيت هاب' : 'GitHub Repositories'}
+                  aria-label={dict.hero.viewGitHub}
                 >
                   <GithubIcon className="w-4 h-4" />
                 </motion.a>

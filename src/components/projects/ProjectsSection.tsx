@@ -56,7 +56,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang, dict, pr
         {/* 3-Column Clean Minimal Grid with Staggered Scroll-Entrance */}
         {projects.length === 0 ? (
           <div className="text-center py-12 p-8 rounded-2xl border border-slate-200 bg-slate-50 text-slate-600 text-sm font-ibm">
-            {isAr ? 'لا توجد مشاريع متاحة حالياً.' : 'No projects available currently.'}
+            {dict.projects.empty}
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 items-stretch">
@@ -76,6 +76,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang, dict, pr
                     proj={proj}
                     isAr={isAr}
                     domain={domain}
+                    dict={dict}
                   />
                 </motion.div>
               );

@@ -2,12 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import type { ProfileData } from '@/types';
-
-// Convert western digits to eastern Arabic numerals
-const toArabicDigits = (num: number | string): string => {
-  const arabicDigits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
-  return num.toString().replace(/[0-9]/g, (w) => arabicDigits[+w] ?? w);
-};
+import { toArabicDigits } from '@/lib/utils';
 
 interface StatConfig {
   target: number;

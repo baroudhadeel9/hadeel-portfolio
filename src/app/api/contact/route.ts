@@ -1,30 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ContactFormSchema } from '@/lib/schemas';
-
-// In-Memory Rate Limiting (Best-effort on serverless platforms like Vercel)
-// On serverless, memory persists only for the lifetime of a lambda instance.
-// For strict cross-region rate limiting at scale, an external store (Upstash/Redis) can be attached.
-const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
-
-const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
-const MAX_REQUESTS_PER_WINDOW = 5;
-
-function checkRateLimit(ip: string): boolean {
-  const now = Date.now();
-  const entry = rateLimitMap.get(ip);
-
-  if (!entry || now > entry.resetAt) {
-    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
-    return true;
-  }
-
-  if (entry.count >= MAX_REQUESTS_PER_WINDOW) {
-    return false;
-  }
-
-  entry.count += 1;
-  return true;
-}
+import { contactRateLimiter } from '@/lib/rate-limit';
 
 export async function POST(req: NextRequest) {
   try {
@@ -32,7 +8,7 @@ export async function POST(req: NextRequest) {
     const forwardedFor = req.headers.get('x-forwarded-for');
     const clientIp = forwardedFor ? forwardedFor.split(',')[0]?.trim() || 'unknown' : 'local';
 
-    if (!checkRateLimit(clientIp)) {
+    if (!contactRateLimiter.check(clientIp)) {
       return NextResponse.json(
         {
           success: false,

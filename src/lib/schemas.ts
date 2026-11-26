@@ -36,7 +36,7 @@ export const CertificateSchema = z.object({
   hoursAr: z.string().optional(),
   date: z.string().optional(),
   highlight: z.boolean(),
-  description: z.object({ ar: z.string(), en: z.string() })
+  description: z.object({ ar: z.string(), en: z.string() }),
 });
 export type CertificateItem = z.infer<typeof CertificateSchema>;
 
@@ -53,15 +53,21 @@ export const ProjectSchema = z.object({
   liveUrl: z.string().optional(),
   githubUrl: z.string().optional(),
   tech: z.array(z.string()),
-  metrics: z.array(z.object({
-    value: z.string(),
-    label: z.object({ ar: z.string(), en: z.string() })
-  })).optional(),
+  metrics: z
+    .array(
+      z.object({
+        value: z.string(),
+        label: z.object({ ar: z.string(), en: z.string() }),
+      })
+    )
+    .optional(),
   challenges: z.object({ ar: z.string(), en: z.string() }),
-  features: z.array(z.object({
-    title: z.object({ ar: z.string(), en: z.string() }),
-    desc: z.object({ ar: z.string(), en: z.string() })
-  }))
+  features: z.array(
+    z.object({
+      title: z.object({ ar: z.string(), en: z.string() }),
+      desc: z.object({ ar: z.string(), en: z.string() }),
+    })
+  ),
 });
 export type ProjectItem = z.infer<typeof ProjectSchema>;
 
@@ -72,7 +78,7 @@ export const ProfileSchema = z.object({
   subtitle: z.object({ ar: z.string(), en: z.string() }),
   education: z.object({
     degree: z.object({ ar: z.string(), en: z.string() }),
-    university: z.object({ ar: z.string(), en: z.string() })
+    university: z.object({ ar: z.string(), en: z.string() }),
   }),
   contact: z.object({
     phone: z.string(),
@@ -80,12 +86,14 @@ export const ProfileSchema = z.object({
     email: z.string().email(),
     location: z.object({ ar: z.string(), en: z.string() }),
     github: z.string().url(),
-    linkedin: z.string().url()
+    linkedin: z.string().url(),
   }),
-  stats: z.array(z.object({
-    value: z.object({ ar: z.string(), en: z.string() }),
-    label: z.object({ ar: z.string(), en: z.string() })
-  }))
+  stats: z.array(
+    z.object({
+      value: z.object({ ar: z.string(), en: z.string() }),
+      label: z.object({ ar: z.string(), en: z.string() }),
+    })
+  ),
 });
 export type ProfileData = z.infer<typeof ProfileSchema>;
 
@@ -96,12 +104,12 @@ export const SkillItemSchema = z.object({
   levelAr: z.string(),
   percent: z.number(),
   highlight: z.boolean().optional(),
-  application: z.object({ ar: z.string(), en: z.string() })
+  application: z.object({ ar: z.string(), en: z.string() }),
 });
 
 export const SkillCategorySchema = z.object({
   category: z.object({ ar: z.string(), en: z.string() }),
-  skills: z.array(SkillItemSchema)
+  skills: z.array(SkillItemSchema),
 });
 
 export const SkillsDataSchema = z.array(SkillCategorySchema);

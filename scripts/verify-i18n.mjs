@@ -38,45 +38,47 @@ const enData = loadJson(enPath);
 const arEntries = getKeyPaths(arData);
 const enEntries = getKeyPaths(enData);
 
-const arKeySet = new Set(arEntries.map((e) => e.path));
-const enKeySet = new Set(enEntries.map((e) => e.path));
+const arKeySet = new Set(arEntries.map(e => e.path));
+const enKeySet = new Set(enEntries.map(e => e.path));
 
-const missingInEn = [...arKeySet].filter((k) => !enKeySet.has(k));
-const missingInAr = [...enKeySet].filter((k) => !arKeySet.has(k));
+const missingInEn = [...arKeySet].filter(k => !enKeySet.has(k));
+const missingInAr = [...enKeySet].filter(k => !arKeySet.has(k));
 
-const emptyInAr = arEntries.filter((e) => typeof e.value === 'string' && e.value.trim() === '');
-const emptyInEn = enEntries.filter((e) => typeof e.value === 'string' && e.value.trim() === '');
+const emptyInAr = arEntries.filter(e => typeof e.value === 'string' && e.value.trim() === '');
+const emptyInEn = enEntries.filter(e => typeof e.value === 'string' && e.value.trim() === '');
 
 let hasErrors = false;
 
 if (missingInEn.length > 0) {
   hasErrors = true;
   console.error('\n❌ Keys present in ar.json but MISSING in en.json:');
-  missingInEn.forEach((k) => console.error(`  - ${k}`));
+  missingInEn.forEach(k => console.error(`  - ${k}`));
 }
 
 if (missingInAr.length > 0) {
   hasErrors = true;
   console.error('\n❌ Keys present in en.json but MISSING in ar.json:');
-  missingInAr.forEach((k) => console.error(`  - ${k}`));
+  missingInAr.forEach(k => console.error(`  - ${k}`));
 }
 
 if (emptyInAr.length > 0) {
   hasErrors = true;
   console.error('\n⚠️ Empty string values in ar.json:');
-  emptyInAr.forEach((e) => console.error(`  - ${e.path}`));
+  emptyInAr.forEach(e => console.error(`  - ${e.path}`));
 }
 
 if (emptyInEn.length > 0) {
   hasErrors = true;
   console.error('\n⚠️ Empty string values in en.json:');
-  emptyInEn.forEach((e) => console.error(`  - ${e.path}`));
+  emptyInEn.forEach(e => console.error(`  - ${e.path}`));
 }
 
 if (hasErrors) {
   console.error('\n🚨 i18n Verification FAILED. Please sync keys between ar.json and en.json.\n');
   process.exit(1);
 } else {
-  console.log(`\n✅ i18n Verification PASSED: All ${arKeySet.size} translation keys match perfectly between ar.json and en.json!\n`);
+  console.log(
+    `\n✅ i18n Verification PASSED: All ${arKeySet.size} translation keys match perfectly between ar.json and en.json!\n`
+  );
   process.exit(0);
 }

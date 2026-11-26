@@ -1,0 +1,9 @@
+node_modules
+.next
+dist
+build
+out
+coverage
+.system_generated
+package-lock.json
+*.log

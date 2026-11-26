@@ -168,15 +168,21 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
           </div>
         </motion.div>
 
-        {/* VIEW 1: INTERACTIVE OPEN / CLOSE BOOK */}
-        {viewMode === 'book' && (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.65, delay: 0.1 }}
-            className="max-w-4xl mx-auto"
-          >
+        {certificates.length === 0 ? (
+          <div className="text-center py-12 p-8 rounded-2xl border border-slate-200 bg-white text-slate-600 text-sm font-ibm max-w-md mx-auto shadow-2xs">
+            {isAr ? 'لا توجد شهادات معروضة حالياً.' : 'No certificates available currently.'}
+          </div>
+        ) : (
+          <>
+            {/* VIEW 1: INTERACTIVE OPEN / CLOSE BOOK */}
+            {viewMode === 'book' && (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.65, delay: 0.1 }}
+                className="max-w-4xl mx-auto"
+              >
             {/* Book State Controls Bar */}
             <div className="mb-4 flex items-center justify-between text-xs px-2 font-ibm">
               <span className="text-slate-600 font-medium flex items-center gap-2">
@@ -470,6 +476,8 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
             isAr={isAr}
             onInspect={(c) => setModalCert(c)}
           />
+        )}
+          </>
         )}
 
         {/* Certificate Zoom Inspection Modal */}

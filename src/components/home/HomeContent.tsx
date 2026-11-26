@@ -11,6 +11,7 @@ import { CertificatesSection } from '@/components/certificates/CertificatesSecti
 import { SkillsSection } from '@/components/skills/SkillsSection';
 import { ContactSection } from '@/components/contact/ContactSection';
 import { Footer } from '@/components/layout/Footer';
+import { ErrorBoundary } from '@/components/common/ErrorBoundary';
 
 // Dynamically lazy-load AI Assistant Bot to minimize initial JS bundle size
 const AIAssistantBot = dynamic(
@@ -48,7 +49,12 @@ export const HomeContent: React.FC<HomeContentProps> = ({
       <ProjectsSection lang={lang} dict={dict} projects={projects} />
 
       {/* Verified Accreditations & 11 Certificates in Interactive Book View */}
-      <CertificatesSection lang={lang} dict={dict} certificates={certificates} />
+      <ErrorBoundary
+        fallbackTitle={lang === 'ar' ? 'تعذر تحميل كتاب الشهادات' : 'Failed to load Certificates Book'}
+        fallbackMessage={lang === 'ar' ? 'حدث خطأ مؤقت أثناء تصيير كتاب الشهادات، يمكنك المحاولة مجدداً.' : 'A temporary issue occurred while rendering the certificates book. You can retry.'}
+      >
+        <CertificatesSection lang={lang} dict={dict} certificates={certificates} />
+      </ErrorBoundary>
 
       {/* Skills Matrix & Engineering Tools */}
       <SkillsSection lang={lang} dict={dict} skillsData={skillsData} />
@@ -60,7 +66,11 @@ export const HomeContent: React.FC<HomeContentProps> = ({
       <Footer lang={lang} dict={dict} profile={profile} />
 
       {/* Floating Interactive AI Assistant Bot */}
-      <AIAssistantBot lang={lang} dict={dict} profile={profile} />
+      <ErrorBoundary
+        fallback={null}
+      >
+        <AIAssistantBot lang={lang} dict={dict} profile={profile} />
+      </ErrorBoundary>
     </main>
   );
 };

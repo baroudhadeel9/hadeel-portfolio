@@ -54,28 +54,34 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang, dict, pr
         </motion.div>
 
         {/* 3-Column Clean Minimal Grid with Staggered Scroll-Entrance */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 items-stretch">
-          {projects.map((proj, idx) => {
-            const domain = getDomain(proj.liveUrl);
+        {projects.length === 0 ? (
+          <div className="text-center py-12 p-8 rounded-2xl border border-slate-200 bg-slate-50 text-slate-600 text-sm font-ibm">
+            {isAr ? 'لا توجد مشاريع متاحة حالياً.' : 'No projects available currently.'}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 items-stretch">
+            {projects.map((proj, idx) => {
+              const domain = getDomain(proj.liveUrl);
 
-            return (
-              <motion.div
-                key={proj.id}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="h-full"
-              >
-                <InteractiveProjectCard
-                  proj={proj}
-                  isAr={isAr}
-                  domain={domain}
-                />
-              </motion.div>
-            );
-          })}
-        </div>
+              return (
+                <motion.div
+                  key={proj.id}
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  className="h-full"
+                >
+                  <InteractiveProjectCard
+                    proj={proj}
+                    isAr={isAr}
+                    domain={domain}
+                  />
+                </motion.div>
+              );
+            })}
+          </div>
+        )}
 
       </div>
 

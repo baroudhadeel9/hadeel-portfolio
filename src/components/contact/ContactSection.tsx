@@ -75,6 +75,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [apiError, setApiError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
   const [sentVia, setSentVia] = useState<'api' | 'whatsapp' | 'email' | null>(null);
@@ -126,9 +127,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   // 1. Direct Background Email Submission via Secure Next.js Server API
   const handleDirectSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return; // Prevent double-submit
     if (!validate()) return;
 
     setIsSubmitting(true);
+    setApiError(null);
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 12000); // 12s network timeout
 
     try {
       const response = await fetch('/api/contact', {
@@ -138,24 +144,49 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           'Accept': 'application/json',
         },
         body: JSON.stringify(formData),
+        signal: controller.signal,
       });
 
+      clearTimeout(timeoutId);
       const result = await response.json();
 
       if (response.ok && result.success) {
         setSubmitSuccess(true);
         setSentVia('api');
       } else {
-        // Fallback to Gmail if API returns a non-success response
+        if (response.status === 429) {
+          setApiError(
+            isAr
+              ? 'تم تجاوز الحد الأقصى للمحاولات. يرجى الانتظار 15 دقيقة قبل المحاولة مجدداً.'
+              : 'Rate limit exceeded. Please wait 15 minutes before trying again.'
+          );
+        } else if (result.error) {
+          setApiError(
+            typeof result.error === 'string'
+              ? result.error
+              : (isAr ? 'تعذر إرسال النموذج. يمكنك استخدام واتساب أو البريد المباشر.' : 'Submission failed. You can use WhatsApp or Email.')
+          );
+        } else {
+          // Fallback to Gmail if API returns unhandled non-success
+          setSentVia('email');
+          setSubmitSuccess(true);
+          openGmailFallback();
+        }
+      }
+    } catch (err: unknown) {
+      clearTimeout(timeoutId);
+      if (err instanceof DOMException && err.name === 'AbortError') {
+        setApiError(
+          isAr
+            ? 'انتهت مهلة الاتصال بالخادم (Timeout). يرجى التحقق من اتصال الإنترنت أو استخدام واتساب.'
+            : 'Request timed out. Please check your network or reach out via WhatsApp.'
+        );
+      } else {
+        // Network fallback to Gmail
         setSentVia('email');
         setSubmitSuccess(true);
         openGmailFallback();
       }
-    } catch {
-      // Network fallback to Gmail
-      setSentVia('email');
-      setSubmitSuccess(true);
-      openGmailFallback();
     } finally {
       setIsSubmitting(false);
     }
@@ -163,6 +194,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
   // 2. Direct WhatsApp Dispatch (Instant notification to Hadeel's phone - synchronous for mobile compatibility)
   const handleSendViaWhatsApp = () => {
+    if (isSubmitting) return;
     if (!validate()) return;
 
     setIsSubmitting(true);
@@ -393,6 +425,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       </p>
                     )}
                   </div>
+
+                  {/* API Error Feedback Banner */}
+                  {apiError && (
+                    <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs flex items-start gap-2 animate-in fade-in">
+                      <AlertCircle className="w-4 h-4 shrink-0 text-rose-600 mt-0.5" />
+                      <div className="flex-1 font-ibm leading-relaxed">{apiError}</div>
+                    </div>
+                  )}
 
                   {/* Primary & WhatsApp Action Buttons */}
                   <div className="pt-2 space-y-2.5">

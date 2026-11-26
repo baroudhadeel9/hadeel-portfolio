@@ -144,23 +144,25 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
             <button
               type="button"
               onClick={() => setViewMode('book')}
+              aria-pressed={viewMode === 'book'}
               className={`px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${viewMode === 'book'
                 ? 'bg-slate-900 text-white shadow-xs'
                 : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
                 }`}
             >
-              <BookOpen className="w-3.5 h-3.5" />
+              <BookOpen className="w-3.5 h-3.5" aria-hidden="true" />
               <span>{isAr ? 'عرض الكتاب التفاعلي' : 'Interactive Book'}</span>
             </button>
             <button
               type="button"
               onClick={() => setViewMode('grid')}
+              aria-pressed={viewMode === 'grid'}
               className={`px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${viewMode === 'grid'
                 ? 'bg-slate-900 text-white shadow-xs'
                 : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
                 }`}
             >
-              <Grid className="w-3.5 h-3.5" />
+              <Grid className="w-3.5 h-3.5" aria-hidden="true" />
               <span>{isAr ? 'عرض القائمة' : 'Grid View'}</span>
             </button>
           </div>
@@ -235,8 +237,9 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                       onClick={() => triggerFlip(isAr ? 'next' : 'prev')}
                       className="pointer-events-auto p-3 rounded-full bg-white text-slate-800 hover:text-indigo-600 shadow-xl border border-slate-200/90 hover:scale-105 active:scale-95 transition-all disabled:opacity-40 cursor-pointer"
                       title={isAr ? 'التالي' : 'Previous'}
+                      aria-label={isAr ? 'الصفحة التالية' : 'Next page'}
                     >
-                      <ChevronRight className={`w-5 h-5 ${isAr ? '' : 'rotate-180'}`} />
+                      <ChevronRight className={`w-5 h-5 ${isAr ? '' : 'rotate-180'}`} aria-hidden="true" />
                     </button>
                     <button
                       type="button"
@@ -244,8 +247,9 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
                       onClick={() => triggerFlip(isAr ? 'prev' : 'next')}
                       className="pointer-events-auto p-3 rounded-full bg-white text-slate-800 hover:text-indigo-600 shadow-xl border border-slate-200/90 hover:scale-105 active:scale-95 transition-all disabled:opacity-40 cursor-pointer"
                       title={isAr ? 'السابق' : 'Next'}
+                      aria-label={isAr ? 'الصفحة السابقة' : 'Previous page'}
                     >
-                      <ChevronLeft className={`w-5 h-5 ${isAr ? '' : 'rotate-180'}`} />
+                      <ChevronLeft className={`w-5 h-5 ${isAr ? '' : 'rotate-180'}`} aria-hidden="true" />
                     </button>
                   </div>
 

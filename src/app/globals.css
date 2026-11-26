@@ -32,6 +32,12 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-space-grotesk), var(--font-almarai), system-ui, -apple-system, sans-serif;
   }
+
+  /* Accessible WCAG 2.2 focus appearance */
+  :focus-visible {
+    outline: 2px solid #4f46e5;
+    outline-offset: 2px;
+  }
 }
 
 /* Typography Hierarchy */

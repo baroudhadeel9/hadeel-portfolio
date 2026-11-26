@@ -277,7 +277,8 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ lang, dict, skills
                         key={skill.id}
                         type="button"
                         onClick={() => setInspectingSkill(skill)}
-                        className="w-full py-2 px-2 -mx-2 rounded-xl hover:bg-slate-50 text-start flex flex-col gap-1 group transition-all cursor-pointer"
+                        aria-label={isAr ? `فحص مواصفات ومعمارية ${skill.name}` : `Inspect ${skill.name} architecture spec`}
+                        className="w-full py-2 px-2 -mx-2 rounded-xl hover:bg-slate-50 text-start flex flex-col gap-1 group transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:outline-none"
                       >
                         <div className="w-full flex items-center justify-between gap-3">
                           <div className="min-w-0 flex-1">

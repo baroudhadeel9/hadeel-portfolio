@@ -128,6 +128,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-xl bg-white border border-slate-200 hover:border-emerald-300 hover:bg-emerald-50 text-slate-600 hover:text-emerald-700 shadow-2xs flex items-center justify-center transition-all duration-200 cursor-pointer"
                   title="WhatsApp"
+                  aria-label={isAr ? 'تواصل عبر واتساب' : 'Chat on WhatsApp'}
                 >
                   <WhatsAppIcon className="w-4 h-4" />
                 </motion.a>
@@ -138,6 +139,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
                   href={`mailto:${profile.contact.email}`}
                   className="w-10 h-10 rounded-xl bg-white border border-slate-200 hover:border-indigo-300 hover:bg-indigo-50 text-slate-600 hover:text-indigo-700 shadow-2xs flex items-center justify-center transition-all duration-200 cursor-pointer"
                   title="Email"
+                  aria-label={isAr ? 'إرسال بريد إلكتروني' : 'Send an email'}
                 >
                   <Mail className="w-4 h-4" />
                 </motion.a>
@@ -150,6 +152,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-xl bg-white border border-slate-200 hover:border-sky-300 hover:bg-sky-50 text-slate-600 hover:text-sky-700 shadow-2xs flex items-center justify-center transition-all duration-200 cursor-pointer"
                   title="LinkedIn"
+                  aria-label={isAr ? 'الملف الشخصي على لينكد إن' : 'LinkedIn Profile'}
                 >
                   <LinkedinIcon className="w-4 h-4" />
                 </motion.a>
@@ -162,6 +165,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, dict, profile }) => {
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-xl bg-white border border-slate-200 hover:border-slate-400 hover:bg-slate-100 text-slate-600 hover:text-slate-950 shadow-2xs flex items-center justify-center transition-all duration-200 cursor-pointer"
                   title="GitHub"
+                  aria-label={isAr ? 'المستودعات البرمجية على جيت هاب' : 'GitHub Repositories'}
                 >
                   <GithubIcon className="w-4 h-4" />
                 </motion.a>

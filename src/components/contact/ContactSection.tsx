@@ -302,11 +302,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   
                   {/* Name Input */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-700">
+                    <label htmlFor="contact-name" className="text-xs font-semibold text-slate-700">
                       {dict.contact.form.nameLabel}
                     </label>
                     <input
+                      id="contact-name"
+                      name="name"
                       type="text"
+                      required
+                      aria-required="true"
+                      aria-invalid={errors.name ? 'true' : 'false'}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder={dict.contact.form.namePlaceholder}
@@ -322,11 +327,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
                   {/* Email Input */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-700">
+                    <label htmlFor="contact-email" className="text-xs font-semibold text-slate-700">
                       {dict.contact.form.emailLabel}
                     </label>
                     <input
+                      id="contact-email"
+                      name="email"
                       type="email"
+                      required
+                      aria-required="true"
+                      aria-invalid={errors.email ? 'true' : 'false'}
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder={dict.contact.form.emailPlaceholder}
@@ -342,10 +352,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
                   {/* Project Type Select */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-700">
+                    <label htmlFor="contact-project-type" className="text-xs font-semibold text-slate-700">
                       {isAr ? 'نوع المشروع أو نطاق العمل:' : 'Project Type:'}
                     </label>
                     <select
+                      id="contact-project-type"
+                      name="projectType"
                       value={formData.projectType}
                       onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/10 text-xs transition-colors shadow-2xs"
@@ -359,11 +371,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
                   {/* Message Input */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-700">
+                    <label htmlFor="contact-message" className="text-xs font-semibold text-slate-700">
                       {dict.contact.form.messageLabel}
                     </label>
                     <textarea
+                      id="contact-message"
+                      name="message"
                       rows={3}
+                      required
+                      aria-required="true"
+                      aria-invalid={errors.message ? 'true' : 'false'}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder={dict.contact.form.messagePlaceholder}

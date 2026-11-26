@@ -53,6 +53,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, dict, profile }) => {
               rel="noopener noreferrer"
               className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 hover:text-emerald-600 transition-all shadow-2xs"
               title="WhatsApp"
+              aria-label={isAr ? 'تواصل عبر واتساب' : 'Chat on WhatsApp'}
             >
               <WhatsAppIcon className="w-4 h-4" />
             </a>
@@ -62,6 +63,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, dict, profile }) => {
               rel="noopener noreferrer"
               className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 hover:text-slate-950 transition-all shadow-2xs"
               title="GitHub"
+              aria-label={isAr ? 'المستودعات البرمجية على جيت هاب' : 'GitHub Repositories'}
             >
               <GithubIcon className="w-4 h-4" />
             </a>
@@ -71,6 +73,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, dict, profile }) => {
               rel="noopener noreferrer"
               className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 hover:text-slate-950 transition-all shadow-2xs"
               title="LinkedIn"
+              aria-label={isAr ? 'الملف الشخصي على لينكد إن' : 'LinkedIn Profile'}
             >
               <LinkedinIcon className="w-4 h-4" />
             </a>
@@ -78,8 +81,9 @@ export const Footer: React.FC<FooterProps> = ({ lang, dict, profile }) => {
               href={`mailto:${profile.contact.email}`}
               className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 hover:text-slate-950 transition-all shadow-2xs"
               title="Email"
+              aria-label={isAr ? 'إرسال بريد إلكتروني' : 'Send an email'}
             >
-              <Mail className="w-4 h-4" />
+              <Mail className="w-4 h-4" aria-hidden="true" />
             </a>
           </div>
 

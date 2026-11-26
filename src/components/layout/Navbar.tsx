@@ -53,6 +53,14 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang, dict }) => {
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 w-full transition-all duration-200">
+      {/* WCAG Skip-to-content link for keyboard users */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:start-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-indigo-600 focus:text-white focus:text-xs sm:focus:text-sm focus:font-bold focus:rounded-xl focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-white font-sans"
+      >
+        {isAr ? 'تخطي إلى المحتوى الرئيسي' : 'Skip to main content'}
+      </a>
+
       {/* Scroll Progress Bar at very top */}
       <div 
         className="h-[2.5px] bg-indigo-600 shadow-[0_0_8px_rgba(79,70,229,0.4)] transition-all duration-150 origin-left"
@@ -73,6 +81,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang, dict }) => {
             href="#about" 
             onClick={(e) => handleNavClick(e, 'about')}
             className="flex items-center gap-2.5 group cursor-pointer"
+            aria-label={isAr ? 'الصفحة الرئيسية - هديل بارود' : 'Home - Hadeel Baroud'}
           >
             <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl overflow-hidden border border-slate-800 bg-slate-950 shadow-xs shrink-0 p-0.5 transition-transform duration-200 group-hover:scale-105">
               <Image
@@ -118,8 +127,9 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang, dict }) => {
               onClick={onToggleLang}
               className="px-3.5 py-1.5 rounded-full text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200/80 border border-slate-200 transition-all duration-200 cursor-pointer flex items-center gap-1.5 shadow-2xs font-sans"
               title={isAr ? 'Switch to English' : 'التحويل إلى العربية'}
+              aria-label={isAr ? 'Switch to English' : 'التحويل إلى العربية'}
             >
-              <Globe className="w-3.5 h-3.5 text-slate-600" />
+              <Globe className="w-3.5 h-3.5 text-slate-600" aria-hidden="true" />
               <span>{dict.nav.langSwitch}</span>
             </button>
 
@@ -137,15 +147,18 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang, dict }) => {
             <button
               onClick={onToggleLang}
               className="px-2.5 py-1 rounded-lg bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold"
+              aria-label={isAr ? 'Switch to English' : 'التحويل إلى العربية'}
             >
               {isAr ? 'EN' : 'عربي'}
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-1.5 rounded-lg bg-slate-100 border border-slate-200 text-slate-800 hover:text-slate-950 transition-colors duration-200"
-              aria-label="Toggle navigation"
+              aria-label={mobileMenuOpen ? (isAr ? 'إغلاق القائمة' : 'Close navigation menu') : (isAr ? 'فتح القائمة' : 'Open navigation menu')}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav-menu"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5 text-slate-900" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 text-slate-900" aria-hidden="true" /> : <Menu className="w-5 h-5" aria-hidden="true" />}
             </button>
           </div>
 
@@ -154,7 +167,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang, dict }) => {
 
       {/* Mobile Drawer (Mobile-First) */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-200 bg-white/98 backdrop-blur-xl px-5 py-4 space-y-2 shadow-xl animate-in fade-in duration-200 font-sans">
+        <div id="mobile-nav-menu" className="md:hidden border-b border-slate-200 bg-white/98 backdrop-blur-xl px-5 py-4 space-y-2 shadow-xl animate-in fade-in duration-200 font-sans">
           <div className="space-y-1">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;

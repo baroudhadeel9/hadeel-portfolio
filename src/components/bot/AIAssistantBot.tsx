@@ -56,6 +56,13 @@ export const AIAssistantBot: React.FC<AIAssistantBotProps> = ({ lang, profile })
   useEffect(() => {
     if (isOpen) {
       scrollToBottom();
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          setIsOpen(false);
+        }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => window.removeEventListener('keydown', handleKeyDown);
     }
   }, [messages, isTyping, isOpen]);
 
@@ -107,7 +114,9 @@ export const AIAssistantBot: React.FC<AIAssistantBotProps> = ({ lang, profile })
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsOpen(!isOpen)}
           className="relative px-4 py-3 rounded-full bg-slate-900 text-white shadow-xl hover:shadow-2xl border border-slate-700/80 flex items-center gap-2.5 cursor-pointer font-tajawal group transition-all"
-          aria-label="Toggle AI Assistant"
+          aria-label={isOpen ? (isAr ? 'إغلاق المساعد الذكي' : 'Close AI assistant') : (isAr ? 'اسأل المساعد الذكي' : 'Ask AI assistant')}
+          aria-expanded={isOpen}
+          aria-haspopup="dialog"
         >
           <div className="relative">
             <Bot className="w-5 h-5 text-indigo-400 group-hover:rotate-12 transition-transform duration-300" />
@@ -241,12 +250,14 @@ export const AIAssistantBot: React.FC<AIAssistantBotProps> = ({ lang, profile })
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSendMessage(inputValue)}
                 placeholder={isAr ? 'اكتب استفسارك هنا...' : 'Ask about architecture, tech stack...'}
+                aria-label={isAr ? 'اكتب استفسارك هنا' : 'Type your message'}
                 className="flex-1 px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:border-indigo-600 text-xs text-slate-900 placeholder:text-slate-400 shadow-inner"
               />
               <button
                 type="button"
                 onClick={() => handleSendMessage(inputValue)}
                 disabled={!inputValue.trim()}
+                aria-label={isAr ? 'إرسال الرسالة' : 'Send message'}
                 className="p-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white disabled:opacity-40 transition-all cursor-pointer shadow-xs active:scale-95"
               >
                 {isAr ? <CornerDownLeft className="w-4 h-4" /> : <Send className="w-4 h-4" />}

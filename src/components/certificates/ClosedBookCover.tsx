@@ -17,8 +17,17 @@ export const ClosedBookCover: React.FC<ClosedBookCoverProps> = ({
   return (
     <div className="flex justify-center py-6 sm:py-8">
       <div 
+        role="button"
+        tabIndex={0}
+        aria-label={isAr ? 'فتح وتصفح ألبوم الشهادات المعتمدة' : 'Open verified certificates album'}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onOpenBook();
+          }
+        }}
         onClick={onOpenBook}
-        className="relative w-full max-w-[340px] sm:max-w-[370px] aspect-[1/1.45] rounded-3xl p-7 sm:p-9 flex flex-col justify-between items-center text-center cursor-pointer group transition-all duration-500 hover:scale-[1.03] hover:-rotate-1 shadow-[0_25px_60px_rgba(0,0,0,0.15)] hover:shadow-[0_30px_70px_rgba(79,70,229,0.22)] border border-slate-800 bg-slate-900 overflow-hidden"
+        className="relative w-full max-w-[340px] sm:max-w-[370px] aspect-[1/1.45] rounded-3xl p-7 sm:p-9 flex flex-col justify-between items-center text-center cursor-pointer group transition-all duration-500 hover:scale-[1.03] hover:-rotate-1 shadow-[0_25px_60px_rgba(0,0,0,0.15)] hover:shadow-[0_30px_70px_rgba(79,70,229,0.22)] border border-slate-800 bg-slate-900 overflow-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:outline-none"
       >
         {/* Top-Left Bookmark Ribbon in Indigo */}
         <div className="absolute top-0 left-6 sm:left-8 w-6 sm:w-7 h-16 sm:h-20 bg-indigo-600 shadow-md z-20 pointer-events-none" />

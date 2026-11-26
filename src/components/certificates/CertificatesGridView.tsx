@@ -67,8 +67,17 @@ export const CertificatesGridView: React.FC<CertificatesGridViewProps> = ({
             className="rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-slate-300 hover:shadow-md transition-all flex flex-col justify-between overflow-hidden group"
           >
             <div
+              role="button"
+              tabIndex={0}
+              aria-label={isAr ? `تكبير شهادة ${cert.titleAr}` : `Inspect ${cert.title} certificate`}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onInspect(cert);
+                }
+              }}
               onClick={() => onInspect(cert)}
-              className="relative aspect-[16/11] bg-slate-100 border-b border-slate-200 cursor-pointer overflow-hidden"
+              className="relative aspect-[16/11] bg-slate-100 border-b border-slate-200 cursor-pointer overflow-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:outline-none"
             >
               <Image
                 src={cert.image}

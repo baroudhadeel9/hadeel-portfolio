@@ -58,9 +58,10 @@ export const ContactInfoCard: React.FC<ContactInfoCardProps> = ({ profile, dict,
             href={`tel:${profile.contact.phoneIntl || cleanPhone}`}
             className="flex items-center gap-3.5 flex-1 min-w-0 cursor-pointer group"
             title={isAr ? 'اضغط للاتصال الهاتفي المباشر' : 'Tap to call directly'}
+            aria-label={isAr ? 'اتصال هاتفي مباشر' : 'Direct phone call'}
           >
             <div className="p-2.5 rounded-xl bg-slate-100 text-indigo-600 border border-slate-200 group-hover:border-indigo-200 transition-colors">
-              <Phone className="w-4 h-4" />
+              <Phone className="w-4 h-4" aria-hidden="true" />
             </div>
             <div>
               <div className="text-[11px] text-slate-700 font-medium">{dict.contact.directContact.phone}</div>
@@ -74,6 +75,7 @@ export const ContactInfoCard: React.FC<ContactInfoCardProps> = ({ profile, dict,
             rel="noopener noreferrer"
             className="p-2 px-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-700 transition-colors flex items-center gap-1.5 text-[11px] font-bold shrink-0 cursor-pointer shadow-2xs"
             title="WhatsApp Chat"
+            aria-label={isAr ? 'محادثة عبر واتساب' : 'Chat on WhatsApp'}
           >
             <WhatsAppIcon className="w-3.5 h-3.5" />
             <span>WhatsApp</span>
@@ -86,9 +88,10 @@ export const ContactInfoCard: React.FC<ContactInfoCardProps> = ({ profile, dict,
             href={`mailto:${profile.contact.email}`}
             className="flex items-center gap-3.5 flex-1 min-w-0 cursor-pointer group"
             title={isAr ? 'إرسال بريد إلكتروني مباشر' : 'Send direct email'}
+            aria-label={isAr ? 'إرسال بريد إلكتروني' : 'Send direct email'}
           >
             <div className="p-2.5 rounded-xl bg-slate-100 text-indigo-600 border border-slate-200 group-hover:border-indigo-200 transition-colors">
-              <Mail className="w-4 h-4" />
+              <Mail className="w-4 h-4" aria-hidden="true" />
             </div>
             <div className="min-w-0">
               <div className="text-[11px] text-slate-700 font-medium">{dict.contact.directContact.email}</div>
@@ -103,10 +106,11 @@ export const ContactInfoCard: React.FC<ContactInfoCardProps> = ({ profile, dict,
               setCopiedEmail(true);
               setTimeout(() => setCopiedEmail(false), 2000);
             }}
+            aria-label={isAr ? 'نسخ البريد الإلكتروني إلى الحافظة' : 'Copy email address'}
             className="p-2 px-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-800 transition-colors flex items-center gap-1.5 text-[11px] font-semibold shrink-0 cursor-pointer shadow-2xs"
             title="Copy Email"
           >
-            {copiedEmail ? <CheckCircle className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5 text-slate-600" />}
+            {copiedEmail ? <CheckCircle className="w-3.5 h-3.5 text-emerald-600" aria-hidden="true" /> : <Copy className="w-3.5 h-3.5 text-slate-600" aria-hidden="true" />}
             <span>{copiedEmail ? (isAr ? 'تم النسخ' : 'Copied!') : (isAr ? 'نسخ' : 'Copy')}</span>
           </button>
         </div>

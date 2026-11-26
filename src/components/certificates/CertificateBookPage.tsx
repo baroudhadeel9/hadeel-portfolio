@@ -54,8 +54,17 @@ export const DocPage: React.FC<DocPageProps> = ({
 
       {/* Certificate Framed Canvas */}
       <div
+        role={isInteractive ? 'button' : undefined}
+        tabIndex={isInteractive ? 0 : undefined}
+        aria-label={isInteractive ? (isAr ? `تكبير شهادة ${cert.titleAr}` : `Inspect ${cert.title} certificate`) : undefined}
+        onKeyDown={(e) => {
+          if (isInteractive && (e.key === 'Enter' || e.key === ' ')) {
+            e.preventDefault();
+            onInspect?.(cert);
+          }
+        }}
         onClick={() => isInteractive && onInspect?.(cert)}
-        className={`my-auto relative aspect-[16/11] rounded-xl overflow-hidden border border-zinc-200/80 bg-zinc-50 shadow-sm group ${isInteractive ? 'cursor-pointer' : 'pointer-events-none'
+        className={`my-auto relative aspect-[16/11] rounded-xl overflow-hidden border border-zinc-200/80 bg-zinc-50 shadow-sm group ${isInteractive ? 'cursor-pointer focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:outline-none' : 'pointer-events-none'
           }`}
       >
         <Image

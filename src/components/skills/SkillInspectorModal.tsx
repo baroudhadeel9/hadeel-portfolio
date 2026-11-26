@@ -25,6 +25,17 @@ export const SkillInspectorModal: React.FC<SkillInspectorModalProps> = ({
 }) => {
   const [copiedCode, setCopiedCode] = useState<boolean>(false);
 
+  // Close modal on Escape key
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
   if (!skill) return null;
 
   const handleCopyCode = (code: string) => {
@@ -37,6 +48,9 @@ export const SkillInspectorModal: React.FC<SkillInspectorModalProps> = ({
     <div 
       className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="skill-modal-title"
     >
       <div 
         className="w-full max-w-2xl bg-white rounded-3xl border border-slate-200 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col relative animate-in zoom-in-95 duration-200 text-slate-900"
@@ -53,7 +67,7 @@ export const SkillInspectorModal: React.FC<SkillInspectorModalProps> = ({
                 {skill.benchmark}
               </span>
             </div>
-            <h3 className="text-xl sm:text-2xl font-black text-slate-900 font-tajawal pt-1">
+            <h3 id="skill-modal-title" className="text-xl sm:text-2xl font-black text-slate-900 font-tajawal pt-1">
               {skill.name}
             </h3>
           </div>
@@ -61,9 +75,10 @@ export const SkillInspectorModal: React.FC<SkillInspectorModalProps> = ({
           <button
             type="button"
             onClick={onClose}
+            aria-label={isAr ? 'إغلاق تفاصيل المهارة' : 'Close skill details'}
             className="p-2 rounded-xl text-slate-400 hover:text-slate-800 hover:bg-slate-100 transition-colors cursor-pointer"
           >
-            <X className="w-5 h-5" />
+            <X className="w-5 h-5" aria-hidden="true" />
           </button>
         </div>
 

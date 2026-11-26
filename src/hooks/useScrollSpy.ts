@@ -2,12 +2,25 @@
 
 import { useState, useEffect } from 'react';
 
-interface ScrollSpyResult {
+export interface ScrollSpyResult {
+  /** The id of the section currently in the viewport */
   activeSection: string;
+  /** Programmatic setter to manually override the active section */
   setActiveSection: (id: string) => void;
+  /** Document vertical scroll progress percentage (0 to 100) */
   scrollProgress: number;
 }
 
+/**
+ * Custom React hook that tracks scroll position, determines the currently active
+ * viewport section based on element offsets, and calculates total document scroll percentage.
+ *
+ * Uses passive event listeners to maintain high framerate scrolling performance.
+ *
+ * @param sectionIds - Ordered array of DOM element IDs corresponding to target sections.
+ * @param offset - Vertical pixel offset threshold to trigger section activation (default: 180px).
+ * @returns Object containing `activeSection`, `setActiveSection`, and `scrollProgress`.
+ */
 export function useScrollSpy(
   sectionIds: string[],
   offset = 180

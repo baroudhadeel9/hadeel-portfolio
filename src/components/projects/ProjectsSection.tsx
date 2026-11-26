@@ -45,7 +45,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang, dict, pr
             <FolderGit2 className="w-3.5 h-3.5 text-indigo-600" />
             <span>{dict.projects.badge}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-tajawal">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-tajawal break-words">
             {dict.projects.title}
           </h2>
           <p className="text-slate-700 text-sm sm:text-base leading-relaxed font-ibm max-w-2xl mx-auto">

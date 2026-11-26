@@ -75,10 +75,10 @@ export const InteractiveProjectCard: React.FC<InteractiveProjectCardProps> = ({
 
       <div className="space-y-4 relative z-10 flex-1 flex flex-col">
         {/* Top Meta Bar: Category Pill & Live Status */}
-        <div className="flex items-center justify-between gap-2">
+        <div className="flex flex-wrap items-center justify-between gap-2">
           <span className="px-3 py-1 rounded-full text-[11px] font-semibold text-slate-800 bg-slate-100 border border-slate-200 flex items-center gap-1.5 font-ibm">
-            <Sparkles className="w-3 h-3 text-indigo-600" />
-            <span className="truncate max-w-[170px]">{isAr ? proj.categoryAr : proj.category}</span>
+            <Sparkles className="w-3 h-3 text-indigo-600 shrink-0" />
+            <span className="whitespace-normal">{isAr ? proj.categoryAr : proj.category}</span>
           </span>
 
           {/* Live Indicator Badge */}
@@ -157,9 +157,9 @@ export const InteractiveProjectCard: React.FC<InteractiveProjectCardProps> = ({
             rel="noopener noreferrer"
             className="block group/title text-start w-full cursor-pointer"
           >
-            <h3 className="text-xl sm:text-2xl font-bold text-slate-900 group-hover/title:text-indigo-600 transition-colors flex items-center justify-between font-tajawal">
-              <span>{isAr ? proj.titleAr : proj.title}</span>
-              <ArrowUpRight className="w-4 h-4 text-slate-500 group-hover/title:text-indigo-600 group-hover/title:translate-x-0.5 group-hover/title:-translate-y-0.5 transition-transform shrink-0" />
+            <h3 className="text-lg sm:text-2xl font-bold text-slate-900 group-hover/title:text-indigo-600 transition-colors flex items-start sm:items-center justify-between gap-2 font-tajawal">
+              <span className="break-words leading-snug">{isAr ? proj.titleAr : proj.title}</span>
+              <ArrowUpRight className="w-4 h-4 text-slate-500 group-hover/title:text-indigo-600 group-hover/title:translate-x-0.5 group-hover/title:-translate-y-0.5 transition-transform shrink-0 mt-1 sm:mt-0" />
             </h3>
           </a>
           <p className="text-xs sm:text-sm text-slate-700 mt-2 leading-relaxed font-ibm line-clamp-3 min-h-[4.25rem]">
